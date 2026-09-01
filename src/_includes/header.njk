@@ -1,0 +1,37 @@
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="logo" href="{{ '/' | url }}">
+      {% if site.logoPath %}
+        <img src="{{ site.logoPath | url }}" alt="{{ site.name }}">
+      {% else %}
+        <span class="logo__text">Wie</span>
+      {% endif %}
+    </a>
+
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="visually-hidden">メニューを開く</span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="グローバルナビゲーション">
+      <ul>
+        <li><a href="{{ '/about/' | url }}">Wieについて</a></li>
+        <li><a href="{{ '/activities/' | url }}">活動内容</a></li>
+        <li><a href="{{ '/projects/' | url }}">進行中のプロジェクト</a></li>
+        <li><a href="{{ '/future/' | url }}">これからの取り組み</a></li>
+        <li><a href="{{ '/join/' | url }}">参加する</a></li>
+        <li><a href="{{ '/news/' | url }}">お知らせ</a></li>
+        <li>
+          {% if links.NOTE_URL %}
+          <a href="{{ links.NOTE_URL }}" target="_blank" rel="noopener noreferrer">note<span class="visually-hidden">（外部サイトへ移動します）</span></a>
+          {% else %}
+          <span class="nav-disabled">note（準備中）</span>
+          {% endif %}
+        </li>
+        <li><a href="{{ '/contact/' | url }}">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

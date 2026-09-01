@@ -1,0 +1,45 @@
+node_modules/
+_site/
+*.log
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+
+# ------------------------------------------------------------------
+# 認証情報・秘密情報（絶対にコミットしないもの）
+# ------------------------------------------------------------------
+# 実際の値を書く .env はコミットしない。テンプレートの env.example だけを共有する。
+.env
+.env.*
+!.env.example
+
+# サービスアカウントキーやAPIキーのファイル
+*.key
+*.pem
+*-key.json
+*-sa.json
+service-account*.json
+*service-account*.json
+*credentials*.json
+gcloud-*.json
+client_secret*.json
+
+# 秘密情報を置くフォルダ（キーファイルはリポジトリの外に置くのが理想。
+# どうしても中に置く場合はこのフォルダに入れる）
+secrets/
+.secrets/
+credentials/
+
+# ------------------------------------------------------------------
+# 画像生成の作業データ（採用したものだけ public/images/ に個別保存する）
+# ------------------------------------------------------------------
+scripts/generation_log/
+
+# Wieちゃん等の生成候補プール（大量の下書きPNG。採用したものだけ public/images/ にコピーして使う）
+# ※ public/ の外に置くこと。public/ 配下だとビルドで _site/ に全部コピーされ、公開サイトに載ってしまう。
+_source-images/
+public/images/**/_candidates/
+public/images/**/_drafts/

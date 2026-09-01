@@ -1,0 +1,44 @@
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <p class="site-footer__logo">Wie</p>
+      <p class="site-footer__tagline">{{ site.tagline }}</p>
+    </div>
+
+    <nav class="site-footer__nav" aria-label="フッターナビゲーション">
+      <ul>
+        <li><a href="{{ '/about/' | url }}">Wieについて</a></li>
+        <li><a href="{{ '/activities/' | url }}">活動内容</a></li>
+        <li><a href="{{ '/projects/' | url }}">進行中のプロジェクト</a></li>
+        <li><a href="{{ '/future/' | url }}">これからの取り組み</a></li>
+        <li><a href="{{ '/join/' | url }}">参加する</a></li>
+        <li><a href="{{ '/news/' | url }}">お知らせ</a></li>
+        <li><a href="{{ '/contact/' | url }}">お問い合わせ</a></li>
+        <li><a href="{{ '/privacy/' | url }}">プライバシーポリシー</a></li>
+      </ul>
+    </nav>
+
+    <div class="site-footer__side">
+      {# SNSリンクを追加する場合は src/_data/site.json の "sns" 配列に {"label":"...","url":"..."} を追加してください #}
+      {% if site.sns.length %}
+      <ul class="site-footer__sns">
+        {% for s in site.sns %}
+        <li><a href="{{ s.url }}" target="_blank" rel="noopener noreferrer">{{ s.label }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      <p class="site-footer__note-link">
+        {% if links.NOTE_URL %}
+        <a href="{{ links.NOTE_URL }}" target="_blank" rel="noopener noreferrer">note で活動の記録を読む<span class="visually-hidden">（外部サイトへ移動します）</span></a>
+        {% else %}
+        <span class="nav-disabled">note（準備中）</span>
+        {% endif %}
+      </p>
+    </div>
+  </div>
+
+  <div class="site-footer__bottom">
+    <p>&copy; {{ "" | year }} Wie</p>
+  </div>
+</footer>

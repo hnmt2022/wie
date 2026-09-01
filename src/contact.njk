@@ -1,0 +1,49 @@
+---
+layout: base.njk
+title: "お問い合わせ"
+description: "目的別のお問い合わせ先をご案内します。"
+---
+{% from "partials/cards.njk" import externalCard %}
+
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">お問い合わせ</p>
+      <h1>目的に合わせてお問い合わせください</h1>
+    </div>
+
+    <div class="contact-grid">
+      {% for c in contactCategories %}
+      <div class="contact-item">
+        <h2 class="card__title card__title--sm">{{ c.title }}</h2>
+        <p class="card__text">{{ c.description }}</p>
+        {% if site.contactEmail %}
+        <a class="btn btn--outline" href="mailto:{{ site.contactEmail }}?subject={{ c.title }}">メールで問い合わせる</a>
+        {% elif site.contactFormUrl %}
+        <a class="btn btn--outline" href="{{ site.contactFormUrl }}" target="_blank" rel="noopener noreferrer">お問い合わせフォームへ<span class="visually-hidden">（外部サイトへ移動します）</span></a>
+        {% else %}
+        <span class="btn btn--outline btn--disabled" aria-disabled="true">受付方法を準備中</span>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="notice-box" style="margin-top:28px;">
+      <p style="margin:0;">現在、お問い合わせの受付方法を準備しています。メールアドレスまたはフォームが決まり次第、このページに掲載します。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">個別のご相談・活動記録</p>
+      <h2>専用ページでご案内している内容</h2>
+    </div>
+    <div class="grid grid--3">
+      {{ externalCard("暮らしやお金の個別相談", "個別のご相談は専用ページでご案内しています。", links.MONEY_CONSULTATION_LP_URL, "相談LPを見る") }}
+      {{ externalCard("見守りサービス", "サービスの詳細は専用ページでご案内しています。", links.MONITORING_SERVICE_LP_URL, "見守りLPを見る") }}
+      {{ externalCard("note", "活動の背景や開催報告を発信しています。", links.NOTE_URL, "noteで読む") }}
+    </div>
+  </div>
+</section>

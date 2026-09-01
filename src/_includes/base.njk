@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if title %}{{ title }} | {{ site.name }}{% else %}{{ site.name }} ｜ {{ site.tagline }}{% endif %}</title>
+<meta name="description" content="{{ description or site.description }}">
+<link rel="canonical" href="{{ page.url | url }}">
+<link rel="icon" href="{{ '/images/favicon.png' | url }}" sizes="any">
+<link rel="apple-touch-icon" href="{{ '/images/apple-touch-icon.png' | url }}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{% if title %}{{ title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}">
+<meta property="og:description" content="{{ description or site.description }}">
+{% if site.ogpImagePath %}<meta property="og:image" content="{{ site.ogpImagePath | url }}">{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="{{ '/css/style.css' | url }}">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+{% include "header.njk" %}
+<main id="main">
+{{ content | safe }}
+</main>
+{% include "footer.njk" %}
+<script src="{{ '/js/nav.js' | url }}" defer></script>
+</body>
+</html>

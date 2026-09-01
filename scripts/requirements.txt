@@ -1,0 +1,4 @@
+# 画像生成スクリプト（generate_official_images.py / lp-image-create.py）の実行に必要。
+#   pip install -r scripts/requirements.txt
+google-genai>=0.3.0
+pillow>=10.0.0

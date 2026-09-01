@@ -1,0 +1,14 @@
+{
+  "name": "wie-website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Wie 公式サイト（静的サイト / Eleventy）",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "node -e \"require('fs').rmSync('_site',{recursive:true,force:true})\""
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Wie",
+  "tagline": "一人ひとりの経験や得意を、社会とつながる力に。",
+  "description": "Wieは、学び、対話し、小さく試す機会をつくりながら、一人ひとりが自分に合った形で仕事や社会とつながれることを目指す市民活動団体です。",
+  "lang": "ja",
+  "siteUrlNote": "本番URLが決まったら .github/workflows/deploy.yml の PATH_PREFIX 計算、および独自ドメイン設定時は public/CNAME を追加してください。",
+  "logoPath": "/images/logo.png",
+  "ogpImagePath": "/images/generated/ogp-default.webp",
+  "sns": [],
+  "contactEmail": null,
+  "contactFormUrl": null,
+  "orgType": null,
+  "address": null,
+  "phone": null
+}

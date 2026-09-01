@@ -1,0 +1,175 @@
+---
+layout: base.njk
+title: ""
+description: "Wieは、学び、対話し、小さく試す機会をつくりながら、一人ひとりが自分に合った形で仕事や社会とつながれることを目指す市民活動団体です。"
+---
+{% from "partials/media.njk" import illustration, photo, wiechan %}
+{% from "partials/cards.njk" import pillarCard, activityCard, externalCard %}
+
+<section class="hero">
+  <div class="hero__inner">
+    <div>
+      <h1>一人ひとりの経験や得意を、社会とつながる力に。</h1>
+      <p class="hero__lead">Wieは、学び、対話し、小さく試す機会をつくりながら、一人ひとりが自分に合った形で仕事や社会とつながれることを目指す団体です。</p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="{{ '/join/' | url }}">活動に参加する</a>
+        <a class="btn btn--outline" href="{{ '/about/' | url }}">Wieについて</a>
+      </div>
+    </div>
+    <div>
+      {{ illustration("hero-connections.webp", "一人の女性を中心に、学び・対話・在宅の仕事・地域活動といった社会の場が細い線でつながり、誰もが社会の中で活躍できることを表したイラスト", "16/9", true, "hero-connections.webp") }}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">Wieが目指していること</p>
+      <h2>自分に合った形で、仕事や社会とつながれる人を増やす</h2>
+      <p class="lead">短い時間ならできる。在宅ならできる。誰かと一緒ならできる。これまでの経験や得意なことなら力を発揮できる。Wieは、従来の働き方に人を合わせるだけでなく、その人に合った仕事や役割の形を考えます。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">現在の活動</p>
+      <h2>いま、Wieが行っていること</h2>
+    </div>
+    <div class="grid grid--3">
+      {% for pillar in pillars %}
+        {{ pillarCard(pillar, "/activities/#" + pillar.id) }}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">最近の活動・実績</p>
+      <h2>これまで取り上げてきたテーマ</h2>
+      <p class="text-muted">開催日や参加人数などは、公表できる情報が整い次第掲載します。</p>
+    </div>
+    <div class="grid grid--3">
+      {% for item in activities %}
+        {{ activityCard(item) }}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" id="projects-preview">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">進行中のプロジェクト</p>
+      <h2>年齢を重ねた方と家族の暮らし・お金</h2>
+      <p class="lead">年金、税金、住まい、書類、財産、これから必要になる手続きなど、年齢を重ねる中で生まれる「どこに聞けばよいか分からない」を整理するプロジェクトを進めています。</p>
+    </div>
+    <div class="btn-row" style="margin-bottom:40px;">
+      <a class="btn btn--primary" href="{{ '/projects/' | url }}">プロジェクトを見る</a>
+    </div>
+    <div class="grid grid--3">
+      {{ externalCard("暮らしやお金の相談", "個別のご相談は専用ページでご案内しています。", links.MONEY_CONSULTATION_LP_URL, "相談LPを見る") }}
+      {{ externalCard("見守りサービス", "サービスの詳細は専用ページでご案内しています。", links.MONITORING_SERVICE_LP_URL, "見守りLPを見る") }}
+      {{ externalCard("note", "活動の背景や開催報告を発信しています。", links.NOTE_URL, "noteで読む") }}
+    </div>
+
+    <hr class="divider">
+
+    <div class="section__head">
+      <p class="eyebrow">これから試していきたいこと</p>
+      <h2>少し先に取り組みたいテーマ</h2>
+    </div>
+    <div class="grid grid--3">
+      {% for f in future %}
+      <article class="card">
+        <div class="card__body">
+          <span class="status-badge status-badge--planning">{{ f.status }}</span>
+          <h3 class="card__title card__title--sm">{{ f.title }}</h3>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <p style="margin-top:20px;"><a class="card__link" href="{{ '/future/' | url }}">詳しく見る</a></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">参加方法</p>
+      <h2>関わり方はいろいろあります</h2>
+    </div>
+    <div class="grid grid--2">
+      <div class="card"><div class="card__body">
+        <h3 class="card__title card__title--sm">学習会やイベントに参加する</h3>
+        <p class="card__text">まずは興味のあるテーマから参加してみてください。</p>
+      </div></div>
+      <div class="card"><div class="card__body">
+        <h3 class="card__title card__title--sm">興味のある活動を知る</h3>
+        <p class="card__text">お知らせやnoteで活動の様子を知ることができます。</p>
+      </div></div>
+      <div class="card"><div class="card__body">
+        <h3 class="card__title card__title--sm">自分の経験や得意を活かせる活動に協力する</h3>
+        <p class="card__text">できる範囲で、活動づくりに関わっていただけます。</p>
+      </div></div>
+      <div class="card"><div class="card__body">
+        <h3 class="card__title card__title--sm">企業、自治体、団体、専門家として連携する</h3>
+        <p class="card__text">地域や社会の困りごとについて、一緒に考えます。</p>
+      </div></div>
+    </div>
+    <p class="notice-box notice-box--caution" style="margin-top:28px;">活動への参加によって、仕事や報酬が保証されるものではありません。仕事やプロジェクトへの協力をお願いする場合は、内容、役割、責任の範囲などを確認したうえで個別にご相談します。</p>
+    <div class="btn-row" style="margin-top:24px;">
+      <a class="btn btn--primary" href="{{ '/join/' | url }}">参加する</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">お知らせ</p>
+      <h2>最新のお知らせ</h2>
+    </div>
+    {% if news.length %}
+    <ul class="news-list">
+      {% for n in news | reverse %}
+        {% if loop.index <= 3 %}
+        <li>
+          <p class="text-muted" style="margin-bottom:4px;">{{ n.date }}</p>
+          <p style="margin:0;"><a href="{{ n.url or ('/news/' | url) }}">{{ n.title }}</a></p>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    {% else %}
+    <div class="news-empty">
+      {{ wiechan("wiechan-default.png", "Wieちゃん") }}
+      <p style="margin:0;">現在、お知らせは準備中です。</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">お問い合わせ</p>
+      <h2>目的に合わせてお問い合わせください</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-item"><h3 class="card__title card__title--sm">活動やイベントへの参加</h3><a href="{{ '/contact/' | url }}">お問い合わせへ</a></div>
+      <div class="contact-item"><h3 class="card__title card__title--sm">Wieへの協力・連携</h3><a href="{{ '/contact/' | url }}">お問い合わせへ</a></div>
+      <div class="contact-item"><h3 class="card__title card__title--sm">セミナー・講師の依頼</h3><a href="{{ '/contact/' | url }}">お問い合わせへ</a></div>
+      <div class="contact-item"><h3 class="card__title card__title--sm">企業・自治体・団体からのご相談</h3><a href="{{ '/contact/' | url }}">お問い合わせへ</a></div>
+    </div>
+    <div class="grid grid--3" style="margin-top:24px;">
+      {{ externalCard("暮らしやお金の個別相談", "こちらは専用LPでご案内しています。", links.MONEY_CONSULTATION_LP_URL, "相談LPを見る") }}
+      {{ externalCard("見守りサービス", "こちらは専用LPでご案内しています。", links.MONITORING_SERVICE_LP_URL, "見守りLPを見る") }}
+      {{ externalCard("note", "活動の背景や開催報告はこちら。", links.NOTE_URL, "noteで読む") }}
+    </div>
+  </div>
+</section>

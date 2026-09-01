@@ -1,0 +1,30 @@
+[
+  {
+    "id": "learning",
+    "title": "学習会・セミナー",
+    "summary": "税金、経理、お金、AI活用など、仕事や暮らしに役立つテーマを取り上げています。難しいことを分かりやすく整理し、自分に必要なことを知り、次に何をすればよいかを考えられる場を目指しています。",
+    "image": null,
+    "recommendedImage": "activity-learning.webp"
+  },
+  {
+    "id": "discovery",
+    "title": "経験や得意に気づき、活かす活動",
+    "summary": "交流や対話を通して、自分では当たり前だと思っていた経験や得意に気づく機会をつくっています。資格や職歴だけではなく、家庭、地域、趣味、ボランティアなどで身につけた力も大切にします。",
+    "image": null,
+    "recommendedImage": "activity-dialogue.webp"
+  },
+  {
+    "id": "small-step",
+    "title": "小さく試す機会",
+    "summary": "十分にできるようになってから始めるのではなく、学んだことや得意なことを、小さな役割や活動から試せる機会をつくります。",
+    "image": null,
+    "recommendedImage": "activity-small-step.webp"
+  },
+  {
+    "id": "co-creation",
+    "title": "社会のニーズから仕事や活動を考える",
+    "summary": "「この人が何を売りたいか」だけではなく、「誰に、どのような困りごとがあるか」を起点に考えます。必要に応じて複数人の経験、得意、専門性を組み合わせ、一人ではつくれない仕事やサービスの形を考えています。",
+    "image": null,
+    "recommendedImage": "activity-co-creation.webp"
+  }
+]

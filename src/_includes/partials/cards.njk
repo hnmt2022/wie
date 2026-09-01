@@ -1,0 +1,39 @@
+{% from "partials/media.njk" import photo, illustration %}
+
+{# 現在の活動：4つの柱カード #}
+{% macro pillarCard(pillar, linkUrl) %}
+<article class="card">
+  {{ illustration(pillar.image, pillar.title, "1/1", false, pillar.recommendedImage) }}
+  <div class="card__body">
+    <h3 class="card__title">{{ pillar.title }}</h3>
+    <p class="card__text">{{ pillar.summary }}</p>
+    <a class="card__link" href="{{ linkUrl | url }}">詳しく見る<span class="visually-hidden">：{{ pillar.title }}</span></a>
+  </div>
+</article>
+{% endmacro %}
+
+{# 最近の活動・実績カード（日付や人数は未提供のため表示しない） #}
+{% macro activityCard(item) %}
+<article class="card card--compact">
+  {{ photo(item.image, item.title, "4/3", false) }}
+  <div class="card__body">
+    <p class="card__eyebrow">{{ item.category }}</p>
+    <h3 class="card__title card__title--sm">{{ item.title }}</h3>
+  </div>
+</article>
+{% endmacro %}
+
+{# 外部LP・noteへの導線カード。url が null なら「準備中」で非活性表示 #}
+{% macro externalCard(title, description, url, ctaLabel) %}
+<div class="card card--external">
+  <div class="card__body">
+    <h3 class="card__title card__title--sm">{{ title }}</h3>
+    <p class="card__text">{{ description }}</p>
+    {% if url %}
+    <a class="btn btn--outline" href="{{ url }}" target="_blank" rel="noopener noreferrer">{{ ctaLabel }}<span class="visually-hidden">（外部サイトへ移動します）</span></a>
+    {% else %}
+    <span class="btn btn--outline btn--disabled" aria-disabled="true">{{ ctaLabel }}（準備中）</span>
+    {% endif %}
+  </div>
+</div>
+{% endmacro %}

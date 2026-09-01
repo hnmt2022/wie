@@ -1,0 +1,15 @@
+---
+layout: base.njk
+title: "ページが見つかりません"
+permalink: "404.html"
+---
+{% from "partials/media.njk" import wiechan %}
+
+<section class="section">
+  <div class="container" style="text-align:center;">
+    {{ wiechan("wiechan-default.png", "Wieちゃん") }}
+    <h1>ページが見つかりませんでした</h1>
+    <p class="lead">お探しのページは移動または削除された可能性があります。</p>
+    <a class="btn btn--primary" href="{{ '/' | url }}">トップページへ戻る</a>
+  </div>
+</section>

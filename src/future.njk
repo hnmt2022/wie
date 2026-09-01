@@ -1,0 +1,37 @@
+---
+layout: base.njk
+title: "これからの取り組み"
+description: "Wieが少し先に取り組みたいと考えているテーマをご紹介します。"
+---
+{% from "partials/media.njk" import illustration %}
+
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">これからの取り組み</p>
+      <h1>少し先に取り組みたいこと</h1>
+      <p class="lead">ここで紹介するのは、まだ検討・準備の段階にあるテーマです。サービスの内容や料金、始める時期はまだ決まっていません。それぞれ今の状態を書いていますので、進行中のプロジェクトとは分けてご覧ください。</p>
+    </div>
+
+    <div class="grid grid--3">
+      {% for f in future %}
+      <article class="card" id="{{ f.id }}">
+        {{ illustration(f.image, f.title + "に関する抽象イラスト", "4/3", false, f.recommendedImage) }}
+        <div class="card__body">
+          <span class="status-badge status-badge--planning">{{ f.status }}</span>
+          <h2 class="card__title">{{ f.title }}</h2>
+
+          <h3 class="card__title card__title--sm" style="margin-top:10px;">どのような困りごとに着目しているか</h3>
+          <p class="card__text">{{ f.issue }}</p>
+
+          <h3 class="card__title card__title--sm">Wieとしてなぜ取り組みたいか</h3>
+          <p class="card__text">{{ f.reason }}</p>
+
+          <h3 class="card__title card__title--sm">どのような人や組織と考えていきたいか</h3>
+          <p class="card__text">{{ f.withWhom }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

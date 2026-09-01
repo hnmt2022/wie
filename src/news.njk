@@ -1,0 +1,33 @@
+---
+layout: base.njk
+title: "お知らせ"
+description: "Wieのイベントや活動に関する最新のお知らせです。"
+---
+{% from "partials/media.njk" import wiechan %}
+
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">お知らせ</p>
+      <h1>お知らせ</h1>
+    </div>
+
+    {% if news.length %}
+    <ul class="news-list">
+      {% for n in news | reverse %}
+      <li>
+        <p class="text-muted" style="margin-bottom:4px;">{{ n.date }}</p>
+        <p style="margin:0;">
+          {% if n.url %}<a href="{{ n.url }}">{{ n.title }}</a>{% else %}{{ n.title }}{% endif %}
+        </p>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <div class="news-empty">
+      {{ wiechan("wiechan-default.png", "Wieちゃん") }}
+      <p style="margin:0;">現在、お知らせは準備中です。次回のイベントが決まり次第、こちらでご案内します。</p>
+    </div>
+    {% endif %}
+  </div>
+</section>

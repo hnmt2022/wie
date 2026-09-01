@@ -1,0 +1,6 @@
+{
+  "_comment": "外部リンクはここで一括管理します。URLが決まったら値を文字列で入れてください。未設定（null）の間はサイト側で自動的に「準備中」表示になります。",
+  "NOTE_URL": null,
+  "MONEY_CONSULTATION_LP_URL": null,
+  "MONITORING_SERVICE_LP_URL": null
+}

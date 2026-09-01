@@ -1,0 +1,52 @@
+---
+layout: base.njk
+title: "参加する"
+description: "Wieへの関わり方をご紹介します。まずはイベントに参加したり、活動を知るだけでも大丈夫です。"
+---
+{% from "partials/media.njk" import wiechan %}
+
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">参加する</p>
+      <h1>関わり方はいろいろあります</h1>
+      <p class="lead">Wieに興味を持っていただいたからといって、そのまま運営メンバーになるわけではありません。まずはイベントに参加したり、活動を知るだけでも十分です。ご自分のペースで関わってください。</p>
+    </div>
+
+    <div class="grid grid--2">
+      <div class="card"><div class="card__body">
+        <h2 class="card__title">イベントや学習会に参加する</h2>
+        <p class="card__text">学習会やセミナー、交流の場に参加してみてください。まずは話を聞くだけでも歓迎します。</p>
+        <a class="card__link" href="{{ '/news/' | url }}">お知らせを見る</a>
+      </div></div>
+
+      <div class="card"><div class="card__body">
+        <h2 class="card__title">活動や今後の予定を知る</h2>
+        <p class="card__text">お知らせやnoteで、Wieの活動の様子や考えを知ることができます。</p>
+        <a class="card__link" href="{{ '/activities/' | url }}">活動内容を見る</a>
+      </div></div>
+
+      <div class="card"><div class="card__body">
+        <h2 class="card__title">興味のある取り組みに協力する</h2>
+        <p class="card__text">ご自身の経験や得意を活かせそうな活動があれば、できる範囲でご協力いただけます。</p>
+        <a class="card__link" href="{{ '/contact/' | url }}">お問い合わせへ</a>
+      </div></div>
+
+      <div class="card"><div class="card__body">
+        <h2 class="card__title">企業・自治体・団体・専門家として連携する</h2>
+        <p class="card__text">地域や社会の困りごとについて、一緒に考えていただける企業・自治体・団体・専門家からのご相談をお待ちしています。</p>
+        <a class="card__link" href="{{ '/contact/' | url }}">お問い合わせへ</a>
+      </div></div>
+    </div>
+
+    <div class="notice-box notice-box--caution" style="margin-top:32px; display:flex; gap:18px; align-items:flex-start;">
+      {{ wiechan("wiechan-default.png", "Wieちゃん") }}
+      <p style="margin:0;">活動への参加によって、仕事や報酬が保証されるものではありません。仕事やプロジェクトへの協力をお願いする場合は、内容、役割、責任の範囲などを確認したうえで個別にご相談します。</p>
+    </div>
+
+    <div class="btn-row" style="margin-top:28px;">
+      <a class="btn btn--primary" href="{{ '/contact/' | url }}">お問い合わせする</a>
+      <a class="btn btn--outline" href="{{ '/news/' | url }}">お知らせを見る</a>
+    </div>
+  </div>
+</section>

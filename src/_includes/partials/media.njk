@@ -1,0 +1,32 @@
+{# 活動写真: public/images/activities/ 配下のファイル名を渡す。未設定(null)ならプレースホルダーを表示 #}
+{% macro photo(filename, alt, ratio="4/3", eager=false) %}
+  {% if filename %}
+  <img class="media media--photo" style="aspect-ratio:{{ ratio }};" src="{{ ('/images/activities/' + filename) | url }}" alt="{{ alt }}" {% if eager %}loading="eager"{% else %}loading="lazy"{% endif %} decoding="async">
+  {% else %}
+  <div class="media media--placeholder" style="aspect-ratio:{{ ratio }};" role="img" aria-label="{{ alt }}（準備中の画像）">
+    <p class="media--placeholder__label">写真準備中</p>
+    <p class="media--placeholder__hint">差し替え先: public/images/activities/{{ filename or "（ファイル名未定）" }}</p>
+  </div>
+  {% endif %}
+{% endmacro %}
+
+{# 抽象イラスト: public/images/generated/ 配下のファイル名を渡す。未設定(null)ならプレースホルダーを表示 #}
+{% macro illustration(filename, alt, ratio="4/3", eager=false, recommended="") %}
+  {% if filename %}
+  <img class="media media--illustration" style="aspect-ratio:{{ ratio }};" src="{{ ('/images/generated/' + filename) | url }}" alt="{{ alt }}" {% if eager %}loading="eager"{% else %}loading="lazy"{% endif %} decoding="async">
+  {% else %}
+  <div class="media media--placeholder media--placeholder--illust" style="aspect-ratio:{{ ratio }};" role="img" aria-label="{{ alt }}（準備中のイラスト）">
+    <p class="media--placeholder__label">イラスト準備中</p>
+    <p class="media--placeholder__hint">推奨: public/images/generated/{{ recommended }}（比率 {{ ratio }}）</p>
+  </div>
+  {% endif %}
+{% endmacro %}
+
+{# Wieちゃん（キャラクター）: public/images/character/ 配下のファイル名を渡す。未設定なら控えめなテキスト表示のみ #}
+{% macro wiechan(filename, alt) %}
+  {% if filename %}
+  <img class="wiechan" src="{{ ('/images/character/' + filename) | url }}" alt="{{ alt }}" loading="lazy" decoding="async">
+  {% else %}
+  <span class="wiechan wiechan--placeholder" aria-hidden="true">Wie<br>ちゃん</span>
+  {% endif %}
+{% endmacro %}
