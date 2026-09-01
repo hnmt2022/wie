@@ -63,13 +63,17 @@ PRESETS = {
         + "\n\nSCENE: a woman standing calmly near the centre of the frame, "
         "shown waist up, relaxed and quietly confident. Loosely arranged around "
         "her (to her left and right, a little above and below) are several "
-        "small flat vignettes of everyday society: a few people at a table in a "
-        "learning session, two people in conversation, a person working at a "
-        "home desk, a small group activity. A single thin navy line links each "
-        "vignette to her, so she is clearly held within society and connected "
-        "into it - part of it, not standing apart. A natural mix of ages and "
-        "genders in the surrounding vignettes. Calm pale background; keep the "
-        "upper area fairly open for a headline.",
+        "small flat vignettes of everyday community life, each linked to her by "
+        "a single thin navy line so she is clearly held within society and "
+        "belongs to it. The vignettes MUST include a clear mix of generations: "
+        "an older person and a young child looking at a picture book together; "
+        "neighbours of different ages chatting over tea; a small learning "
+        "circle at a table; someone walking beside an older neighbour; a few "
+        "people of mixed ages tending a shared garden. Show children, "
+        "parent-age adults and older people. Keep work and office motifs to a "
+        "minimum - no laptops, screens or headphones as a focus. The feeling is "
+        "belonging and connection across the whole community, not careers. Calm "
+        "pale background; keep the upper area fairly open for a headline.",
     },
     "about-possibilities.webp": {
         "kind": "editorial-illustration",

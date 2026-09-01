@@ -17,7 +17,7 @@ description: "Wieは、学び、対話し、小さく試す機会をつくりな
       </div>
     </div>
     <div>
-      {{ illustration("hero-connections.webp", "一人の女性を中心に、学び・対話・在宅の仕事・地域活動といった社会の場が細い線でつながり、誰もが社会の中で活躍できることを表したイラスト", "16/9", true, "hero-connections.webp") }}
+      {{ illustration("hero-connections.webp", "一人の女性を中心に、高齢者と子どもの読み聞かせ、世代を超えた団らん、学びの輪、地域の見守り、共同菜園といった場面が細い線でつながり、誰もが地域や社会の中でつながって暮らせることを表したイラスト", "16/9", true, "hero-connections.webp") }}
     </div>
   </div>
 </section>
@@ -42,6 +42,9 @@ description: "Wieは、学び、対話し、小さく試す機会をつくりな
       {% for pillar in pillars %}
         {{ pillarCard(pillar, "/activities/#" + pillar.id) }}
       {% endfor %}
+    </div>
+    <div class="grid grid--3" style="margin-top:24px;">
+      {{ externalCard("note", "活動の背景や開催報告を発信しています。", links.NOTE_URL, "noteで読む") }}
     </div>
   </div>
 </section>
@@ -74,7 +77,6 @@ description: "Wieは、学び、対話し、小さく試す機会をつくりな
     <div class="grid grid--3">
       {{ externalCard("暮らしやお金の相談", "個別のご相談は専用ページでご案内しています。", links.MONEY_CONSULTATION_LP_URL, "相談LPを見る") }}
       {{ externalCard("見守りサービス", "サービスの詳細は専用ページでご案内しています。", links.MONITORING_SERVICE_LP_URL, "見守りLPを見る") }}
-      {{ externalCard("note", "活動の背景や開催報告を発信しています。", links.NOTE_URL, "noteで読む") }}
     </div>
 
     <hr class="divider">
