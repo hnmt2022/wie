@@ -3,8 +3,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy({ "public/images": "images" });
-  // 独自ドメイン接続時: public/CNAME を作成すると自動でコピーされます
-  eleventyConfig.addPassthroughCopy("public/CNAME");
+  // 独自ドメイン接続時: public/CNAME を作成すると _site/CNAME としてコピーされます
+  eleventyConfig.addPassthroughCopy({ "public/CNAME": "CNAME" });
 
   eleventyConfig.addFilter("year", () => new Date().getFullYear());
 
