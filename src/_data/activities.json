@@ -1,9 +1,7 @@
 [
   { "id": "kakutei-shinkoku", "title": "確定申告に関する学習会", "category": "税金", "image": null },
   { "id": "kakei-okane", "title": "家計やお金に関する学習会", "category": "お金", "image": null },
-  { "id": "furusato-nozei", "title": "ふるさと納税に関する講座", "category": "税金", "image": null },
   { "id": "kigyo-okane", "title": "起業とお金に関する講座", "category": "起業", "image": null },
-  { "id": "keiri", "title": "経理に関する学習会・作業会", "category": "経理", "image": null },
   { "id": "ai-katsuyo", "title": "AI活用の学習会", "category": "AI活用", "image": null },
   { "id": "wie-tsunagarukai", "title": "Wieつながる会", "category": "交流", "image": null }
 ]

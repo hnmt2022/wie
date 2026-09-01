@@ -209,6 +209,14 @@ p { margin: 0 0 1em; }
 .card--compact .card__body { padding: 16px 18px 20px; }
 .card--external { border-color: var(--color-lightblue); }
 
+/* 「こういうことをやっています」を軽く見せるタグ列 */
+.tag-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 0; padding: 0; list-style: none; }
+.tag-row li {
+  font-size: 0.9rem; color: var(--color-navy);
+  background: var(--color-white); border: 1px solid var(--color-border);
+  border-radius: 999px; padding: 6px 14px;
+}
+
 .media { width: 100%; object-fit: cover; background: var(--color-bg-alt-2); }
 .media--placeholder {
   display: flex; flex-direction: column; align-items: center; justify-content: center;

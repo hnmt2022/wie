@@ -1,16 +1,17 @@
 ---
 layout: base.njk
 title: "活動内容"
-description: "Wieが現在行っている学習会・セミナー、経験や得意に気づく活動、小さく試す機会をご紹介します。"
+description: "Wieが行っている学習会・セミナー、経験や得意に気づく活動、経験や得意を試す活動、困りごとに応えるプロジェクトをご紹介します。"
 ---
-{% from "partials/cards.njk" import pillarCard, activityCard %}
+{% from "partials/cards.njk" import pillarCard %}
 
 <section class="section">
   <div class="container">
     <div class="section__head">
       <p class="eyebrow">活動内容</p>
       <h1>いま、Wieが行っていること</h1>
-      <p class="lead">Wieは、学び、対話し、小さく試す機会をつくることを中心に活動しています。以下は現在行っている活動です。</p>
+      <p class="lead">Wieでは、仕事や暮らしに役立つことを学び、自分の経験や得意に気づき、それを実際の活動の中で試す機会をつくっています。</p>
+      <p>また、一人ひとりの力を活かしながら、地域や社会の困りごとに応える仕事やサービスづくりにも取り組んでいます。</p>
     </div>
 
     <div class="grid grid--3">
@@ -24,37 +25,43 @@ description: "Wieが現在行っている学習会・セミナー、経験や得
 <section class="section section--alt" id="learning">
   <div class="container">
     <p class="eyebrow">学習会・セミナー</p>
-    <h2>税金、経理、お金、AI活用など</h2>
-    <p>知識を一方的に教えるだけではなく、難しいことを分かりやすく整理し、自分に必要なことを知り、次に何をすればよいかを考えられる場を目指しています。</p>
-    <div class="grid grid--3">
+    <h2>知ることで、選べることを増やす</h2>
+    <p>税金、お金、AI活用など、仕事や暮らしに関わるテーマを取り上げています。</p>
+    <p>知識を一方的に伝えるだけでなく、難しいことを分かりやすく整理し、「自分の場合はどうなのか」「次に何をすればよいのか」を考えられる場を目指しています。</p>
+    <p class="text-muted" style="margin-bottom:0;">これまでに、次のような学習会や講座を行ってきました。</p>
+    <ul class="tag-row">
       {% for item in activities %}
-        {{ activityCard(item) }}
+        {% if item.category != "交流" %}<li>{{ item.title }}</li>{% endif %}
       {% endfor %}
-    </div>
+    </ul>
   </div>
 </section>
 
 <section class="section" id="discovery">
   <div class="container">
-    <p class="eyebrow">経験や得意に気づき、活かす活動</p>
-    <h2>交流や対話から見えてくるもの</h2>
-    <p>交流や対話を通して、自分では当たり前だと思っていた経験や得意に気づく機会をつくっています。資格や職歴だけではなく、家庭、地域、趣味、ボランティアなどで身につけた力も大切にします。</p>
+    <p class="eyebrow">経験や得意に気づく活動</p>
+    <h2>自分では気づきにくい力を見つける</h2>
+    <p>交流会や対話の機会を通して、自分では当たり前だと思っていた経験や得意を見つけます。</p>
+    <p>資格や職歴として表せるものだけでなく、家庭、地域、趣味、ボランティアなどで培った力も、その人が持つ大切な経験です。人と話すことで、自分だけでは気づかなかった力や、これから試してみたいことが見えてくることがあります。</p>
+    <p>Wieつながる会などを通して、互いの経験や考えを知る機会をつくっています。</p>
   </div>
 </section>
 
 <section class="section section--alt" id="small-step">
   <div class="container">
-    <p class="eyebrow">小さく試す機会</p>
-    <h2>できるようになってから、ではなく</h2>
-    <p>十分にできるようになってから始めるのではなく、学んだことや得意なことを、小さな役割や活動から試せる機会をつくります。</p>
+    <p class="eyebrow">経験や得意を試す活動</p>
+    <h2>小さな役割から、実際にやってみる</h2>
+    <p>何かを十分にできるようになってから始めるのではなく、今できることから小さく試してみることを大切にしています。</p>
+    <p>イベントの企画や運営、広報、資料づくり、参加者のサポートなど、活動にはさまざまな役割があります。自分の経験や得意を活かせるところから関わり、実践を通して新しい可能性を探します。</p>
   </div>
 </section>
 
 <section class="section" id="co-creation">
   <div class="container">
-    <p class="eyebrow">社会のニーズから仕事や活動を考える</p>
+    <p class="eyebrow">困りごとに応えるプロジェクト</p>
     <h2>「誰の、どんな困りごとか」から考える</h2>
-    <p>「この人が何を売りたいか」だけではなく、「誰に、どのような困りごとがあるか」を起点に考えます。必要に応じて複数人の経験、得意、専門性を組み合わせ、一人ではつくれない仕事やサービスの形を考えています。</p>
+    <p>Wieでは、「自分が何を売りたいか」だけでなく、「誰が、どのようなことで困っているか」を出発点にしています。</p>
+    <p>一人の専門性だけで解決しようとせず、必要に応じて複数人の経験、得意、専門性を組み合わせます。地域や社会の困りごとに応えながら、参加する人の経験も活かせる仕事やサービスづくりを進めています。</p>
     <p style="margin-top:20px;"><a class="card__link" href="{{ '/projects/' | url }}">進行中のプロジェクトを見る</a></p>
   </div>
 </section>

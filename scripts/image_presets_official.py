@@ -92,10 +92,13 @@ PRESETS = {
         "kind": "editorial-illustration",
         "aspect_ratio": "1:1",
         "prompt": COMMON_STYLE_GUIDE
-        + "\n\nSCENE: one adult at a tidy desk sorting a few loose papers into a "
-        "neat stack, next to a small notebook and a simple screen showing a "
-        "plain bar shape (no text, no numbers). Suggests turning confusing "
-        "information into something clear and calm.",
+        + "\n\nSCENE: a small seminar. One instructor (a woman) stands on the "
+        "left beside a plain board or screen, gesturing gently as she explains. "
+        "Facing her, four or five adult participants of mixed ages sit at "
+        "tables with notebooks and pens, listening and taking notes; one has a "
+        "hand slightly raised to ask a question. Calm, friendly classroom "
+        "atmosphere, everyone relaxed. The board and any papers are blank "
+        "(no text, no numbers).",
     },
     "activity-dialogue.webp": {
         "kind": "editorial-illustration",

@@ -2,29 +2,29 @@
   {
     "id": "learning",
     "title": "学習会・セミナー",
-    "summary": "税金、経理、お金、AI活用など、仕事や暮らしに役立つテーマを取り上げています。難しいことを分かりやすく整理し、自分に必要なことを知り、次に何をすればよいかを考えられる場を目指しています。",
-    "image": null,
+    "summary": "税金、お金、AI活用など、仕事や暮らしに関わるテーマを取り上げています。難しいことを分かりやすく整理し、自分に必要な情報や次にできることを見つけるための学びの場です。",
+    "image": "activity-learning.webp",
     "recommendedImage": "activity-learning.webp"
   },
   {
     "id": "discovery",
-    "title": "経験や得意に気づき、活かす活動",
-    "summary": "交流や対話を通して、自分では当たり前だと思っていた経験や得意に気づく機会をつくっています。資格や職歴だけではなく、家庭、地域、趣味、ボランティアなどで身につけた力も大切にします。",
-    "image": null,
+    "title": "経験や得意に気づく活動",
+    "summary": "交流や対話を通して、自分では当たり前だと思っていた経験や得意を見つけます。資格や職歴だけでなく、家庭、地域、趣味、ボランティアなどで培った力も大切にしています。",
+    "image": "activity-dialogue.webp",
     "recommendedImage": "activity-dialogue.webp"
   },
   {
     "id": "small-step",
-    "title": "小さく試す機会",
-    "summary": "十分にできるようになってから始めるのではなく、学んだことや得意なことを、小さな役割や活動から試せる機会をつくります。",
-    "image": null,
+    "title": "経験や得意を試す活動",
+    "summary": "学んだことや自分の得意を、団体の運営、イベント、プロジェクトなどの小さな役割から試す機会をつくっています。",
+    "image": "activity-small-step.webp",
     "recommendedImage": "activity-small-step.webp"
   },
   {
     "id": "co-creation",
-    "title": "社会のニーズから仕事や活動を考える",
-    "summary": "「この人が何を売りたいか」だけではなく、「誰に、どのような困りごとがあるか」を起点に考えます。必要に応じて複数人の経験、得意、専門性を組み合わせ、一人ではつくれない仕事やサービスの形を考えています。",
-    "image": null,
+    "title": "困りごとに応えるプロジェクト",
+    "summary": "地域や社会にある困りごとを出発点に、必要な仕事やサービスを考えています。メンバーそれぞれの経験、得意、専門性を持ち寄り、一人では難しいことにも取り組んでいます。",
+    "image": "activity-co-creation.webp",
     "recommendedImage": "activity-co-creation.webp"
   }
 ]
