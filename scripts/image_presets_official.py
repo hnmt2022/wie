@@ -136,6 +136,18 @@ PRESETS = {
         "not a somber end-of-life scene. Keep one side of the frame calm and "
         "open for text.",
     },
+    "project-design.webp": {
+        "kind": "editorial-illustration",
+        "aspect_ratio": "4:3",
+        "prompt": COMMON_STYLE_GUIDE
+        + "\n\nSCENE: three women working together on a flyer or poster layout at "
+        "one table: a laptop, several printed draft sheets spread out, a few "
+        "colour swatches and a marker. One of them is talking with a client "
+        "sitting nearby, listening and taking notes to draw out what the client "
+        "wants to say. Warm, collaborative, focused. Not a slick agency; a "
+        "friendly small team. Keep one side of the frame calm and open for "
+        "text.",
+    },
     "future-collaboration.webp": {
         "kind": "editorial-illustration",
         "aspect_ratio": "4:3",

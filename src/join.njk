@@ -22,7 +22,7 @@ description: "Wieへの関わり方をご紹介します。まずはイベント
 
       <div class="card"><div class="card__body">
         <h2 class="card__title">活動や今後の予定を知る</h2>
-        <p class="card__text">お知らせやnoteで、Wieの活動の様子や考えを知ることができます。</p>
+        <p class="card__text">お知らせやnote、SNSで、Wieの活動の様子や考えを知ることができます。</p>
         <a class="card__link" href="{{ '/activities/' | url }}">活動内容を見る</a>
       </div></div>
 
@@ -48,5 +48,11 @@ description: "Wieへの関わり方をご紹介します。まずはイベント
       <a class="btn btn--primary" href="{{ '/contact/' | url }}">お問い合わせする</a>
       <a class="btn btn--outline" href="{{ '/news/' | url }}">お知らせを見る</a>
     </div>
+
+    {% for s in site.sns %}
+      {% if s.label == "LINE" and s.url %}
+      <p class="text-muted" style="margin-top:16px;">イベントの案内や気軽な質問は、LINEでもやりとりできます。<a href="{{ s.url }}" target="_blank" rel="noopener noreferrer">LINEを見る<span class="visually-hidden">（外部サイトへ移動します）</span></a></p>
+      {% endif %}
+    {% endfor %}
   </div>
 </section>

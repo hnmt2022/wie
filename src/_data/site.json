@@ -6,7 +6,10 @@
   "siteUrlNote": "本番URLが決まったら .github/workflows/deploy.yml の PATH_PREFIX 計算、および独自ドメイン設定時は public/CNAME を追加してください。",
   "logoPath": "/images/logo.png",
   "ogpImagePath": "/images/generated/ogp-default.webp",
-  "sns": [],
+  "sns": [
+    { "label": "Instagram", "url": "https://www.instagram.com/wie_for_women/" },
+    { "label": "LINE", "url": "https://page.line.me/826yyxcj/" }
+  ],
   "contactEmail": "info@withwie.jp",
   "contactFormUrl": null,
   "orgType": null,

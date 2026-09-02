@@ -1,7 +1,7 @@
 ---
 layout: base.njk
-title: "進行中のプロジェクト"
-description: "年齢を重ねた方と家族の暮らし・お金に関する、Wieの進行中のプロジェクトをご紹介します。"
+title: "取り組み"
+description: "Wieが取り組んでいる仕事や活動（伝わるデザインの制作、年齢を重ねた方と家族の暮らし・お金、親子・世代をつなぐ学び、企業・自治体・地域との連携）をご紹介します。"
 ---
 {% from "partials/media.njk" import illustration %}
 {% from "partials/cards.njk" import externalCard %}
@@ -9,14 +9,16 @@ description: "年齢を重ねた方と家族の暮らし・お金に関する、
 <section class="section">
   <div class="container">
     <div class="section__head">
-      <p class="eyebrow">進行中のプロジェクト</p>
-      <h1>いま、Wieが取り組み始めていること</h1>
-      <p class="lead">Wieがどのような社会の困りごとに着目し、何を始めているかをご紹介します。料金やお申し込みなど詳しい内容は、それぞれの専用ページでご案内しています。</p>
+      <p class="eyebrow">取り組み</p>
+      <h1>社会の困りごとから、仕事や活動をつくる</h1>
+      <p class="lead">Wieでは、一人で全部を担うのではなく、複数の人が経験・得意・使える時間を持ち寄って、社会の困りごとに応える仕事や活動をつくっています。持ち寄るのは、企画や文章、デザイン、広報、事務だけではありません。人への配慮、いくつものことを同時に進める力、人とつながる力、小さな変化に気づいて先回りする力。育児や介護、見守りといったケアの経験で培われ、ふだんは見えにくいけれど、人との関係や暮らしの土台を支えている力も、大切な持ち寄りです。フルタイムでは働きにくい人や、経験を積む機会が少なかった人も、こうした力を持ち寄って関わることができます。</p>
+      <p class="text-muted">それぞれの取り組みには、いまの状態を示すラベルを付けています（稼働中・進行中・検討中）。サービスの内容や料金、開始時期が未定のものもあります。</p>
     </div>
 
     {% for p in projects %}
     <article class="summary-box" id="{{ p.id }}" style="margin-bottom:32px;">
-      <span class="status-badge status-badge--active">{{ p.status }}</span>
+      {% set badgeClass = "status-badge--planning" if p.status == "検討中" else "status-badge--active" %}
+      <span class="status-badge {{ badgeClass }}">{{ p.status }}</span>
       <h2 style="margin-top:8px;">{{ p.title }}</h2>
 
       <div class="grid grid--2" style="align-items:start; margin:24px 0;">
@@ -29,19 +31,30 @@ description: "年齢を重ねた方と家族の暮らし・お金に関する、
             <h3 class="card__title card__title--sm">Wieとして取り組む理由</h3>
             <p class="card__text">{{ p.reason }}</p>
           </div>
+          {% if p.doing %}
           <div>
             <h3 class="card__title card__title--sm">現在行っていること</h3>
             <p class="card__text">{{ p.doing }}</p>
           </div>
+          {% endif %}
+          {% if p.withWhom %}
+          <div>
+            <h3 class="card__title card__title--sm">どのような相手と考えているか</h3>
+            <p class="card__text">{{ p.withWhom }}</p>
+          </div>
+          {% endif %}
         </div>
-        {{ illustration(p.image, p.title + "に関する抽象イラスト", "4/3", false, p.recommendedImage) }}
+        {{ illustration(p.image, p.title + "に関するイラスト", "4/3", false, p.recommendedImage) }}
       </div>
 
+      {% if p.services %}
       <h3 class="card__title card__title--sm">関連するサービス・情報</h3>
       <div class="grid grid--3">
-        {{ externalCard("暮らしやお金の相談", "個別のご相談は専用ページでご案内しています。", links.MONEY_CONSULTATION_LP_URL, "相談LPを見る") }}
-        {{ externalCard("見守りサービス", "サービスの詳細は専用ページでご案内しています。", links.MONITORING_SERVICE_LP_URL, "見守りLPを見る") }}
+        {% for s in p.services %}
+          {{ externalCard(s.title, s.description, links[s.linkKey], s.cta) }}
+        {% endfor %}
       </div>
+      {% endif %}
     </article>
     {% endfor %}
   </div>
@@ -49,9 +62,9 @@ description: "年齢を重ねた方と家族の暮らし・お金に関する、
 
 <section class="section section--alt">
   <div class="container">
-    <p class="eyebrow">これから試していきたいこと</p>
-    <h2>少し先に取り組みたいテーマもあります</h2>
-    <p>親子や世代をつなぐ取り組み、企業・自治体・地域との連携など、Wieが少し先に取り組みたいと考えているテーマは別ページでご紹介しています。</p>
-    <a class="btn btn--outline" href="{{ '/future/' | url }}">これからの取り組みを見る</a>
+    <p class="eyebrow">目指す未来</p>
+    <h2>これらの取り組みで、どんな社会を目指しているか</h2>
+    <p>働き方や立場にかかわらず、経験や得意を活かして社会とつながれる。Wieが目指す社会像は別ページでご紹介しています。</p>
+    <a class="btn btn--outline" href="{{ '/future/' | url }}">目指す未来を見る</a>
   </div>
 </section>
