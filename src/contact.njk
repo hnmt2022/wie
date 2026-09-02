@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: "お問い合わせ"
-description: "Wieへのお問い合わせは、目的に近いものを選んでメールでお願いします。"
+description: "Wieへのお問い合わせはメールでお受けしています。"
 ---
 
 <section class="section">
@@ -9,28 +9,26 @@ description: "Wieへのお問い合わせは、目的に近いものを選んで
     <div class="section__head">
       <p class="eyebrow">お問い合わせ</p>
       <h1>お問い合わせ</h1>
-      <p class="lead">ご質問・ご相談・ご依頼は、メールでお受けしています。内容に近いものを選んでいただくと、お返事がスムーズです。</p>
+      <p class="lead">ご質問・ご相談・ご依頼は、メールでお受けしています。件名や本文に用件を書いていただけると、お返事がスムーズです。</p>
     </div>
 
-    <div class="contact-grid">
+    <p>次のようなご相談を受け付けています。</p>
+    <ul class="contact-topics">
       {% for c in contactCategories %}
-      <div class="contact-item">
-        <h2 class="card__title card__title--sm">{{ c.title }}</h2>
-        <p class="card__text">{{ c.description }}</p>
-        {% if site.contactEmail %}
-        <a class="btn btn--outline" href="mailto:{{ site.contactEmail }}?subject={{ c.title }}">メールで問い合わせる</a>
-        {% else %}
-        <span class="btn btn--outline btn--disabled" aria-disabled="true">受付方法を準備中</span>
-        {% endif %}
-      </div>
+      <li>{{ c.title }}</li>
       {% endfor %}
-    </div>
+    </ul>
 
     {% if site.contactEmail %}
-    <p class="text-muted" style="margin-top:24px;">
+    <div class="btn-row" style="margin-top:24px;">
+      <a class="btn btn--primary" href="mailto:{{ site.contactEmail }}">メールで問い合わせる</a>
+    </div>
+    <p class="text-muted" style="margin-top:16px;">
       メールアドレス：<a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a><br>
       いただいたお問い合わせは内容を確認のうえ順次お返事します。少しお時間をいただく場合があります。
     </p>
+    {% else %}
+    <p class="notice-box" style="margin-top:24px;">現在、お問い合わせの受付方法を準備しています。決まり次第このページに掲載します。</p>
     {% endif %}
   </div>
 </section>
