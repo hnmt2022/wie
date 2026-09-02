@@ -3,8 +3,8 @@ layout: base.njk
 title: ""
 description: "Wieは、学び、対話し、小さく試す機会をつくりながら、一人ひとりが自分に合った形で仕事や社会とつながれることを目指す市民活動団体です。"
 ---
-{% from "partials/media.njk" import illustration, photo, wiechan %}
-{% from "partials/cards.njk" import pillarCard, activityCard, externalCard %}
+{% from "partials/media.njk" import illustration, wiechan %}
+{% from "partials/cards.njk" import pillarCard, externalCard %}
 
 <section class="hero">
   <div class="hero__inner">
@@ -17,7 +17,7 @@ description: "Wieは、学び、対話し、小さく試す機会をつくりな
       </div>
     </div>
     <div>
-      {{ illustration("hero-connections.webp", "一人の女性を中心に、高齢者と子どもの読み聞かせ、世代を超えた団らん、学びの輪、地域の見守り、共同菜園といった場面が細い線でつながり、誰もが地域や社会の中でつながって暮らせることを表したイラスト", "16/9", true, "hero-connections.webp") }}
+      {{ illustration("hero-connections.webp", "一人の女性を中心に、高齢者と子どもの読み聞かせ、世代を超えた団らん、学びの輪、地域での支え合い、共同菜園といった場面が細い線でつながり、誰もが地域や社会の中でつながって暮らせることを表したイラスト", "16/9", true, "hero-connections.webp") }}
     </div>
   </div>
 </section>
@@ -28,6 +28,7 @@ description: "Wieは、学び、対話し、小さく試す機会をつくりな
       <p class="eyebrow">Wieが目指していること</p>
       <h2>自分に合った形で、仕事や社会とつながれる人を増やす</h2>
       <p class="lead">短い時間ならできる。在宅ならできる。誰かと一緒ならできる。これまでの経験や得意なことなら力を発揮できる。Wieは、従来の働き方に人を合わせるだけでなく、その人に合った仕事や役割の形を考えます。</p>
+      <p>経験や得意を活かせる人が増えることは、暮らしの困りごとに応えられる範囲が広がり、地域で頼れる相手が増えることでもあります。関わる人だけでなく、まわりの人にとっても良い形になることを大切にしています。</p>
     </div>
   </div>
 </section>
@@ -54,13 +55,13 @@ description: "Wieは、学び、対話し、小さく試す機会をつくりな
     <div class="section__head">
       <p class="eyebrow">最近の活動・実績</p>
       <h2>これまで取り上げてきたテーマ</h2>
-      <p class="text-muted">開催日や参加人数などは、公表できる情報が整い次第掲載します。</p>
     </div>
-    <div class="grid grid--3">
+    <ul class="tag-row">
       {% for item in activities %}
-        {{ activityCard(item) }}
+        <li>{{ item.title }}</li>
       {% endfor %}
-    </div>
+    </ul>
+    <p class="text-muted" style="margin-top:16px;">開催日や参加人数などは、公表できる情報が整い次第掲載します。<a href="{{ '/activities/' | url }}">活動内容を見る</a></p>
   </div>
 </section>
 
