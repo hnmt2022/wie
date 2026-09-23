@@ -1,28 +1,33 @@
 /* ==========================================================================
    Wie 公式サイト スタイルシート
-   カラー: 薄い黄色 / 落ち着いた紺色 / 白・温かみのある淡色 / ベージュ・淡い青
+   カラー: 青空（空色・白） / 落ち着いた紺色 / アクセントに淡いベージュ
    ========================================================================== */
 
 :root {
-  --color-bg: #fffdf8;
-  --color-bg-alt: #fbf3da;
-  --color-bg-alt-2: #f5ecd2;
+  --color-bg: #ffffff;
+  --color-bg-alt: #eef6fc;
+  --color-bg-alt-2: #e2eff8;
   --color-navy: #223350;
   --color-navy-soft: #3c5478;
-  --color-beige: #ece2c8;
-  --color-lightblue: #d3e3ea;
+  --color-beige: #f1e9d4;
+  --color-lightblue: #d6ebf8;
   --color-white: #ffffff;
-  --color-border: #dcd2ae;
+  --color-border: #d3e3ef;
   --color-text: #24344c;
   --color-text-muted: #56637a;
   --color-danger-bg: #f6e9e2;
 
-  --font-sans: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI",
+  /* 空: 上ほど濃い青 → 地平線に向かって白っぽく */
+  --sky-top: #4f9fe0;
+  --sky-mid: #8cc6f0;
+  --sky-low: #d4ecfb;
+
+  --font-sans: "Zen Maru Gothic", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI",
     "Yu Gothic", "Noto Sans JP", "Segoe UI", Meiryo, sans-serif;
 
   --radius-md: 14px;
   --radius-lg: 22px;
-  --shadow-soft: 0 6px 20px rgba(34, 51, 80, 0.08);
+  --shadow-soft: 0 6px 20px rgba(34, 80, 130, 0.08);
   --max-width: 1120px;
 }
 
@@ -154,20 +159,53 @@ p { margin: 0 0 1em; }
 }
 .btn-row { display: flex; flex-wrap: wrap; gap: 14px; }
 
-/* ---------- ヒーロー ---------- */
+/* ---------- ヒーロー（トップ：全幅の青空写真） ----------
+   写真: public/images/sky/hero.jpg（横長）/ hero-portrait.jpg（スマホ用の縦長）
+   元画像は _source-images/sky/（非公開）。写真が読めないときはグラデーションの空が出る。 */
 .hero {
-  background: linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);
-  padding: 56px 0 64px;
+  position: relative;
+  background:
+    url("../images/sky/hero.jpg") center / cover no-repeat,
+    linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 55%, var(--sky-low) 100%);
+  padding: clamp(64px, 12vw, 140px) 0 clamp(72px, 12vw, 150px);
+}
+@media (max-width: 600px) {
+  .hero {
+    background:
+      url("../images/sky/hero-portrait.jpg") center / cover no-repeat,
+      linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 55%, var(--sky-low) 100%);
+  }
 }
 .hero__inner {
   max-width: var(--max-width); margin: 0 auto; padding: 0 20px;
+}
+.hero__panel {
+  max-width: 640px;
+  background: rgba(255, 255, 255, 0.88);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  border-radius: var(--radius-lg);
+  padding: clamp(24px, 4vw, 40px);
+  box-shadow: 0 10px 30px rgba(20, 60, 110, 0.15);
+}
+.hero h1 { font-size: clamp(1.6rem, 3.6vw, 2.5rem); }
+.hero__lead { font-size: 1.05rem; color: var(--color-text); }
+
+/* ---------- 各ページ上部（トップと同じ空写真を、白に溶かして敷く） ---------- */
+.page-sky {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.35) 0px, rgba(255,255,255,.7) 220px, var(--color-bg) 400px),
+    url("../images/sky/hero.jpg") center top / max(100%, 600px) auto no-repeat,
+    var(--color-bg);
+  padding-top: 72px;
+}
+.page-sky .section__head .eyebrow { background: var(--color-white); }
+
+/* ---------- 2カラム（文章＋イラスト） ---------- */
+.split {
   display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center;
 }
-.hero h1 { font-size: clamp(1.7rem, 3.6vw, 2.6rem); }
-.hero__lead { font-size: 1.05rem; color: var(--color-text); max-width: 46em; }
-
 @media (max-width: 860px) {
-  .hero__inner { grid-template-columns: 1fr; }
+  .split { grid-template-columns: 1fr; }
 }
 
 /* ---------- セクション共通 ---------- */
@@ -222,6 +260,12 @@ p { margin: 0 0 1em; }
 .contact-topics li { margin: 5px 0; }
 
 .media { width: 100%; object-fit: cover; background: var(--color-bg-alt-2); }
+/* イラストはクリーム地なので、角丸＋白フチの「額」に入れて空色の背景から浮かないようにする */
+.media--illustration { border-radius: var(--radius-md); }
+.card .media--illustration { border-radius: 0; }
+.split .media--illustration, .section__media .media--illustration {
+  border: 6px solid var(--color-white); box-shadow: var(--shadow-soft);
+}
 .media--placeholder {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center; gap: 6px; padding: 14px;
@@ -281,8 +325,8 @@ p { margin: 0 0 1em; }
 }
 
 /* ---------- フッター ---------- */
-.site-footer { background: var(--color-navy); color: #f2ede0; margin-top: 60px; }
-.site-footer a { color: #f2ede0; }
+.site-footer { background: var(--color-navy); color: #eef4fa; margin-top: 60px; }
+.site-footer a { color: #eef4fa; }
 .site-footer__inner {
   max-width: var(--max-width); margin: 0 auto; padding: 48px 20px 32px;
   display: grid; grid-template-columns: 1.2fr 1.6fr 1fr; gap: 32px;
