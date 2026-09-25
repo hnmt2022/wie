@@ -10,8 +10,8 @@ description: "Wieが取り組んでいる仕事や活動（伝わるデザイン
   <div class="container">
     <div class="section__head">
       <p class="eyebrow">プロジェクト</p>
-      <h1>社会の困りごとから、仕事や活動をつくる</h1>
-      <p class="lead">Wieでは、一人で全部を担うのではなく、複数の人が経験・得意・使える時間を持ち寄って、社会の困りごとに応える仕事や活動をつくっています。持ち寄るのは、企画や文章、デザイン、広報、事務だけではありません。人への配慮、いくつものことを同時に進める力、人とつながる力、小さな変化に気づいて先回りする力。育児や介護、人に寄り添うケアの経験で培われ、ふだんは見えにくいけれど、人との関係や暮らしの土台を支えている力も、大切な持ち寄りです。フルタイムでは働きにくい人や、経験を積む機会が少なかった人も、こうした力を持ち寄って関わることができます。</p>
+      <h1>持ち寄った力を、実際の仕事に</h1>
+      <p class="lead">Wieのプロジェクトは、メンバーが経験や得意、使える時間を持ち寄って、実際の仕事や活動にしているものです。持ち寄るのは、企画や文章、デザイン、広報、事務だけではありません。人への配慮、いくつものことを同時に進める力、人とつながる力、小さな変化に気づいて先回りする力。子育てや介護の中で培われ、これまで見過ごされてきた力も、ここでは大切な仕事の力です。フルタイムで働くのが難しい人も、こうした力を持ち寄って関わっています。</p>
       <p class="text-muted">各プロジェクトには、いまの状態を示すラベルを付けています（稼働中・進行中・検討中）。サービスの内容や料金、開始時期が未定のものもあります。</p>
     </div>
 
@@ -24,22 +24,24 @@ description: "Wieが取り組んでいる仕事や活動（伝わるデザイン
       <div class="grid grid--2" style="align-items:start; margin:24px 0;">
         <div class="stack">
           <div>
-            <h3 class="card__title card__title--sm">着目している困りごと</h3>
-            <p class="card__text">{{ p.issue }}</p>
-          </div>
-          <div>
-            <h3 class="card__title card__title--sm">Wieとして取り組む理由</h3>
-            <p class="card__text">{{ p.reason }}</p>
-          </div>
-          {% if p.doing %}
-          <div>
-            <h3 class="card__title card__title--sm">現在行っていること</h3>
+            <h3 class="card__title card__title--sm">していること</h3>
             <p class="card__text">{{ p.doing }}</p>
+          </div>
+          {% if p.forWhom %}
+          <div>
+            <h3 class="card__title card__title--sm">こんな方に</h3>
+            <p class="card__text">{{ p.forWhom }}</p>
+          </div>
+          {% endif %}
+          {% if p.bring %}
+          <div>
+            <h3 class="card__title card__title--sm">持ち寄っている力</h3>
+            <p class="card__text">{{ p.bring }}</p>
           </div>
           {% endif %}
           {% if p.withWhom %}
           <div>
-            <h3 class="card__title card__title--sm">どのような相手と考えているか</h3>
+            <h3 class="card__title card__title--sm">一緒に取り組みたい相手</h3>
             <p class="card__text">{{ p.withWhom }}</p>
           </div>
           {% endif %}
