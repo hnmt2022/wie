@@ -4,8 +4,9 @@ title: "活動内容"
 description: "Wieの活動を、自分と暮らしのための「For Life」（学習会・セミナー、つながる会、働き方相談室、暮らしとお金の相談）と、持ち寄った力をビジネスにした「For Business」（力を持ち寄るプロジェクト、デザイン制作、税務会計サポート）に分けてご紹介します。"
 ---
 {% from "partials/media.njk" import itemMedia %}
-{% set lifeGroup = pillarGroups | selectattr("id", "equalto", "life") | first %}
-{% set businessGroup = pillarGroups | selectattr("id", "equalto", "business") | first %}
+{% from "partials/icons.njk" import icon %}
+{% set lifeGroup = pillarGroups | findById("life") %}
+{% set businessGroup = pillarGroups | findById("business") %}
 
 <section class="section page-sky">
   <div class="container">
@@ -30,9 +31,9 @@ description: "Wieの活動を、自分と暮らしのための「For Life」（�
     </div>
 
     <article class="activity-detail" id="learning">
-      {% set pl = pillars | selectattr("id", "equalto", "learning") | first %}
+      {% set pl = pillars | findById("learning") %}
       <div class="activity-detail__media">{{ itemMedia(pl, pl.title) }}</div>
-      <p class="eyebrow">学習会・セミナー</p>
+      <p class="activity-badge"><span class="activity-badge__icon">{{ icon(pl.icon) }}</span><span>{{ pl.title }}</span></p>
       <h3>知ることで、選べることを増やす</h3>
       <p>税金、お金、AI活用など、仕事や暮らしに関わるテーマを取り上げています。知識を一方的に伝えるだけでなく、難しいことを分かりやすく整理し、「自分の場合はどうなのか」「次に何をすればよいのか」を考えられる場を目指しています。</p>
       <p>親子向けのセミナーや、教育に関する学習会も開いています。小さな子どもと保護者、成人した子と親など、立場や世代の違う家族が、これからのことを一緒に考えられる場です。プログラミングのセミナーは準備中で、投資をテーマにした学習会も構想しています。</p>
@@ -46,9 +47,9 @@ description: "Wieの活動を、自分と暮らしのための「For Life」（�
     </article>
 
     <article class="activity-detail" id="discovery">
-      {% set pl = pillars | selectattr("id", "equalto", "discovery") | first %}
+      {% set pl = pillars | findById("discovery") %}
       <div class="activity-detail__media">{{ itemMedia(pl, pl.title) }}</div>
-      <p class="eyebrow">つながる会</p>
+      <p class="activity-badge"><span class="activity-badge__icon">{{ icon(pl.icon) }}</span><span>{{ pl.title }}</span></p>
       <h3>自分では気づきにくい力を見つける</h3>
       <p>交流会や対話の機会を通して、自分では当たり前だと思っていた経験や得意を見つけます。</p>
       <p>資格や職歴として表せるものだけでなく、家庭、地域、趣味、ボランティアなどで培った力も、その人が持つ大切な経験です。人と話すことで、自分だけでは気づかなかった力や、これからやってみたいことが見えてくることがあります。</p>
@@ -56,9 +57,9 @@ description: "Wieの活動を、自分と暮らしのための「For Life」（�
     </article>
 
     <article class="activity-detail" id="career-consultation">
-      {% set pl = pillars | selectattr("id", "equalto", "career-consultation") | first %}
+      {% set pl = pillars | findById("career-consultation") %}
       <div class="activity-detail__media">{{ itemMedia(pl, pl.title) }}</div>
-      <p class="eyebrow">働き方相談室</p>
+      <p class="activity-badge"><span class="activity-badge__icon">{{ icon(pl.icon) }}</span><span>{{ pl.title }}</span></p>
       <h3>それぞれの状況から、これからを一緒に考える</h3>
       <p>子育ての状況や、これからの働き方の希望は、一人ひとり違います。働き方相談室では、キャリアコンサルタントがそれぞれの状況に応じて相談に応じます。</p>
       <p>ブランクがあることへの不安、短い時間での働き方、子育てや家庭で積み重ねてきた経験をどう仕事に活かすか。何から考えればいいか分からない段階でも、まずは話すところから始められます。</p>
@@ -66,9 +67,9 @@ description: "Wieの活動を、自分と暮らしのための「For Life」（�
     </article>
 
     <article class="activity-detail" id="kurashi-money">
-      {% set pl = pillars | selectattr("id", "equalto", "kurashi-money") | first %}
+      {% set pl = pillars | findById("kurashi-money") %}
       <div class="activity-detail__media">{{ itemMedia(pl, pl.title) }}</div>
-      <p class="eyebrow">暮らしとお金の相談</p>
+      <p class="activity-badge"><span class="activity-badge__icon">{{ icon(pl.icon) }}</span><span>{{ pl.title }}</span></p>
       <h3>「どこに聞けばいいか分からない」を、一緒に整理する</h3>
       <p>年金や税金、住まい、書類など、暮らしやお金に関する個別相談を行っています。年齢を重ねる中で相談先が分からないことが増えてきた方や、そのご家族が対象です。</p>
       <p>あわせて「暮らしのかかりつけ」にも取り組んでいます。暮らしの困りごとを最初に相談できる「かかりつけパートナー」と定期的につながり、必要に応じて得意な人や専門家へつなぐ仕組みです。家族の世話や子育ての中で身についた、相手の小さな変化に気づき、話を丁寧に聞く力が活きています。</p>
@@ -86,9 +87,9 @@ description: "Wieの活動を、自分と暮らしのための「For Life」（�
     </div>
 
     <article class="activity-detail" id="co-creation">
-      {% set pl = pillars | selectattr("id", "equalto", "co-creation") | first %}
+      {% set pl = pillars | findById("co-creation") %}
       <div class="activity-detail__media">{{ itemMedia(pl, pl.title) }}</div>
-      <p class="eyebrow">力を持ち寄るプロジェクト</p>
+      <p class="activity-badge"><span class="activity-badge__icon">{{ icon(pl.icon) }}</span><span>{{ pl.title }}</span></p>
       <h3>一人ではできないことも、持ち寄れば仕事になる</h3>
       <p>一人の専門性や、フルタイムで働けることを前提にせず、複数人の経験、得意、使える時間を組み合わせます。そうして、頼んだ人の役に立ち、関わる人の経験も活かせる仕事やサービスをつくっています。参加者の得意を持ち寄って、LINEスタンプを制作・販売したこともあります。</p>
       <p>企業や自治体、地域団体、専門家との連携のかたちも探っています。人手や専門性が足りずに困っている取り組みと、力を発揮できる場を探している人をつなぐことを考えています。現時点で決まっている連携先はありません。関心をお持ちの方はご連絡ください。</p>
@@ -96,9 +97,9 @@ description: "Wieの活動を、自分と暮らしのための「For Life」（�
     </article>
 
     <article class="activity-detail" id="design">
-      {% set pl = pillars | selectattr("id", "equalto", "design") | first %}
+      {% set pl = pillars | findById("design") %}
       <div class="activity-detail__media">{{ itemMedia(pl, pl.title) }}</div>
-      <p class="eyebrow">デザイン制作</p>
+      <p class="activity-badge"><span class="activity-badge__icon">{{ icon(pl.icon) }}</span><span>{{ pl.title }}</span></p>
       <h3>伝えたいことを、伝わるデザインに</h3>
       <p>チラシやパンフレット、SNSのデザインを制作しています。大切にしているのは、もやもやとした「伝えたいこと」を対話の中で引き出し、言葉に整理したうえで、伝わるデザインに落とし込むことです。</p>
       <p>文章、レイアウト、写真、SNS。メンバーそれぞれの得意と使える時間を持ち寄って、一つの仕事に仕上げています。専門の制作会社ではない分、一人ひとりのお客様にじっくり向き合えることも強みです。</p>
@@ -106,9 +107,9 @@ description: "Wieの活動を、自分と暮らしのための「For Life」（�
     </article>
 
     <article class="activity-detail" id="tax-accounting">
-      {% set pl = pillars | selectattr("id", "equalto", "tax-accounting") | first %}
+      {% set pl = pillars | findById("tax-accounting") %}
       <div class="activity-detail__media">{{ itemMedia(pl, pl.title) }}</div>
-      <p class="eyebrow">税務会計サポート</p>
+      <p class="activity-badge"><span class="activity-badge__icon">{{ icon(pl.icon) }}</span><span>{{ pl.title }}</span></p>
       <h3>会計まわりの事務を、チームで支える</h3>
       <p>記帳や領収書の整理、会計ソフトへの入力など、個人事業主や小さな団体の会計まわりの事務をサポートしています。日々の細かな記録を整え、期限を見越して先回りする。家計や家庭のことを回してきた経験が活きる仕事です。</p>
       <p>税務申告や個別の税務相談が必要な場合は、税理士と連携して対応します。</p>

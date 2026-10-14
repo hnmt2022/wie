@@ -7,7 +7,8 @@
     "recommendedImage": "activity-learning.webp",
     "group": "life",
     "short": "税金、お金、AI活用など、暮らしや仕事に関わるテーマを分かりやすく学びます。",
-    "photo": null
+    "photo": null,
+    "icon": "book"
   },
   {
     "id": "discovery",
@@ -17,7 +18,8 @@
     "recommendedImage": "activity-dialogue.webp",
     "group": "life",
     "short": "対話を通して、当たり前だと思っていた経験や得意を見つけます。",
-    "photo": null
+    "photo": null,
+    "icon": "chat"
   },
   {
     "id": "career-consultation",
@@ -28,7 +30,8 @@
     "group": "life",
     "short": "それぞれの状況に応じて、キャリアコンサルタントが相談に応じます。",
     "serviceUrl": "/services/career/",
-    "photo": null
+    "photo": null,
+    "icon": "briefcase"
   },
   {
     "id": "kurashi-money",
@@ -39,7 +42,8 @@
     "group": "life",
     "short": "年金・税金・住まい・書類など、「どこに聞けばいいか」を一緒に整理します。",
     "serviceUrl": "/services/kurashi-money/",
-    "photo": null
+    "photo": null,
+    "icon": "home"
   },
   {
     "id": "co-creation",
@@ -49,7 +53,8 @@
     "recommendedImage": "activity-co-creation.webp",
     "group": "business",
     "short": "経験、得意、使える時間を持ち寄り、仕事やサービスにします。",
-    "photo": null
+    "photo": null,
+    "icon": "users"
   },
   {
     "id": "design",
@@ -60,7 +65,8 @@
     "group": "business",
     "short": "「伝えたいこと」を対話で引き出し、チラシやSNSのデザインにします。",
     "serviceUrl": "/services/design/",
-    "photo": null
+    "photo": null,
+    "icon": "pen"
   },
   {
     "id": "tax-accounting",
@@ -71,6 +77,7 @@
     "group": "business",
     "short": "記帳や書類の整理など、個人事業主や小さな団体の会計事務を支えます。",
     "serviceUrl": "/services/tax-accounting/",
-    "photo": null
+    "photo": null,
+    "icon": "calculator"
   }
 ]
