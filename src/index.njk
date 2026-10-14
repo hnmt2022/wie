@@ -4,7 +4,7 @@ title: ""
 description: "Wieは、子育て中や子育てを終えた女性たちの、見過ごされてきた力を持ち寄り、仕事や社会の価値につなげる市民活動団体です。"
 ---
 {% from "partials/media.njk" import illustration, wiechan %}
-{% from "partials/cards.njk" import pillarCard, externalCard, newsCard %}
+{% from "partials/cards.njk" import pillarCard, pillarRow, externalCard, newsCard %}
 
 <section class="hero">
   <div class="hero__inner">
@@ -67,12 +67,13 @@ description: "Wieは、子育て中や子育てを終えた女性たちの、見
     </div>
     <div class="pillar-groups">
       {% for group in pillarGroups %}
-      <div class="pillar-group">
-        <p class="pillar-group__label">{{ group.label }}</p>
-        <p class="pillar-group__lead">{{ group.lead }}</p>
-        <div class="grid">
+      <div class="pillar-group pillar-group--{{ group.id }}">
+        <p class="pillar-group__sub">{{ group.sub }}</p>
+        <h3 class="pillar-group__label">{{ group.label }}</h3>
+        <p class="pillar-group__purpose">{{ group.purpose }}</p>
+        <div class="pillar-group__list">
           {% for pillar in pillars %}{% if pillar.group == group.id %}
-            {{ pillarCard(pillar, "/activities/#" + pillar.id) }}
+            {{ pillarRow(pillar, "/activities/#" + pillar.id) }}
           {% endif %}{% endfor %}
         </div>
       </div>

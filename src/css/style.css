@@ -305,11 +305,26 @@ p { margin: 0 0 1em; }
 }
 
 /* ---------- Wieの活動（For Life / For Business） ---------- */
-.pillar-groups { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(min(480px, 100%), 1fr)); }
-.pillar-group { background: var(--color-bg-alt); border-radius: var(--radius-md); padding: 24px; }
-.pillar-group__label { font-size: 1.3rem; font-weight: 700; color: var(--color-navy); margin: 0 0 4px; letter-spacing: 0.02em; }
-.pillar-group__lead { color: var(--color-text-muted); font-size: 0.95rem; margin: 0 0 18px; }
-.pillar-group .grid { gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); }
+.pillar-groups { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 1fr)); }
+.pillar-group { border-radius: var(--radius-lg); padding: 32px 28px 28px; display: flex; flex-direction: column; }
+.pillar-group--life { background: var(--color-lightblue); }
+.pillar-group--business { background: var(--color-navy); color: #eef4fa; }
+.pillar-group__sub { font-size: 0.9rem; font-weight: 700; margin: 0; color: var(--color-navy-soft); }
+.pillar-group__label { font-size: clamp(1.9rem, 4vw, 2.4rem); line-height: 1.2; letter-spacing: 0.02em; margin: 4px 0 14px; }
+.pillar-group__purpose { margin: 0 0 22px; line-height: 1.9; flex: 1; }
+.pillar-group--business .pillar-group__sub { color: #bcd3ea; }
+.pillar-group--business .pillar-group__label { color: #fff; }
+.pillar-group__list { display: flex; flex-direction: column; gap: 10px; }
+.pillar-row {
+  display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--color-text);
+  background: var(--color-white); border-radius: var(--radius-md); padding: 10px 14px 10px 10px;
+}
+.pillar-row:hover { color: var(--color-text); box-shadow: var(--shadow-soft); }
+.pillar-row__img { width: 64px; height: 64px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+.pillar-row__body { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+.pillar-row__title { font-weight: 700; color: var(--color-navy); font-size: 0.98rem; }
+.pillar-row__text { font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; }
+.pillar-row__arrow { color: var(--color-navy-soft); flex-shrink: 0; }
 
 /* ---------- お知らせ ---------- */
 .news-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }

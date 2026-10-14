@@ -12,6 +12,18 @@
 </article>
 {% endmacro %}
 
+{# トップ「Wieの活動」用のコンパクトな行（小さな画像＋タイトル＋短い説明） #}
+{% macro pillarRow(pillar, linkUrl) %}
+<a class="pillar-row" href="{{ linkUrl | url }}">
+  <img class="pillar-row__img" src="{{ ('/images/generated/' + pillar.image) | url }}" alt="" loading="lazy" decoding="async">
+  <span class="pillar-row__body">
+    <span class="pillar-row__title">{{ pillar.title }}</span>
+    <span class="pillar-row__text">{{ pillar.short or pillar.summary }}</span>
+  </span>
+  <span class="pillar-row__arrow" aria-hidden="true">→</span>
+</a>
+{% endmacro %}
+
 {# 最近の活動・実績カード（日付や人数は未提供のため表示しない） #}
 {% macro activityCard(item) %}
 <article class="card card--compact">
