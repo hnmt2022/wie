@@ -37,3 +37,23 @@
   </div>
 </div>
 {% endmacro %}
+
+{# お知らせカード。url があればタイトルをリンクに、tags は /news/?tag= への絞り込みリンク、sample が true なら「サンプル」バッジを表示 #}
+{% macro newsCard(n) %}
+<article class="card card--compact" data-tags="{{ (n.tags or []) | join('|') }}">
+  {{ illustration(n.image, n.title, "16/9", false, n.image) }}
+  <div class="card__body">
+    <p class="news-card__meta">
+      <time>{{ n.date }}</time>
+      {% if n.sample %}<span class="status-badge status-badge--planning">サンプル</span>{% endif %}
+    </p>
+    <h3 class="card__title card__title--sm">{% if n.url %}<a href="{{ n.url }}">{{ n.title }}</a>{% else %}{{ n.title }}{% endif %}</h3>
+    {% if n.summary %}<p class="card__text">{{ n.summary }}</p>{% endif %}
+    {% if n.tags and n.tags.length %}
+    <ul class="news-tags" aria-label="タグ">
+      {% for t in n.tags %}<li><a class="news-tag" href="{{ '/news/' | url }}?tag={{ t | urlencode }}">#{{ t }}</a></li>{% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+</article>
+{% endmacro %}

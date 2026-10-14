@@ -1,16 +1,16 @@
 ---
 layout: base.njk
 title: ""
-description: "Wieは、子育てや介護、体調、年齢などでフルタイムでは働きにくい人たちの、見過ごされてきた力を持ち寄り、仕事や社会の価値につなげる市民活動団体です。"
+description: "Wieは、子育て中や子育てを終えた女性たちの、見過ごされてきた力を持ち寄り、仕事や社会の価値につなげる市民活動団体です。"
 ---
 {% from "partials/media.njk" import illustration, wiechan %}
-{% from "partials/cards.njk" import pillarCard, externalCard %}
+{% from "partials/cards.njk" import pillarCard, externalCard, newsCard %}
 
 <section class="hero">
   <div class="hero__inner">
     <div class="hero__panel">
       <h1>持ち寄れば、力は価値になる。</h1>
-      <p class="hero__lead">Wieは、学び、対話し、小さく試す機会をつくりながら、一人ひとりが自分に合った形で仕事や社会とつながれることを目指す団体です。</p>
+      <p class="hero__lead">Wieは、子育てなどでフルタイムで働けず、キャリアをあきらめざるを得なかった女性たちが、チームを組んで力を発揮し、社会に貢献していくための市民活動団体です。</p>
       <div class="btn-row">
         <a class="btn btn--primary" href="{{ '/join/' | url }}">活動に参加する</a>
         <a class="btn btn--outline" href="{{ '/about/' | url }}">Wieについて</a>
@@ -25,8 +25,8 @@ description: "Wieは、子育てや介護、体調、年齢などでフルタイ
     <div class="section__head" style="margin-bottom:0;">
       <p class="eyebrow">Wieが目指していること</p>
       <h2>社会には、まだ評価されていない力がたくさんある。</h2>
-      <p class="lead">子育てや介護をしてきた人、体調に波がある人、シニア。毎日のなかで力を発揮しているのに、それが仕事の経験や能力として認められず、収入やキャリアにもつながっていません。</p>
-      <p>Wieは、地域の中でその力を持ち寄り、暮らしに必要な価値を生み出す活動をつくっています。こうした力が正当に評価され、活かされるようになれば、本人だけでなく、地域や社会全体でつくり出せる価値も増えていきます。</p>
+      <p class="lead">子育て中の女性、子育てを終えた女性。子どもの健康や安全、学びを支え、周りとのやりとりや関係の調整を毎日こなしているのに、それが仕事の経験や能力として認められず、収入やキャリアにもつながっていません。</p>
+      <p>Wieは、その力をチームで持ち寄り、仕事として形にしていきます。子育てで培った力が当たり前に評価され、社会全体の価値になる。その未来を、私たちがつくっていきます。</p>
     </div>
       <div>
         {{ illustration("hero-connections.webp", "一人の女性を中心に、高齢者と子どもの読み聞かせ、世代を超えた団らん、学びの輪、地域での支え合い、共同菜園といった場面が細い線でつながり、誰もが地域や社会の中でつながって暮らせることを表したイラスト", "16/9", false, "hero-connections.webp") }}
@@ -38,12 +38,44 @@ description: "Wieは、子育てや介護、体調、年齢などでフルタイ
 <section class="section section--alt">
   <div class="container">
     <div class="section__head">
-      <p class="eyebrow">現在の活動</p>
-      <h2>いま、Wieが行っていること</h2>
+      <p class="eyebrow">お知らせ</p>
+      <h2>最新のお知らせ</h2>
     </div>
+    {% if news.length %}
     <div class="grid grid--3">
-      {% for pillar in pillars %}
-        {{ pillarCard(pillar, "/activities/#" + pillar.id) }}
+      {% for n in news | reverse %}
+        {% if loop.index <= 3 %}{{ newsCard(n) }}{% endif %}
+      {% endfor %}
+    </div>
+    <div class="btn-row" style="margin-top:24px;">
+      <a class="btn btn--outline" href="{{ '/news/' | url }}">お知らせ一覧を見る</a>
+    </div>
+    {% else %}
+    <div class="news-empty">
+      {{ wiechan("wiechan-default.png", "Wieちゃん") }}
+      <p style="margin:0;">現在、お知らせは準備中です。</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">活動</p>
+      <h2>Wieの活動</h2>
+    </div>
+    <div class="pillar-groups">
+      {% for group in pillarGroups %}
+      <div class="pillar-group">
+        <p class="pillar-group__label">{{ group.label }}</p>
+        <p class="pillar-group__lead">{{ group.lead }}</p>
+        <div class="grid">
+          {% for pillar in pillars %}{% if pillar.group == group.id %}
+            {{ pillarCard(pillar, "/activities/#" + pillar.id) }}
+          {% endif %}{% endfor %}
+        </div>
+      </div>
       {% endfor %}
     </div>
     <div class="grid grid--3" style="margin-top:24px;">
@@ -52,7 +84,7 @@ description: "Wieは、子育てや介護、体調、年齢などでフルタイ
   </div>
 </section>
 
-<section class="section">
+<section class="section section--alt">
   <div class="container">
     <div class="section__head">
       <p class="eyebrow">最近の活動・実績</p>
@@ -67,7 +99,7 @@ description: "Wieは、子育てや介護、体調、年齢などでフルタイ
   </div>
 </section>
 
-<section class="section section--alt" id="projects-preview">
+<section class="section" id="projects-preview">
   <div class="container">
     <div class="section__head">
       <p class="eyebrow">プロジェクト</p>
@@ -92,7 +124,7 @@ description: "Wieは、子育てや介護、体調、年齢などでフルタイ
   </div>
 </section>
 
-<section class="section">
+<section class="section section--alt">
   <div class="container">
     <div class="section__head">
       <p class="eyebrow">参加方法</p>
@@ -120,32 +152,6 @@ description: "Wieは、子育てや介護、体調、年齢などでフルタイ
     <div class="btn-row" style="margin-top:24px;">
       <a class="btn btn--primary" href="{{ '/join/' | url }}">参加する</a>
     </div>
-  </div>
-</section>
-
-<section class="section section--alt">
-  <div class="container">
-    <div class="section__head">
-      <p class="eyebrow">お知らせ</p>
-      <h2>最新のお知らせ</h2>
-    </div>
-    {% if news.length %}
-    <ul class="news-list">
-      {% for n in news | reverse %}
-        {% if loop.index <= 3 %}
-        <li>
-          <p class="text-muted" style="margin-bottom:4px;">{{ n.date }}</p>
-          <p style="margin:0;"><a href="{{ n.url or ('/news/' | url) }}">{{ n.title }}</a></p>
-        </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-    {% else %}
-    <div class="news-empty">
-      {{ wiechan("wiechan-default.png", "Wieちゃん") }}
-      <p style="margin:0;">現在、お知らせは準備中です。</p>
-    </div>
-    {% endif %}
   </div>
 </section>
 

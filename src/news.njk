@@ -4,6 +4,7 @@ title: "お知らせ"
 description: "Wieのイベントや活動に関する最新のお知らせです。"
 ---
 {% from "partials/media.njk" import wiechan %}
+{% from "partials/cards.njk" import newsCard %}
 
 <section class="section page-sky">
   <div class="container">
@@ -13,16 +14,17 @@ description: "Wieのイベントや活動に関する最新のお知らせです
     </div>
 
     {% if news.length %}
-    <ul class="news-list">
-      {% for n in news | reverse %}
-      <li>
-        <p class="text-muted" style="margin-bottom:4px;">{{ n.date }}</p>
-        <p style="margin:0;">
-          {% if n.url %}<a href="{{ n.url }}">{{ n.title }}</a>{% else %}{{ n.title }}{% endif %}
-        </p>
-      </li>
+    <div class="news-filter" role="group" aria-label="タグで絞り込む" hidden>
+      <button type="button" class="news-filter__btn" data-tag="" aria-pressed="true">すべて</button>
+      {% for t in news | newsTags %}
+      <button type="button" class="news-filter__btn" data-tag="{{ t }}" aria-pressed="false">#{{ t }}</button>
       {% endfor %}
-    </ul>
+    </div>
+    <div class="grid grid--3" id="news-cards">
+      {% for n in news | reverse %}{{ newsCard(n) }}{% endfor %}
+    </div>
+    <p class="text-muted" id="news-filter-empty" hidden>このタグのお知らせはまだありません。</p>
+    <script src="{{ '/js/news-filter.js' | url }}" defer></script>
     {% else %}
     <div class="news-empty">
       {{ wiechan("wiechan-default.png", "Wieちゃん") }}

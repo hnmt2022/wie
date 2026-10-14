@@ -4,27 +4,31 @@
     "title": "学習会・セミナー",
     "summary": "税金、お金、AI活用など、仕事や暮らしに関わるテーマを取り上げています。難しいことを分かりやすく整理し、自分に必要な情報や次にできることを見つけるための学びの場です。",
     "image": "activity-learning.webp",
-    "recommendedImage": "activity-learning.webp"
+    "recommendedImage": "activity-learning.webp",
+    "group": "life"
   },
   {
     "id": "discovery",
     "title": "経験や得意に気づく活動",
     "summary": "交流や対話を通して、自分では当たり前だと思っていた経験や得意を見つけます。資格や職歴だけでなく、家庭、地域、趣味、ボランティアなどで培った力も大切にしています。",
     "image": "activity-dialogue.webp",
-    "recommendedImage": "activity-dialogue.webp"
+    "recommendedImage": "activity-dialogue.webp",
+    "group": "life"
   },
   {
     "id": "small-step",
     "title": "経験や得意を試す活動",
     "summary": "学んだことや自分の得意を、団体の運営、イベント、プロジェクトなどの小さな役割から試す機会をつくっています。",
     "image": "activity-small-step.webp",
-    "recommendedImage": "activity-small-step.webp"
+    "recommendedImage": "activity-small-step.webp",
+    "group": "business"
   },
   {
     "id": "co-creation",
     "title": "力を持ち寄るプロジェクト",
     "summary": "メンバーそれぞれの経験、得意、使える時間を持ち寄って、実際の仕事やサービスにしています。一人では難しいことも、組み合わせれば形にできます。",
     "image": "activity-co-creation.webp",
-    "recommendedImage": "activity-co-creation.webp"
+    "recommendedImage": "activity-co-creation.webp",
+    "group": "business"
   }
 ]

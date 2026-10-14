@@ -8,6 +8,9 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("year", () => new Date().getFullYear());
 
+  // お知らせのタグ一覧（登場順・重複なし）
+  eleventyConfig.addFilter("newsTags", (items) => [...new Set((items || []).flatMap((n) => n.tags || []))]);
+
   return {
     dir: {
       input: "src",
