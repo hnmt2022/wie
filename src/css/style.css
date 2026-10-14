@@ -380,6 +380,11 @@ p { margin: 0 0 1em; }
 .btn__sub { font-size: 0.78rem; font-weight: 400; }
 .btn--group-life, .btn--group-business { border-radius: var(--radius-md); }
 
+/* ---------- 参加する：2択カード ---------- */
+.join-choice { text-decoration: none; color: inherit; transition: box-shadow 0.15s, transform 0.15s; }
+.join-choice:hover { color: inherit; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(34, 80, 130, 0.14); }
+#events, #services { scroll-margin-top: 70px; }
+
 /* ---------- お知らせ ---------- */
 .news-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
 .news-list li {

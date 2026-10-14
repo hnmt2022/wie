@@ -1,71 +1,68 @@
 ---
 layout: base.njk
 title: "参加する"
-description: "Wieへの関わり方をご紹介します。まずはイベントに参加したり、活動を知るだけでも大丈夫です。"
+description: "Wieのセミナーやイベントへの参加、メンバーがチームで提供しているサービスへのご依頼についてご案内します。"
 ---
 {% from "partials/media.njk" import wiechan %}
+{% from "partials/cards.njk" import newsCard %}
 
 <section class="section page-sky">
   <div class="container">
     <div class="section__head">
       <p class="eyebrow">参加する</p>
-      <h1>関わり方はいろいろあります</h1>
-      <p class="lead">Wieに興味を持っていただいたからといって、そのまま運営メンバーになるわけではありません。まずはイベントに参加したり、活動を知るだけでも十分です。ご自分のペースで関わってください。</p>
-      <p><a class="card__link" href="#services">サービスのご利用を検討している方はこちら</a></p>
+      <h1>セミナーに参加する、仕事を依頼する</h1>
+      <p class="lead">Wieへの関わり方は、大きく2つです。</p>
     </div>
-
     <div class="grid grid--2">
-      <div class="card"><div class="card__body">
-        <h2 class="card__title">イベントや学習会に参加する</h2>
-        <p class="card__text">学習会やセミナー、交流の場に参加してみてください。まずは話を聞くだけでも歓迎します。</p>
-        <a class="card__link" href="{{ '/news/' | url }}">お知らせを見る</a>
-      </div></div>
-
-      <div class="card"><div class="card__body">
-        <h2 class="card__title">活動や今後の予定を知る</h2>
-        <p class="card__text">お知らせやnote、Instagram、ラジオで、Wieの活動の様子や考えを知ることができます。</p>
-        <a class="card__link" href="{{ '/activities/' | url }}">活動内容を見る</a>
-      </div></div>
-
-      <div class="card"><div class="card__body">
-        <h2 class="card__title">興味のあるプロジェクトに協力する</h2>
-        <p class="card__text">ご自身の経験や得意を活かせそうな活動があれば、できる範囲でご協力いただけます。</p>
-        <a class="card__link" href="{{ '/contact/' | url }}">お問い合わせへ</a>
-      </div></div>
-
-      <div class="card"><div class="card__body">
-        <h2 class="card__title">企業・自治体・団体・専門家として連携する</h2>
-        <p class="card__text">地域や社会の困りごとについて、一緒に考えていただける企業・自治体・団体・専門家からのご相談をお待ちしています。</p>
-        <a class="card__link" href="{{ '/contact/' | url }}">お問い合わせへ</a>
-      </div></div>
+      <a class="card join-choice" href="#events"><div class="card__body">
+        <h2 class="card__title">セミナー・イベントに参加する</h2>
+        <p class="card__text">学習会やセミナー、つながる会などに参加できます。まずは話を聞くだけでも歓迎します。</p>
+        <span class="card__link">開催予定を見る ↓</span>
+      </div></a>
+      <a class="card join-choice" href="#services"><div class="card__body">
+        <h2 class="card__title">仕事を依頼する</h2>
+        <p class="card__text">メンバーがチームで提供しているサービスを、お客様としてご利用いただけます。</p>
+        <span class="card__link">サービスを見る ↓</span>
+      </div></a>
     </div>
+  </div>
+</section>
 
-    <div class="notice-box notice-box--caution" style="margin-top:32px; display:flex; gap:18px; align-items:flex-start;">
+<section class="section" id="events">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">セミナー・イベント</p>
+      <h2>セミナー・イベントに参加する</h2>
+      <p class="lead">学習会やセミナー、つながる会などのイベントは、お知らせでご案内しています。</p>
+    </div>
+    {% set events = news | newsByTag("イベント") %}
+    {% if events.length %}
+    <div class="grid grid--3">
+      {% for n in events | reverse %}{% if loop.index <= 3 %}{{ newsCard(n) }}{% endif %}{% endfor %}
+    </div>
+    {% else %}
+    <div class="news-empty">
       {{ wiechan("wiechan-default.png", "Wieちゃん") }}
-      <p style="margin:0;">活動への参加によって、仕事や報酬が保証されるものではありません。仕事やプロジェクトへの協力をお願いする場合は、内容、役割、責任の範囲などを確認したうえで個別にご相談します。</p>
+      <p style="margin:0;">次回のイベントが決まり次第、お知らせでご案内します。</p>
     </div>
-
-    <div class="btn-row" style="margin-top:28px;">
-      <a class="btn btn--primary" href="{{ '/contact/' | url }}">お問い合わせする</a>
-      <a class="btn btn--outline" href="{{ '/news/' | url }}">お知らせを見る</a>
+    {% endif %}
+    <div class="btn-row" style="margin-top:24px;">
+      <a class="btn btn--primary" href="{{ '/news/' | url }}?tag={{ 'イベント' | urlencode }}">イベントのお知らせを見る</a>
+      {% for s in site.sns %}{% if s.label == "公式LINE" and s.url %}
+      <a class="btn btn--outline" href="{{ s.url }}" target="_blank" rel="noopener noreferrer">公式LINEで案内を受け取る<span class="visually-hidden">（外部サイトへ移動します）</span></a>
+      {% endif %}{% endfor %}
     </div>
-
-    {% for s in site.sns %}
-      {% if s.label == "公式LINE" and s.url %}
-      <p class="text-muted" style="margin-top:16px;">イベントの案内や気軽な質問は、公式LINEでもやりとりできます。<a href="{{ s.url }}" target="_blank" rel="noopener noreferrer">LINEを見る<span class="visually-hidden">（外部サイトへ移動します）</span></a></p>
-      {% endif %}
-    {% endfor %}
   </div>
 </section>
 
 <section class="section section--alt" id="services">
   <div class="container">
     <div class="section__head">
-      <p class="eyebrow">サービスを利用する</p>
-      <h2>サービスを利用したい方へ</h2>
+      <p class="eyebrow">サービス</p>
+      <h2>仕事を依頼する</h2>
       <p class="lead">Wieのメンバーがチームで提供しているサービスです。内容や料金は、それぞれのページでご案内しています。</p>
     </div>
-    <div class="grid grid--3">
+    <div class="grid grid--2">
       {% for s in services %}
       <div class="card card--external"><div class="card__body">
         <p class="card__eyebrow">{{ s.group }}</p>
@@ -74,6 +71,18 @@ description: "Wieへの関わり方をご紹介します。まずはイベント
         <a class="btn btn--outline" href="{{ ('/services/' + s.id + '/') | url }}">サービス内容・料金を見る</a>
       </div></div>
       {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="notice-box notice-box--caution" style="display:flex; gap:18px; align-items:flex-start;">
+      {{ wiechan("wiechan-default.png", "Wieちゃん") }}
+      <p style="margin:0;">セミナーやイベントへの参加によって、仕事や報酬が保証されるものではありません。メンバーとして仕事に関わっていただく場合は、内容、役割、責任の範囲などを確認したうえで個別にご相談します。</p>
+    </div>
+    <div class="btn-row" style="margin-top:28px;">
+      <a class="btn btn--primary" href="{{ '/contact/' | url }}">お問い合わせする</a>
     </div>
   </div>
 </section>

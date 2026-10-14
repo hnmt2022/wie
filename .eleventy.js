@@ -10,6 +10,8 @@ module.exports = function (eleventyConfig) {
 
   // お知らせのタグ一覧（登場順・重複なし）
   eleventyConfig.addFilter("newsTags", (items) => [...new Set((items || []).flatMap((n) => n.tags || []))]);
+  // 指定したタグが付いたお知らせだけを返す
+  eleventyConfig.addFilter("newsByTag", (items, tag) => (items || []).filter((n) => (n.tags || []).includes(tag)));
 
   return {
     dir: {
