@@ -20,16 +20,9 @@
         <li><a href="{{ '/about/' | url }}">Wieについて</a></li>
         <li><a href="{{ '/activities/' | url }}">活動内容</a></li>
         <li><a href="{{ '/projects/' | url }}">プロジェクト</a></li>
-        <li><a href="{{ '/future/' | url }}">目指す未来</a></li>
         <li><a href="{{ '/join/' | url }}">参加する</a></li>
         <li><a href="{{ '/news/' | url }}">お知らせ</a></li>
-        <li>
-          {% if links.NOTE_URL %}
-          <a href="{{ links.NOTE_URL }}" target="_blank" rel="noopener noreferrer">note<span class="visually-hidden">（外部サイトへ移動します）</span></a>
-          {% else %}
-          <span class="nav-disabled">note（準備中）</span>
-          {% endif %}
-        </li>
+        <li><a href="{{ '/#media' | url }}">発信</a></li>
         <li><a href="{{ '/contact/' | url }}">お問い合わせ</a></li>
       </ul>
     </nav>

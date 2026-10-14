@@ -10,7 +10,6 @@
         <li><a href="{{ '/about/' | url }}">Wieについて</a></li>
         <li><a href="{{ '/activities/' | url }}">活動内容</a></li>
         <li><a href="{{ '/projects/' | url }}">プロジェクト</a></li>
-        <li><a href="{{ '/future/' | url }}">目指す未来</a></li>
         <li><a href="{{ '/join/' | url }}">参加する</a></li>
         <li><a href="{{ '/news/' | url }}">お知らせ</a></li>
         <li><a href="{{ '/contact/' | url }}">お問い合わせ</a></li>
@@ -19,22 +18,17 @@
     </nav>
 
     <div class="site-footer__side">
-      {# SNSリンクは src/_data/site.json の "sns" 配列で管理。url が null の項目は表示されません #}
+      {# 発信: note・SNS（src/_data/site.json の "sns"）・ラジオ。URL が未設定のものは表示されません #}
+      <p class="site-footer__media-title">発信</p>
       <ul class="site-footer__sns">
+        {% if links.NOTE_URL %}<li><a href="{{ links.NOTE_URL }}" target="_blank" rel="noopener noreferrer">note<span class="visually-hidden">（外部サイトへ移動します）</span></a></li>{% endif %}
         {% for s in site.sns %}
           {% if s.url %}
           <li><a href="{{ s.url }}" target="_blank" rel="noopener noreferrer">{{ s.label }}<span class="visually-hidden">（外部サイトへ移動します）</span></a></li>
           {% endif %}
         {% endfor %}
+        {% if links.RADIO_URL %}<li><a href="{{ links.RADIO_URL }}" target="_blank" rel="noopener noreferrer">ラジオ<span class="visually-hidden">（外部サイトへ移動します）</span></a></li>{% endif %}
       </ul>
-
-      <p class="site-footer__note-link">
-        {% if links.NOTE_URL %}
-        <a href="{{ links.NOTE_URL }}" target="_blank" rel="noopener noreferrer">note で活動の記録を読む<span class="visually-hidden">（外部サイトへ移動します）</span></a>
-        {% else %}
-        <span class="nav-disabled">note（準備中）</span>
-        {% endif %}
-      </p>
     </div>
   </div>
 

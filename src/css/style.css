@@ -375,6 +375,9 @@ p { margin: 0 0 1em; }
   color: var(--color-text-muted);
 }
 
+.site-footer__media-title { font-weight: 700; margin: 0 0 8px; font-size: 0.9rem; }
+#media { scroll-margin-top: 90px; }
+
 /* ---------- お問い合わせ一覧 ---------- */
 .contact-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 .contact-item {

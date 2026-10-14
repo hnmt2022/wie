@@ -1,51 +1,18 @@
 ---
-layout: base.njk
-title: "目指す未来"
-description: "Wieの活動の先にある、目指す社会像をご紹介します。"
+permalink: /future/
+eleventyExcludeFromCollections: true
 ---
-
-<section class="section page-sky">
-  <div class="container">
-    <div class="section__head">
-      <p class="eyebrow">目指す未来</p>
-      <h1>Wieが目指す社会</h1>
-      <p class="lead">Wieの活動の先には、こんな社会があってほしいと考えています。すぐに実現するものではありませんが、日々の取り組みは、この方向に少しずつ近づくためのものです。</p>
-    </div>
-  </div>
-</section>
-
-<section class="section section--alt">
-  <div class="container">
-    <p class="eyebrow">働き方</p>
-    <h2>立場や事情が、参加をあきらめる理由にならない</h2>
-    <p>短い時間しか使えない。在宅でしか動けない。ブランクがある。経験を積む機会がなかった。そうした事情があっても、経験や得意を持ち寄れば仕事や活動に加われる。「フルタイムで働く」か「一人で事業を興す」かの二択ではなく、多様な関わり方が当たり前になっている社会を目指します。</p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <p class="eyebrow">仕事のつくり方</p>
-    <h2>一人で抱えず、力を持ち寄って形にする</h2>
-    <p>企画、文章、デザイン、広報、事務。そして、人への細やかな配慮、同時にいくつものことを回す力、人とつながる力、問題が大きくなる前に気づいて防ぐ力。子育てのなかで磨かれ、ふだんは見えにくいけれど、社会の土台を整えているこうした力こそ、つながりや人間関係が問われるいまの時代に欠かせないものだと考えています。役割として分け合い、持ち寄れば、一人では難しいことも、無理なく続けられる仕事や活動になります。</p>
-  </div>
-</section>
-
-<section class="section section--alt">
-  <div class="container">
-    <p class="eyebrow">世代</p>
-    <h2>世代をこえて、学び合い、話し合える</h2>
-    <p>親と子、若い世代と年齢を重ねた世代。立場が違っても、これからのお金や暮らし、技術のことを一緒に学び、率直に話せる場がもっとあっていい。世代の間の距離が縮まる機会を、地域の中につくっていきます。</p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <p class="eyebrow">地域</p>
-    <h2>地域の困りごとに、みんなで応えられる</h2>
-    <p>人手や専門性が足りずに困っている取り組みと、力を発揮できる場を探している人。住民、企業、自治体、専門家がゆるやかにつながれば、地域の困りごとに一緒に応えられるはずです。そうした連携のかたちを、これから探っていきます。</p>
-    <p class="text-muted">Wieは、これらを一度に実現できるとは考えていません。目の前の一つひとつの取り組みを丁寧に続けることで、少しずつこの未来に近づいていきます。</p>
-    <div class="btn-row" style="margin-top:20px;">
-      <a class="btn btn--outline" href="{{ '/projects/' | url }}">いまのプロジェクトを見る</a>
-    </div>
-  </div>
-</section>
+{# 「目指す未来」は /about/ の「目指す社会」に統合。旧URLから来た人を転送する #}
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Wieについて | Wie</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="{{ site.url }}/about/">
+<meta http-equiv="refresh" content="0; url={{ '/about/#vision' | url }}">
+</head>
+<body>
+<p><a href="{{ '/about/#vision' | url }}">「Wieについて」のページへ移動します</a></p>
+</body>
+</html>
