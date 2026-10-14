@@ -8,7 +8,15 @@
     "forWhom": "伝えたいことはあるのに、どう見せれば伝わるのか迷っている方。チラシやSNSの発信を自分たちでつくることの多い、個人事業主や小さな団体、地域の活動をしている方からのご相談をお受けしています。",
     "bring": "文章、レイアウト、写真、SNS。そして、相手の話を聞いて「伝えたいこと」を言葉にする力。子育て中でまとまった時間をとりにくいメンバーも、それぞれの得意と使える時間を持ち寄って、一つの仕事に仕上げています。専門の制作会社ではない分、一人ひとりのお客様にじっくり向き合えることも強みです。",
     "image": "project-design.webp",
-    "recommendedImage": "project-design.webp"
+    "recommendedImage": "project-design.webp",
+    "services": [
+      {
+        "title": "デザイン制作",
+        "description": "制作できるものや料金、ご依頼の流れをご案内しています。",
+        "href": "/services/design/",
+        "cta": "サービス内容・料金を見る"
+      }
+    ]
   },
   {
     "id": "living-money",

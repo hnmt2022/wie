@@ -73,7 +73,7 @@ description: "Wieは、子育て中や子育てを終えた女性たちの、見
         <p class="pillar-group__purpose">{{ group.purpose }}</p>
         <div class="pillar-group__list">
           {% for pillar in pillars %}{% if pillar.group == group.id %}
-            {{ pillarRow(pillar, "/activities/#" + pillar.id) }}
+            {{ pillarRow(pillar, pillar.serviceUrl or ("/activities/#" + pillar.id)) }}
           {% endif %}{% endfor %}
         </div>
       </div>
@@ -89,46 +89,6 @@ description: "Wieは、子育て中や子育てを終えた女性たちの、見
           {% if links.RADIO_URL %}<a class="btn btn--outline" href="{{ links.RADIO_URL }}" target="_blank" rel="noopener noreferrer">ラジオを聴く<span class="visually-hidden">（外部サイトへ移動します）</span></a>{% else %}<span class="btn btn--outline btn--disabled" aria-disabled="true">ラジオ（準備中）</span>{% endif %}
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section--alt">
-  <div class="container">
-    <div class="section__head">
-      <p class="eyebrow">最近の活動・実績</p>
-      <h2>これまで取り上げてきたテーマ</h2>
-    </div>
-    <ul class="tag-row">
-      {% for item in activities %}
-        <li>{{ item.title }}</li>
-      {% endfor %}
-    </ul>
-    <p class="text-muted" style="margin-top:16px;">開催日や参加人数などは、公表できる情報が整い次第掲載します。<a href="{{ '/activities/' | url }}">活動内容を見る</a></p>
-  </div>
-</section>
-
-<section class="section" id="projects-preview">
-  <div class="container">
-    <div class="section__head">
-      <p class="eyebrow">プロジェクト</p>
-      <h2>持ち寄った力を、実際の仕事に</h2>
-      <p class="lead">一人ひとりの経験・得意・使える時間を持ち寄って、実際の仕事や活動にしています。</p>
-    </div>
-    <div class="grid grid--2">
-      {% for p in projects %}
-      <article class="card"><div class="card__body">
-        {% set badgeClass = "status-badge--planning" if p.status == "検討中" else "status-badge--active" %}
-        <span class="status-badge {{ badgeClass }}">{{ p.status }}</span>
-        <h3 class="card__title card__title--sm">{{ p.title }}</h3>
-        <p class="card__text">{{ p.summary }}</p>
-        <a class="card__link" href="{{ ('/projects/#' + p.id) | url }}">詳しく見る</a>
-      </div></article>
-      {% endfor %}
-    </div>
-    <div class="btn-row" style="margin-top:28px;">
-      <a class="btn btn--primary" href="{{ '/projects/' | url }}">プロジェクトを見る</a>
-      <a class="btn btn--outline" href="{{ '/future/' | url }}">目指す未来</a>
     </div>
   </div>
 </section>

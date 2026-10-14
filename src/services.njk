@@ -1,0 +1,85 @@
+---
+layout: base.njk
+pagination:
+  data: services
+  size: 1
+  alias: service
+permalink: "/services/{{ service.id }}/"
+eleventyComputed:
+  title: "{{ service.name }}"
+  description: "{{ service.lead }}"
+---
+{# サービス紹介ページ（src/_data/services.json の1件ごとに /services/<id>/ を生成） #}
+
+<section class="section page-sky">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">{{ service.group }}</p>
+      <h1>{{ service.name }}</h1>
+      <p class="service-catch">{{ service.catch }}</p>
+      <p class="lead">{{ service.lead }}</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn--primary" href="{{ '/contact/' | url }}">{{ service.cta }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="eyebrow">こんな方に</p>
+    <h2>こんなときにご相談ください</h2>
+    <ul class="check-list">
+      {% for w in service.forWhom %}<li>{{ w }}</li>{% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <p class="eyebrow">サービス内容</p>
+    <h2>できること</h2>
+    <div class="grid">
+      {% for m in service.menu %}
+      <div class="card"><div class="card__body">
+        <h3 class="card__title card__title--sm">{{ m.title }}</h3>
+        <p class="card__text">{{ m.text }}</p>
+      </div></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="eyebrow">料金</p>
+    <h2>料金表</h2>
+    {% if service.sample %}
+    <p class="notice-box notice-box--caution">この料金表はサンプルです。正式な料金は準備中のため、詳しくはお問い合わせください。</p>
+    {% endif %}
+    <div class="price-table-wrap">
+      <table class="price-table">
+        <thead><tr><th scope="col">内容</th><th scope="col">料金（税込）</th><th scope="col">備考</th></tr></thead>
+        <tbody>
+          {% for p in service.prices %}
+          <tr><th scope="row">{{ p.item }}</th><td class="price-table__price">{{ p.price }}</td><td>{{ p.note }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% if service.priceNote %}<p class="text-muted" style="margin-top:12px;">{{ service.priceNote }}</p>{% endif %}
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <p class="eyebrow">ご利用の流れ</p>
+    <h2>お問い合わせから始まります</h2>
+    <ol class="flow-list">
+      {% for step in service.flow %}<li>{{ step }}</li>{% endfor %}
+    </ol>
+    <div class="btn-row" style="margin-top:28px;">
+      <a class="btn btn--primary" href="{{ '/contact/' | url }}">{{ service.cta }}</a>
+    </div>
+  </div>
+</section>

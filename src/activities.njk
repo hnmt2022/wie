@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: "活動内容"
-description: "Wieが行っている学習会・セミナー、経験や得意に気づく活動、経験や得意を試す活動、力を持ち寄るプロジェクトをご紹介します。"
+description: "Wieが行っている学習会・セミナー、経験や得意に気づく活動、働き方相談室、経験や得意を試す活動、力を持ち寄るプロジェクト、税務会計サポートをご紹介します。"
 ---
 {% from "partials/cards.njk" import pillarCard %}
 
@@ -16,7 +16,7 @@ description: "Wieが行っている学習会・セミナー、経験や得意に
 
     <div class="grid grid--3">
       {% for pillar in pillars %}
-        {{ pillarCard(pillar, "/activities/#" + pillar.id) }}
+        {{ pillarCard(pillar, pillar.serviceUrl or ("/activities/#" + pillar.id)) }}
       {% endfor %}
     </div>
   </div>
@@ -47,7 +47,17 @@ description: "Wieが行っている学習会・セミナー、経験や得意に
   </div>
 </section>
 
-<section class="section section--alt" id="small-step">
+<section class="section section--alt" id="career-consultation">
+  <div class="container">
+    <p class="eyebrow">働き方相談室</p>
+    <h2>それぞれの状況から、これからを一緒に考える</h2>
+    <p>子育ての状況や、これからの働き方の希望は、一人ひとり違います。働き方相談室では、キャリアコンサルタントがそれぞれの状況に応じて相談に応じます。</p>
+    <p>ブランクがあることへの不安、短い時間での働き方、子育てや家庭で積み重ねてきた経験をどう仕事に活かすか。何から考えればいいか分からない段階でも、まずは話すところから始められます。</p>
+    <p style="margin-top:20px;"><a class="card__link" href="{{ '/services/career/' | url }}">サービス内容・料金を見る</a></p>
+  </div>
+</section>
+
+<section class="section" id="small-step">
   <div class="container">
     <p class="eyebrow">経験や得意を試す活動</p>
     <h2>小さな役割から、実際にやってみる</h2>
@@ -56,11 +66,21 @@ description: "Wieが行っている学習会・セミナー、経験や得意に
   </div>
 </section>
 
-<section class="section" id="co-creation">
+<section class="section section--alt" id="co-creation">
   <div class="container">
     <p class="eyebrow">力を持ち寄るプロジェクト</p>
     <h2>一人ではできないことも、持ち寄れば仕事になる</h2>
     <p>一人の専門性や、フルタイムで働けることを前提にせず、複数人の経験、得意、使える時間を組み合わせます。そうして、頼んだ人の役に立ち、関わる人の経験も活かせる仕事やサービスをつくっています。</p>
     <p style="margin-top:20px;"><a class="card__link" href="{{ '/projects/' | url }}">プロジェクトを見る</a></p>
+  </div>
+</section>
+
+<section class="section" id="tax-accounting">
+  <div class="container">
+    <p class="eyebrow">税務会計サポート</p>
+    <h2>会計まわりの事務を、チームで支える</h2>
+    <p>記帳や領収書の整理、会計ソフトへの入力など、個人事業主や小さな団体の会計まわりの事務をサポートしています。日々の細かな記録を整え、期限を見越して先回りする。家計や家庭のことを回してきた経験が活きる仕事です。</p>
+    <p>税務申告や個別の税務相談が必要な場合は、税理士と連携して対応します。</p>
+    <p style="margin-top:20px;"><a class="card__link" href="{{ '/services/tax-accounting/' | url }}">サービス内容・料金を見る</a></p>
   </div>
 </section>

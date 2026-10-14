@@ -328,6 +328,25 @@ p { margin: 0 0 1em; }
 
 .media-outlets { margin-top: 24px; }
 
+/* ---------- サービスページ ---------- */
+.service-catch { font-size: 1.15rem; font-weight: 700; color: var(--color-navy-soft); margin: -0.2em 0 0.8em; }
+.check-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.check-list li { position: relative; padding-left: 1.8em; }
+.check-list li::before { content: "✓"; position: absolute; left: 0.3em; color: var(--color-navy-soft); font-weight: 700; }
+.price-table-wrap { overflow-x: auto; }
+.price-table { width: 100%; border-collapse: collapse; background: var(--color-white); min-width: 480px; }
+.price-table th, .price-table td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+.price-table thead th { background: var(--color-navy); color: #fff; font-size: 0.9rem; }
+.price-table tbody th { color: var(--color-navy); }
+.price-table__price { font-weight: 700; white-space: nowrap; }
+.price-table td:last-child { color: var(--color-text-muted); font-size: 0.9rem; }
+.flow-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px; counter-reset: flow; }
+.flow-list li {
+  counter-increment: flow; background: var(--color-white); border: 1px solid var(--color-border);
+  border-radius: var(--radius-md); padding: 14px 18px; flex: 1 1 160px;
+}
+.flow-list li::before { content: "STEP " counter(flow); display: block; font-size: 0.75rem; font-weight: 700; color: var(--color-navy-soft); }
+
 /* ---------- お知らせ ---------- */
 .news-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
 .news-list li {

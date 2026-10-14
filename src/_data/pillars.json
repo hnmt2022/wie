@@ -18,6 +18,16 @@
     "short": "対話を通して、当たり前だと思っていた経験や得意を見つけます。"
   },
   {
+    "id": "career-consultation",
+    "title": "働き方相談室",
+    "summary": "子育ての状況やこれからの希望に合わせて、キャリアコンサルタントが一人ひとりの相談に応じます。ブランクのこと、短い時間での働き方、これまでの経験の活かし方など、まずは話すところから始められます。",
+    "image": "about-possibilities.webp",
+    "recommendedImage": "about-possibilities.webp",
+    "group": "life",
+    "short": "それぞれの状況に応じて、キャリアコンサルタントが相談に応じます。",
+    "serviceUrl": "/services/career/"
+  },
+  {
     "id": "small-step",
     "title": "経験や得意を試す活動",
     "summary": "学んだことや自分の得意を、団体の運営、イベント、プロジェクトなどの小さな役割から試す機会をつくっています。",
@@ -34,5 +44,25 @@
     "recommendedImage": "activity-co-creation.webp",
     "group": "business",
     "short": "経験、得意、使える時間を持ち寄り、仕事やサービスにします。"
+  },
+  {
+    "id": "design",
+    "title": "デザイン制作",
+    "summary": "チラシやパンフレット、SNSのデザインを制作しています。もやもやとした「伝えたいこと」を対話の中で引き出し、伝わるデザインに落とし込みます。",
+    "image": "project-design.webp",
+    "recommendedImage": "project-design.webp",
+    "group": "business",
+    "short": "「伝えたいこと」を対話で引き出し、チラシやSNSのデザインにします。",
+    "serviceUrl": "/services/design/"
+  },
+  {
+    "id": "tax-accounting",
+    "title": "税務会計サポート",
+    "summary": "記帳や領収書の整理、会計ソフトへの入力など、個人事業主や小さな団体の会計まわりの事務をサポートします。税務申告や個別の税務相談が必要な場合は、税理士と連携して対応します。",
+    "image": "project-living-money.webp",
+    "recommendedImage": "project-living-money.webp",
+    "group": "business",
+    "short": "記帳や書類の整理など、個人事業主や小さな団体の会計事務を支えます。",
+    "serviceUrl": "/services/tax-accounting/"
   }
 ]
