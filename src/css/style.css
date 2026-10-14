@@ -326,6 +326,8 @@ p { margin: 0 0 1em; }
 .pillar-row__text { font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; }
 .pillar-row__arrow { color: var(--color-navy-soft); flex-shrink: 0; }
 
+.media-outlets { margin-top: 24px; }
+
 /* ---------- お知らせ ---------- */
 .news-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
 .news-list li {
