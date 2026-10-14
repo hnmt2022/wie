@@ -14,7 +14,7 @@ description: "Wieの理念、目指す社会、団体概要をご紹介します
 
     <div class="summary-box">
       <p class="lead mt-0">子育て中の女性、子育てを終えた女性。子どもの健康や安全、学びを支え、周りとのやりとりや関係の調整を毎日こなしているのに、それが仕事の経験や能力として認められず、収入やキャリアにもつながっていません。本人でさえ、それを自分の力だと思っていないことも少なくありません。</p>
-      <p style="margin-bottom:0;">Wieは、その力をチームで持ち寄り、仕事として形にしていく市民活動団体です。学習会や対話で自分の力に気づき、仲間と小さく試すところから始めます。子育てで培った力が当たり前に評価され、社会全体の価値になる。その未来を、私たちがつくっていきます。</p>
+      <p style="margin-bottom:0;">Wieは、その力をチームで持ち寄り、仕事として形にしていく市民活動団体です。学習会やつながる会で、自分の力に気づくところから始めます。子育てで培った力が当たり前に評価され、社会全体の価値になる。その未来を、私たちがつくっていきます。</p>
     </div>
   </div>
 </section>
@@ -66,20 +66,16 @@ description: "Wieの理念、目指す社会、団体概要をご紹介します
 <section class="section">
   <div class="container">
     <p class="eyebrow">Wieが行うこと</p>
-    <h2>学び、対話し、小さく試す</h2>
-    <div class="grid grid--3">
+    <h2>学び、気づき、仕事にする</h2>
+    <div class="grid grid--2">
+      {% for group in pillarGroups %}
       <div class="card"><div class="card__body">
-        <h3 class="card__title card__title--sm">学ぶ</h3>
-        <p class="card__text">学習会やセミナーを通じて、仕事や暮らしに必要なことを学びます。</p>
+        <p class="card__eyebrow">{{ group.sub }}</p>
+        <h3 class="card__title">{{ group.label }}</h3>
+        <p class="card__text">{{ group.purpose }}</p>
+        <p class="card__text" style="flex:0;">{% for pillar in pillars %}{% if pillar.group == group.id %}{{ pillar.title }}{% if not loop.last %}／{% endif %}{% endif %}{% endfor %}</p>
       </div></div>
-      <div class="card"><div class="card__body">
-        <h3 class="card__title card__title--sm">気づく</h3>
-        <p class="card__text">対話を通じて、自分の経験や得意に気づく機会をつくります。</p>
-      </div></div>
-      <div class="card"><div class="card__body">
-        <h3 class="card__title card__title--sm">試す・つくる</h3>
-        <p class="card__text">小さく試す機会をつくり、経験や得意を組み合わせて仕事や活動をつくることにも取り組み始めています。</p>
-      </div></div>
+      {% endfor %}
     </div>
     <p style="margin-top:20px;"><a class="card__link" href="{{ '/activities/' | url }}">活動内容を詳しく見る</a></p>
   </div>

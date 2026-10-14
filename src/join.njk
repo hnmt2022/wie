@@ -11,6 +11,7 @@ description: "Wieへの関わり方をご紹介します。まずはイベント
       <p class="eyebrow">参加する</p>
       <h1>関わり方はいろいろあります</h1>
       <p class="lead">Wieに興味を持っていただいたからといって、そのまま運営メンバーになるわけではありません。まずはイベントに参加したり、活動を知るだけでも十分です。ご自分のペースで関わってください。</p>
+      <p><a class="card__link" href="#services">サービスのご利用を検討している方はこちら</a></p>
     </div>
 
     <div class="grid grid--2">
@@ -50,9 +51,29 @@ description: "Wieへの関わり方をご紹介します。まずはイベント
     </div>
 
     {% for s in site.sns %}
-      {% if s.label == "LINE" and s.url %}
-      <p class="text-muted" style="margin-top:16px;">イベントの案内や気軽な質問は、LINEでもやりとりできます。<a href="{{ s.url }}" target="_blank" rel="noopener noreferrer">LINEを見る<span class="visually-hidden">（外部サイトへ移動します）</span></a></p>
+      {% if s.label == "公式LINE" and s.url %}
+      <p class="text-muted" style="margin-top:16px;">イベントの案内や気軽な質問は、公式LINEでもやりとりできます。<a href="{{ s.url }}" target="_blank" rel="noopener noreferrer">LINEを見る<span class="visually-hidden">（外部サイトへ移動します）</span></a></p>
       {% endif %}
     {% endfor %}
+  </div>
+</section>
+
+<section class="section section--alt" id="services">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">サービスを利用する</p>
+      <h2>サービスを利用したい方へ</h2>
+      <p class="lead">Wieのメンバーがチームで提供しているサービスです。内容や料金は、それぞれのページでご案内しています。</p>
+    </div>
+    <div class="grid grid--3">
+      {% for s in services %}
+      <div class="card card--external"><div class="card__body">
+        <p class="card__eyebrow">{{ s.group }}</p>
+        <h3 class="card__title">{{ s.name }}</h3>
+        <p class="card__text">{{ s.catch }}</p>
+        <a class="btn btn--outline" href="{{ ('/services/' + s.id + '/') | url }}">サービス内容・料金を見る</a>
+      </div></div>
+      {% endfor %}
+    </div>
   </div>
 </section>

@@ -30,3 +30,12 @@
   <span class="wiechan wiechan--placeholder" aria-hidden="true">Wie<br>ちゃん</span>
   {% endif %}
 {% endmacro %}
+
+{# 活動・サービスの画像: item.photo（実写, public/images/activities/）があれば優先、なければ item.image（イラスト） #}
+{% macro itemMedia(item, alt, ratio="4/3") %}
+  {% if item.photo %}
+  <img class="media media--photo" style="aspect-ratio:{{ ratio }};" src="{{ ('/images/activities/' + item.photo) | url }}" alt="{{ alt }}" loading="lazy" decoding="async">
+  {% else %}
+  <img class="media media--illustration" style="aspect-ratio:{{ ratio }};" src="{{ ('/images/generated/' + item.image) | url }}" alt="" loading="lazy" decoding="async">
+  {% endif %}
+{% endmacro %}

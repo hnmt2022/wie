@@ -1,0 +1,18 @@
+{# For Life / For Business の一覧（トップと活動内容ページで共用）。
+   pillarLinkToDetail が true なら各行は活動内容ページ内の説明へ、そうでなければサービスページがあればそちらへ #}
+{% from "partials/cards.njk" import pillarRow %}
+<div class="pillar-groups">
+  {% for group in pillarGroups %}
+  <div class="pillar-group pillar-group--{{ group.id }}">
+    <p class="pillar-group__sub">{{ group.sub }}</p>
+    <h3 class="pillar-group__label">{{ group.label }}</h3>
+    <p class="pillar-group__purpose">{{ group.purpose }}</p>
+    <div class="pillar-group__list">
+      {% for pillar in pillars %}{% if pillar.group == group.id %}
+        {% if pillarLinkToDetail %}{% set rowUrl = "/activities/#" + pillar.id %}{% else %}{% set rowUrl = pillar.serviceUrl or ("/activities/#" + pillar.id) %}{% endif %}
+        {{ pillarRow(pillar, rowUrl) }}
+      {% endif %}{% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</div>

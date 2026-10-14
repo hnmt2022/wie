@@ -10,17 +10,23 @@ eleventyComputed:
   description: "{{ service.lead }}"
 ---
 {# サービス紹介ページ（src/_data/services.json の1件ごとに /services/<id>/ を生成） #}
+{% from "partials/media.njk" import itemMedia %}
 
 <section class="section page-sky">
   <div class="container">
-    <div class="section__head">
-      <p class="eyebrow">{{ service.group }}</p>
-      <h1>{{ service.name }}</h1>
-      <p class="service-catch">{{ service.catch }}</p>
-      <p class="lead">{{ service.lead }}</p>
-    </div>
-    <div class="btn-row">
-      <a class="btn btn--primary" href="{{ '/contact/' | url }}">{{ service.cta }}</a>
+    <div class="service-hero">
+      <div>
+        <div class="section__head" style="margin-bottom:0;">
+          <p class="eyebrow">{{ service.group }}</p>
+          <h1>{{ service.name }}</h1>
+          <p class="service-catch">{{ service.catch }}</p>
+          <p class="lead">{{ service.lead }}</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="{{ '/contact/' | url }}">{{ service.cta }}</a>
+        </div>
+      </div>
+      <div class="service-hero__media">{{ itemMedia(service, service.name) }}</div>
     </div>
   </div>
 </section>
@@ -44,6 +50,7 @@ eleventyComputed:
       <div class="card"><div class="card__body">
         <h3 class="card__title card__title--sm">{{ m.title }}</h3>
         <p class="card__text">{{ m.text }}</p>
+        {% if m.href %}<a class="card__link" href="{{ m.href | url }}">{{ m.linkText or "詳しく見る" }}</a>{% endif %}
       </div></div>
       {% endfor %}
     </div>

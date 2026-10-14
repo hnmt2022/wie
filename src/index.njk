@@ -4,7 +4,7 @@ title: ""
 description: "Wieは、子育て中や子育てを終えた女性たちの、見過ごされてきた力を持ち寄り、仕事や社会の価値につなげる市民活動団体です。"
 ---
 {% from "partials/media.njk" import illustration, wiechan %}
-{% from "partials/cards.njk" import pillarCard, pillarRow, externalCard, newsCard %}
+{% from "partials/cards.njk" import pillarCard, externalCard, newsCard %}
 
 <section class="hero">
   <div class="hero__inner">
@@ -65,28 +65,16 @@ description: "Wieは、子育て中や子育てを終えた女性たちの、見
       <p class="eyebrow">活動</p>
       <h2>Wieの活動</h2>
     </div>
-    <div class="pillar-groups">
-      {% for group in pillarGroups %}
-      <div class="pillar-group pillar-group--{{ group.id }}">
-        <p class="pillar-group__sub">{{ group.sub }}</p>
-        <h3 class="pillar-group__label">{{ group.label }}</h3>
-        <p class="pillar-group__purpose">{{ group.purpose }}</p>
-        <div class="pillar-group__list">
-          {% for pillar in pillars %}{% if pillar.group == group.id %}
-            {{ pillarRow(pillar, pillar.serviceUrl or ("/activities/#" + pillar.id)) }}
-          {% endif %}{% endfor %}
-        </div>
-      </div>
-      {% endfor %}
-    </div>
+    {% include "partials/pillar-groups.njk" %}
     <div class="card card--external media-outlets" id="media">
       <div class="card__body">
         <h3 class="card__title">発信</h3>
-        <p class="card__text">活動の背景や開催報告、メンバーの声を、note・Instagram・ラジオで発信しています。</p>
+        <p class="card__text">活動の背景や開催報告、メンバーの声を、note・Instagram・ラジオで発信しています。イベントのご案内は公式LINEで、メンバーどうしの気軽なやりとりは「つながる会」のオープンチャット（メンバーへの招待制）で行っています。</p>
         <div class="btn-row">
           {% if links.NOTE_URL %}<a class="btn btn--outline" href="{{ links.NOTE_URL }}" target="_blank" rel="noopener noreferrer">noteで読む<span class="visually-hidden">（外部サイトへ移動します）</span></a>{% else %}<span class="btn btn--outline btn--disabled" aria-disabled="true">note（準備中）</span>{% endif %}
           {% for s in site.sns %}{% if s.label == "Instagram" and s.url %}<a class="btn btn--outline" href="{{ s.url }}" target="_blank" rel="noopener noreferrer">Instagramを見る<span class="visually-hidden">（外部サイトへ移動します）</span></a>{% endif %}{% endfor %}
           {% if links.RADIO_URL %}<a class="btn btn--outline" href="{{ links.RADIO_URL }}" target="_blank" rel="noopener noreferrer">ラジオを聴く<span class="visually-hidden">（外部サイトへ移動します）</span></a>{% else %}<span class="btn btn--outline btn--disabled" aria-disabled="true">ラジオ（準備中）</span>{% endif %}
+          {% for s in site.sns %}{% if s.label == "公式LINE" and s.url %}<a class="btn btn--outline" href="{{ s.url }}" target="_blank" rel="noopener noreferrer">公式LINEを見る<span class="visually-hidden">（外部サイトへ移動します）</span></a>{% endif %}{% endfor %}
         </div>
       </div>
     </div>
@@ -115,6 +103,11 @@ description: "Wieは、子育て中や子育てを終えた女性たちの、見
       <div class="card"><div class="card__body">
         <h3 class="card__title card__title--sm">企業、自治体、団体、専門家として連携する</h3>
         <p class="card__text">地域や社会の困りごとについて、一緒に考えます。</p>
+      </div></div>
+      <div class="card"><div class="card__body">
+        <h3 class="card__title card__title--sm">サービスを利用する</h3>
+        <p class="card__text">働き方相談室、暮らしとお金の相談、デザイン制作、税務会計サポートをご利用いただけます。</p>
+        <a class="card__link" href="{{ '/join/#services' | url }}">サービスを見る</a>
       </div></div>
     </div>
     <p class="notice-box notice-box--caution" style="margin-top:28px;">活動への参加によって、仕事や報酬が保証されるものではありません。仕事やプロジェクトへの協力をお願いする場合は、内容、役割、責任の範囲などを確認したうえで個別にご相談します。</p>

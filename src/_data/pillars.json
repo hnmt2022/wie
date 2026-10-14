@@ -6,7 +6,8 @@
     "image": "activity-learning.webp",
     "recommendedImage": "activity-learning.webp",
     "group": "life",
-    "short": "税金、お金、AI活用など、暮らしや仕事に関わるテーマを分かりやすく学びます。"
+    "short": "税金、お金、AI活用など、暮らしや仕事に関わるテーマを分かりやすく学びます。",
+    "photo": null
   },
   {
     "id": "discovery",
@@ -15,7 +16,8 @@
     "image": "activity-dialogue.webp",
     "recommendedImage": "activity-dialogue.webp",
     "group": "life",
-    "short": "対話を通して、当たり前だと思っていた経験や得意を見つけます。"
+    "short": "対話を通して、当たり前だと思っていた経験や得意を見つけます。",
+    "photo": null
   },
   {
     "id": "career-consultation",
@@ -25,16 +27,19 @@
     "recommendedImage": "about-possibilities.webp",
     "group": "life",
     "short": "それぞれの状況に応じて、キャリアコンサルタントが相談に応じます。",
-    "serviceUrl": "/services/career/"
+    "serviceUrl": "/services/career/",
+    "photo": null
   },
   {
-    "id": "small-step",
-    "title": "経験や得意を試す活動",
-    "summary": "学んだことや自分の得意を、団体の運営、イベント、プロジェクトなどの小さな役割から試す機会をつくっています。",
-    "image": "activity-small-step.webp",
-    "recommendedImage": "activity-small-step.webp",
-    "group": "business",
-    "short": "運営やイベントの小さな役割から、得意を実際に試します。"
+    "id": "kurashi-money",
+    "title": "暮らしとお金の相談",
+    "summary": "年金や税金、住まい、書類など、暮らしやお金に関する個別相談と、困りごとを最初に相談できる「暮らしのかかりつけ」に取り組んでいます。",
+    "image": "project-living-money.webp",
+    "recommendedImage": "project-living-money.webp",
+    "group": "life",
+    "short": "年金・税金・住まい・書類など、「どこに聞けばいいか」を一緒に整理します。",
+    "serviceUrl": "/services/kurashi-money/",
+    "photo": null
   },
   {
     "id": "co-creation",
@@ -43,7 +48,8 @@
     "image": "activity-co-creation.webp",
     "recommendedImage": "activity-co-creation.webp",
     "group": "business",
-    "short": "経験、得意、使える時間を持ち寄り、仕事やサービスにします。"
+    "short": "経験、得意、使える時間を持ち寄り、仕事やサービスにします。",
+    "photo": null
   },
   {
     "id": "design",
@@ -53,16 +59,18 @@
     "recommendedImage": "project-design.webp",
     "group": "business",
     "short": "「伝えたいこと」を対話で引き出し、チラシやSNSのデザインにします。",
-    "serviceUrl": "/services/design/"
+    "serviceUrl": "/services/design/",
+    "photo": null
   },
   {
     "id": "tax-accounting",
     "title": "税務会計サポート",
     "summary": "記帳や領収書の整理、会計ソフトへの入力など、個人事業主や小さな団体の会計まわりの事務をサポートします。税務申告や個別の税務相談が必要な場合は、税理士と連携して対応します。",
-    "image": "project-living-money.webp",
-    "recommendedImage": "project-living-money.webp",
+    "image": "future-co-work.webp",
+    "recommendedImage": "future-co-work.webp",
     "group": "business",
     "short": "記帳や書類の整理など、個人事業主や小さな団体の会計事務を支えます。",
-    "serviceUrl": "/services/tax-accounting/"
+    "serviceUrl": "/services/tax-accounting/",
+    "photo": null
   }
 ]

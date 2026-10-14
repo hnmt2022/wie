@@ -1,80 +1,18 @@
 ---
-layout: base.njk
-title: "プロジェクト"
-description: "Wieが取り組んでいる仕事や活動（伝わるデザインの制作、年齢を重ねた方と家族の暮らし・お金、親子・世代をつなぐ学び、企業・自治体・地域との連携）をご紹介します。"
+permalink: /projects/
+eleventyExcludeFromCollections: true
 ---
-{% from "partials/media.njk" import illustration %}
-{% from "partials/cards.njk" import externalCard %}
-
-<section class="section page-sky">
-  <div class="container">
-    <div class="section__head">
-      <p class="eyebrow">プロジェクト</p>
-      <h1>持ち寄った力を、実際の仕事に</h1>
-      <p class="lead">Wieのプロジェクトは、メンバーが経験や得意、使える時間を持ち寄って、実際の仕事や活動にしているものです。持ち寄るのは、企画や文章、デザイン、広報、事務だけではありません。人への配慮、いくつものことを同時に進める力、人とつながる力、小さな変化に気づいて先回りする力。子育てや介護の中で培われ、これまで見過ごされてきた力も、ここでは大切な仕事の力です。フルタイムで働くのが難しい人も、こうした力を持ち寄って関わっています。</p>
-      <p class="text-muted">各プロジェクトには、いまの状態を示すラベルを付けています（稼働中・進行中・検討中）。サービスの内容や料金、開始時期が未定のものもあります。</p>
-    </div>
-
-    {% for p in projects %}
-    <article class="summary-box" id="{{ p.id }}" style="margin-bottom:32px;">
-      {% set badgeClass = "status-badge--planning" if p.status == "検討中" else "status-badge--active" %}
-      <span class="status-badge {{ badgeClass }}">{{ p.status }}</span>
-      <h2 style="margin-top:8px;">{{ p.title }}</h2>
-
-      <div class="grid grid--2" style="align-items:start; margin:24px 0;">
-        <div class="stack">
-          <div>
-            <h3 class="card__title card__title--sm">していること</h3>
-            <p class="card__text">{{ p.doing }}</p>
-          </div>
-          {% if p.forWhom %}
-          <div>
-            <h3 class="card__title card__title--sm">こんな方に</h3>
-            <p class="card__text">{{ p.forWhom }}</p>
-          </div>
-          {% endif %}
-          {% if p.bring %}
-          <div>
-            <h3 class="card__title card__title--sm">持ち寄っている力</h3>
-            <p class="card__text">{{ p.bring }}</p>
-          </div>
-          {% endif %}
-          {% if p.withWhom %}
-          <div>
-            <h3 class="card__title card__title--sm">一緒に取り組みたい相手</h3>
-            <p class="card__text">{{ p.withWhom }}</p>
-          </div>
-          {% endif %}
-        </div>
-        {{ illustration(p.image, p.title + "に関するイラスト", "4/3", false, p.recommendedImage) }}
-      </div>
-
-      {% if p.services %}
-      <h3 class="card__title card__title--sm">関連するサービス・情報</h3>
-      <div class="grid grid--3">
-        {% for s in p.services %}
-          {% if s.href %}
-          <div class="card card--external"><div class="card__body">
-            <h3 class="card__title card__title--sm">{{ s.title }}</h3>
-            <p class="card__text">{{ s.description }}</p>
-            <a class="btn btn--outline" href="{{ s.href | url }}">{{ s.cta }}</a>
-          </div></div>
-          {% else %}
-          {{ externalCard(s.title, s.description, links[s.linkKey], s.cta) }}
-          {% endif %}
-        {% endfor %}
-      </div>
-      {% endif %}
-    </article>
-    {% endfor %}
-  </div>
-</section>
-
-<section class="section section--alt">
-  <div class="container">
-    <p class="eyebrow">目指す社会</p>
-    <h2>これらのプロジェクトで、どんな社会を目指しているか</h2>
-    <p>働き方や立場にかかわらず、経験や得意を活かして社会とつながれる。Wieが目指す社会は「Wieについて」でご紹介しています。</p>
-    <a class="btn btn--outline" href="{{ '/about/#vision' | url }}">Wieが目指す社会を見る</a>
-  </div>
-</section>
+{# 旧URL。活動内容 に統合したので転送する #}
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>活動内容 | Wie</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="{{ site.url }}/activities/">
+<meta http-equiv="refresh" content="0; url={{ '/activities/' | url }}">
+</head>
+<body>
+<p><a href="{{ '/activities/' | url }}">「活動内容」のページへ移動します</a></p>
+</body>
+</html>

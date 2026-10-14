@@ -1,86 +1,118 @@
 ---
 layout: base.njk
 title: "活動内容"
-description: "Wieが行っている学習会・セミナー、つながる会、働き方相談室、経験や得意を試す活動、力を持ち寄るプロジェクト、税務会計サポートをご紹介します。"
+description: "Wieの活動を、自分と暮らしのための「For Life」（学習会・セミナー、つながる会、働き方相談室、暮らしとお金の相談）と、持ち寄った力をビジネスにした「For Business」（力を持ち寄るプロジェクト、デザイン制作、税務会計サポート）に分けてご紹介します。"
 ---
-{% from "partials/cards.njk" import pillarCard %}
+{% from "partials/media.njk" import itemMedia %}
+{% set lifeGroup = pillarGroups | selectattr("id", "equalto", "life") | first %}
+{% set businessGroup = pillarGroups | selectattr("id", "equalto", "business") | first %}
 
 <section class="section page-sky">
   <div class="container">
-    <div class="section__head">
+    <div class="section__head" style="margin-bottom:0;">
       <p class="eyebrow">活動内容</p>
-      <h1>いま、Wieが行っていること</h1>
-      <p class="lead">Wieでは、仕事や暮らしに役立つことを学び、自分の経験や得意に気づき、それを実際の活動の中で試す機会をつくっています。</p>
-      <p>また、一人ひとりの力を持ち寄って、実際の仕事やサービスにする取り組みも進めています。</p>
+      <h1>Wieの活動</h1>
+      <p class="lead">Wieの活動は、自分と暮らしのための「For Life」と、持ち寄った力をビジネスにした「For Business」の2つに分かれています。</p>
     </div>
-
-    <div class="grid grid--3">
-      {% for pillar in pillars %}
-        {{ pillarCard(pillar, pillar.serviceUrl or ("/activities/#" + pillar.id)) }}
-      {% endfor %}
+    <div class="btn-row">
+      <a class="btn btn--group-life" href="#for-life">For Life<span class="btn__sub">自分と暮らしのために</span></a>
+      <a class="btn btn--group-business" href="#for-business">For Business<span class="btn__sub">持ち寄った力を、ビジネスに</span></a>
     </div>
   </div>
 </section>
 
-<section class="section section--alt" id="learning">
+<section class="section activity-group activity-group--life" id="for-life">
   <div class="container">
-    <p class="eyebrow">学習会・セミナー</p>
-    <h2>知ることで、選べることを増やす</h2>
-    <p>税金、お金、AI活用など、仕事や暮らしに関わるテーマを取り上げています。</p>
-    <p>知識を一方的に伝えるだけでなく、難しいことを分かりやすく整理し、「自分の場合はどうなのか」「次に何をすればよいのか」を考えられる場を目指しています。</p>
-    <p class="text-muted" style="margin-bottom:0;">これまでに、次のような学習会や講座を行ってきました。</p>
-    <ul class="tag-row">
-      {% for item in activities %}
-        {% if item.category != "交流" %}<li>{{ item.title }}</li>{% endif %}
-      {% endfor %}
-    </ul>
+    <div class="activity-group__head">
+      <p class="activity-group__sub">{{ lifeGroup.sub }}</p>
+      <h2 class="activity-group__label">{{ lifeGroup.label }}</h2>
+      <p>{{ lifeGroup.purpose }}</p>
+    </div>
+
+    <article class="activity-detail" id="learning">
+      {% set pl = pillars | selectattr("id", "equalto", "learning") | first %}
+      <div class="activity-detail__media">{{ itemMedia(pl, pl.title) }}</div>
+      <p class="eyebrow">学習会・セミナー</p>
+      <h3>知ることで、選べることを増やす</h3>
+      <p>税金、お金、AI活用など、仕事や暮らしに関わるテーマを取り上げています。知識を一方的に伝えるだけでなく、難しいことを分かりやすく整理し、「自分の場合はどうなのか」「次に何をすればよいのか」を考えられる場を目指しています。</p>
+      <p>親子向けのセミナーや、教育に関する学習会も開いています。小さな子どもと保護者、成人した子と親など、立場や世代の違う家族が、これからのことを一緒に考えられる場です。プログラミングのセミナーは準備中で、投資をテーマにした学習会も構想しています。</p>
+      <p class="text-muted" style="margin-bottom:0;">これまでに、次のような学習会や講座を行ってきました。</p>
+      <ul class="tag-row">
+        {% for item in activities %}
+          {% if item.category != "交流" %}<li>{{ item.title }}</li>{% endif %}
+        {% endfor %}
+      </ul>
+      <p style="margin-top:18px;"><a class="card__link" href="{{ '/news/' | url }}?tag={{ 'イベント' | urlencode }}">開催予定のイベントを見る</a></p>
+    </article>
+
+    <article class="activity-detail" id="discovery">
+      {% set pl = pillars | selectattr("id", "equalto", "discovery") | first %}
+      <div class="activity-detail__media">{{ itemMedia(pl, pl.title) }}</div>
+      <p class="eyebrow">つながる会</p>
+      <h3>自分では気づきにくい力を見つける</h3>
+      <p>交流会や対話の機会を通して、自分では当たり前だと思っていた経験や得意を見つけます。</p>
+      <p>資格や職歴として表せるものだけでなく、家庭、地域、趣味、ボランティアなどで培った力も、その人が持つ大切な経験です。人と話すことで、自分だけでは気づかなかった力や、これからやってみたいことが見えてくることがあります。</p>
+      <p>つながる会では、こうした対話を通して、互いの経験や考えを知る機会をつくっています。</p>
+    </article>
+
+    <article class="activity-detail" id="career-consultation">
+      {% set pl = pillars | selectattr("id", "equalto", "career-consultation") | first %}
+      <div class="activity-detail__media">{{ itemMedia(pl, pl.title) }}</div>
+      <p class="eyebrow">働き方相談室</p>
+      <h3>それぞれの状況から、これからを一緒に考える</h3>
+      <p>子育ての状況や、これからの働き方の希望は、一人ひとり違います。働き方相談室では、キャリアコンサルタントがそれぞれの状況に応じて相談に応じます。</p>
+      <p>ブランクがあることへの不安、短い時間での働き方、子育てや家庭で積み重ねてきた経験をどう仕事に活かすか。何から考えればいいか分からない段階でも、まずは話すところから始められます。</p>
+      <p><a class="card__link" href="{{ '/services/career/' | url }}">サービス内容・料金を見る</a></p>
+    </article>
+
+    <article class="activity-detail" id="kurashi-money">
+      {% set pl = pillars | selectattr("id", "equalto", "kurashi-money") | first %}
+      <div class="activity-detail__media">{{ itemMedia(pl, pl.title) }}</div>
+      <p class="eyebrow">暮らしとお金の相談</p>
+      <h3>「どこに聞けばいいか分からない」を、一緒に整理する</h3>
+      <p>年金や税金、住まい、書類など、暮らしやお金に関する個別相談を行っています。年齢を重ねる中で相談先が分からないことが増えてきた方や、そのご家族が対象です。</p>
+      <p>あわせて「暮らしのかかりつけ」にも取り組んでいます。暮らしの困りごとを最初に相談できる「かかりつけパートナー」と定期的につながり、必要に応じて得意な人や専門家へつなぐ仕組みです。家族の世話や子育ての中で身についた、相手の小さな変化に気づき、話を丁寧に聞く力が活きています。</p>
+      <p><a class="card__link" href="{{ '/services/kurashi-money/' | url }}">サービス内容・料金を見る</a></p>
+    </article>
   </div>
 </section>
 
-<section class="section" id="discovery">
+<section class="section activity-group activity-group--business" id="for-business">
   <div class="container">
-    <p class="eyebrow">つながる会</p>
-    <h2>自分では気づきにくい力を見つける</h2>
-    <p>交流会や対話の機会を通して、自分では当たり前だと思っていた経験や得意を見つけます。</p>
-    <p>資格や職歴として表せるものだけでなく、家庭、地域、趣味、ボランティアなどで培った力も、その人が持つ大切な経験です。人と話すことで、自分だけでは気づかなかった力や、これから試してみたいことが見えてくることがあります。</p>
-    <p>つながる会では、こうした対話を通して、互いの経験や考えを知る機会をつくっています。</p>
-  </div>
-</section>
+    <div class="activity-group__head">
+      <p class="activity-group__sub">{{ businessGroup.sub }}</p>
+      <h2 class="activity-group__label">{{ businessGroup.label }}</h2>
+      <p>{{ businessGroup.purpose }}</p>
+    </div>
 
-<section class="section section--alt" id="career-consultation">
-  <div class="container">
-    <p class="eyebrow">働き方相談室</p>
-    <h2>それぞれの状況から、これからを一緒に考える</h2>
-    <p>子育ての状況や、これからの働き方の希望は、一人ひとり違います。働き方相談室では、キャリアコンサルタントがそれぞれの状況に応じて相談に応じます。</p>
-    <p>ブランクがあることへの不安、短い時間での働き方、子育てや家庭で積み重ねてきた経験をどう仕事に活かすか。何から考えればいいか分からない段階でも、まずは話すところから始められます。</p>
-    <p style="margin-top:20px;"><a class="card__link" href="{{ '/services/career/' | url }}">サービス内容・料金を見る</a></p>
-  </div>
-</section>
+    <article class="activity-detail" id="co-creation">
+      {% set pl = pillars | selectattr("id", "equalto", "co-creation") | first %}
+      <div class="activity-detail__media">{{ itemMedia(pl, pl.title) }}</div>
+      <p class="eyebrow">力を持ち寄るプロジェクト</p>
+      <h3>一人ではできないことも、持ち寄れば仕事になる</h3>
+      <p>一人の専門性や、フルタイムで働けることを前提にせず、複数人の経験、得意、使える時間を組み合わせます。そうして、頼んだ人の役に立ち、関わる人の経験も活かせる仕事やサービスをつくっています。参加者の得意を持ち寄って、LINEスタンプを制作・販売したこともあります。</p>
+      <p>企業や自治体、地域団体、専門家との連携のかたちも探っています。人手や専門性が足りずに困っている取り組みと、力を発揮できる場を探している人をつなぐことを考えています。現時点で決まっている連携先はありません。関心をお持ちの方はご連絡ください。</p>
+      <p><a class="card__link" href="{{ '/contact/' | url }}">連携について問い合わせる</a></p>
+    </article>
 
-<section class="section" id="small-step">
-  <div class="container">
-    <p class="eyebrow">経験や得意を試す活動</p>
-    <h2>小さな役割から、実際にやってみる</h2>
-    <p>何かを十分にできるようになってから始めるのではなく、今できることから小さく試してみることを大切にしています。</p>
-    <p>イベントの企画や運営、広報、資料づくり、参加者のサポートなど、活動にはさまざまな役割があります。自分の経験や得意を活かせるところから関わり、実践を通して新しい可能性を探します。</p>
-  </div>
-</section>
+    <article class="activity-detail" id="design">
+      {% set pl = pillars | selectattr("id", "equalto", "design") | first %}
+      <div class="activity-detail__media">{{ itemMedia(pl, pl.title) }}</div>
+      <p class="eyebrow">デザイン制作</p>
+      <h3>伝えたいことを、伝わるデザインに</h3>
+      <p>チラシやパンフレット、SNSのデザインを制作しています。大切にしているのは、もやもやとした「伝えたいこと」を対話の中で引き出し、言葉に整理したうえで、伝わるデザインに落とし込むことです。</p>
+      <p>文章、レイアウト、写真、SNS。メンバーそれぞれの得意と使える時間を持ち寄って、一つの仕事に仕上げています。専門の制作会社ではない分、一人ひとりのお客様にじっくり向き合えることも強みです。</p>
+      <p><a class="card__link" href="{{ '/services/design/' | url }}">サービス内容・料金を見る</a></p>
+    </article>
 
-<section class="section section--alt" id="co-creation">
-  <div class="container">
-    <p class="eyebrow">力を持ち寄るプロジェクト</p>
-    <h2>一人ではできないことも、持ち寄れば仕事になる</h2>
-    <p>一人の専門性や、フルタイムで働けることを前提にせず、複数人の経験、得意、使える時間を組み合わせます。そうして、頼んだ人の役に立ち、関わる人の経験も活かせる仕事やサービスをつくっています。</p>
-    <p style="margin-top:20px;"><a class="card__link" href="{{ '/projects/' | url }}">プロジェクトを見る</a></p>
-  </div>
-</section>
-
-<section class="section" id="tax-accounting">
-  <div class="container">
-    <p class="eyebrow">税務会計サポート</p>
-    <h2>会計まわりの事務を、チームで支える</h2>
-    <p>記帳や領収書の整理、会計ソフトへの入力など、個人事業主や小さな団体の会計まわりの事務をサポートしています。日々の細かな記録を整え、期限を見越して先回りする。家計や家庭のことを回してきた経験が活きる仕事です。</p>
-    <p>税務申告や個別の税務相談が必要な場合は、税理士と連携して対応します。</p>
-    <p style="margin-top:20px;"><a class="card__link" href="{{ '/services/tax-accounting/' | url }}">サービス内容・料金を見る</a></p>
+    <article class="activity-detail" id="tax-accounting">
+      {% set pl = pillars | selectattr("id", "equalto", "tax-accounting") | first %}
+      <div class="activity-detail__media">{{ itemMedia(pl, pl.title) }}</div>
+      <p class="eyebrow">税務会計サポート</p>
+      <h3>会計まわりの事務を、チームで支える</h3>
+      <p>記帳や領収書の整理、会計ソフトへの入力など、個人事業主や小さな団体の会計まわりの事務をサポートしています。日々の細かな記録を整え、期限を見越して先回りする。家計や家庭のことを回してきた経験が活きる仕事です。</p>
+      <p>税務申告や個別の税務相談が必要な場合は、税理士と連携して対応します。</p>
+      <p><a class="card__link" href="{{ '/services/tax-accounting/' | url }}">サービス内容・料金を見る</a></p>
+    </article>
   </div>
 </section>
