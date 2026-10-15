@@ -5,6 +5,7 @@ description: "Wieは、子育て中や子育てを終えた女性たちの、見
 ---
 {% from "partials/media.njk" import illustration, wiechan %}
 {% from "partials/cards.njk" import pillarCard, externalCard, newsCard %}
+{% from "partials/icons.njk" import icon %}
 
 <section class="hero">
   <div class="hero__inner">
@@ -16,6 +17,11 @@ description: "Wieは、子育て中や子育てを終えた女性たちの、見
         <a class="btn btn--outline" href="{{ '/about/' | url }}">Wieについて</a>
       </div>
     </div>
+    <ul class="hero__sns">
+      {% for s in site.sns %}{% if s.url %}
+      <li><a href="{{ s.url }}" target="_blank" rel="noopener noreferrer">{{ icon("instagram" if s.label == "Instagram" else "line") }}{{ s.label }}<span class="visually-hidden">（外部サイトへ移動します）</span></a></li>
+      {% endif %}{% endfor %}
+    </ul>
   </div>
 </section>
 

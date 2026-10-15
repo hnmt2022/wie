@@ -189,6 +189,13 @@ p { margin: 0 0 1em; }
 }
 .hero h1 { font-size: clamp(1.6rem, 3.6vw, 2.5rem); }
 .hero__lead { font-size: 1.05rem; color: var(--color-text); }
+.hero__sns { list-style: none; max-width: 640px; margin: 14px 0 0; padding: 0; display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 8px; }
+.hero__sns a {
+  display: inline-flex; align-items: center; gap: 6px; font-size: 0.88rem; font-weight: 700; color: var(--color-navy); text-decoration: none;
+  background: rgba(255, 255, 255, 0.88); border-radius: 999px; padding: 6px 14px; box-shadow: 0 4px 12px rgba(20, 60, 110, 0.12);
+}
+.hero__sns a:hover { background: #fff; color: var(--color-navy); }
+.hero__sns .icon { width: 20px; height: 20px; }
 
 /* ---------- 各ページ上部（トップと同じ空写真を、白に溶かして敷く） ---------- */
 .page-sky {
