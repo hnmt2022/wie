@@ -48,7 +48,7 @@ description: "Wieは、子育て中や子育てを終えた女性たちの、見
       <h2>最新のお知らせ</h2>
     </div>
     {% if news.length %}
-    <div class="grid grid--3">
+    <div class="grid grid--3 news-thumbs">
       {% for n in news | reverse %}
         {% if loop.index <= 3 %}{{ newsCard(n) }}{% endif %}
       {% endfor %}

@@ -476,5 +476,8 @@ p { margin: 0 0 1em; }
   background: var(--color-white); border: 1px solid var(--color-border);
   border-radius: var(--radius-lg); padding: 26px 28px; box-shadow: var(--shadow-soft);
 }
-/* シートから取り込んだ写真（チラシ・SNS画像など文字入りが多い）は切り取らず全体を見せる */
-.media--photo { aspect-ratio: auto !important; height: auto; object-fit: contain; }
+/* シートから取り込んだ写真（チラシ・SNS画像など文字入りが多い）は切り取らず全体を見せる。
+   縦横比がまちまちなので、枠は Instagram 投稿と同じ 4:5 にそろえ、余白は淡い地色で埋める */
+.media--photo { aspect-ratio: 4 / 5 !important; height: auto; object-fit: contain; background: var(--color-bg-alt-2); }
+/* トップのお知らせは横長のサムネイルに（チラシの上部＝タイトル部分を見せる） */
+.news-thumbs .media--photo { aspect-ratio: 16 / 9 !important; object-fit: cover; object-position: top; }
