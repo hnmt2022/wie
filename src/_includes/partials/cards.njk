@@ -1,4 +1,4 @@
-{% from "partials/media.njk" import photo, illustration %}
+{% from "partials/media.njk" import photo, illustration, itemMedia %}
 
 {# 現在の活動：4つの柱カード #}
 {% macro pillarCard(pillar, linkUrl) %}
@@ -53,7 +53,7 @@
 {# お知らせカード。url があればタイトルをリンクに、tags は /news/?tag= への絞り込みリンク、sample が true なら「サンプル」バッジを表示 #}
 {% macro newsCard(n) %}
 <article class="card card--compact" data-tags="{{ (n.tags or []) | join('|') }}">
-  {{ illustration(n.image, n.title, "16/9", false, n.image) }}
+  {{ itemMedia(n, n.title, "16/9") }}
   <div class="card__body">
     <p class="news-card__meta">
       <time>{{ n.date }}</time>

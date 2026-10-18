@@ -1,7 +1,7 @@
 {
   "_comment": "外部リンクはここで一括管理します。URLが決まったら値を文字列で入れてください。未設定（null）の間はサイト側で自動的に「準備中」表示になります。",
   "NOTE_URL": "https://note.com/wie_for_women",
-  "RADIO_URL": null,
+  "RADIO_URL": "https://stand.fm/channels/67a4562311be6ce817443e42",
   "MONEY_CONSULTATION_LP_URL": null,
   "KAKARITSUKE_LP_URL": null
 }

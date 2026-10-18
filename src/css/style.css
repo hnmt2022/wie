@@ -476,3 +476,5 @@ p { margin: 0 0 1em; }
   background: var(--color-white); border: 1px solid var(--color-border);
   border-radius: var(--radius-lg); padding: 26px 28px; box-shadow: var(--shadow-soft);
 }
+/* シートから取り込んだ写真（チラシ・SNS画像など文字入りが多い）は切り取らず全体を見せる */
+.media--photo { aspect-ratio: auto !important; height: auto; object-fit: contain; }

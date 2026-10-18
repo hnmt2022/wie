@@ -35,7 +35,7 @@
 {% macro itemMedia(item, alt, ratio="4/3") %}
   {% if item.photo %}
   <img class="media media--photo" style="aspect-ratio:{{ ratio }};" src="{{ ('/images/activities/' + item.photo) | url }}" alt="{{ alt }}" loading="lazy" decoding="async">
-  {% else %}
+  {% elif item.image %}
   <img class="media media--illustration" style="aspect-ratio:{{ ratio }};" src="{{ ('/images/generated/' + item.image) | url }}" alt="" loading="lazy" decoding="async">
   {% endif %}
 {% endmacro %}

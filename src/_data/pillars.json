@@ -18,7 +18,7 @@
     "recommendedImage": "activity-dialogue.webp",
     "group": "life",
     "short": "対話を通して、当たり前だと思っていた経験や得意を見つけます。",
-    "photo": null,
+    "photo": "activity-discovery.webp",
     "icon": "chat"
   },
   {
@@ -30,7 +30,7 @@
     "group": "life",
     "short": "それぞれの状況に応じて、キャリアコンサルタントが相談に応じます。",
     "serviceUrl": "/services/career/",
-    "photo": null,
+    "photo": "activity-career-consultation.webp",
     "icon": "briefcase"
   },
   {

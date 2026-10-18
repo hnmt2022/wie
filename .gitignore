@@ -43,3 +43,4 @@ scripts/generation_log/
 _source-images/
 public/images/**/_candidates/
 public/images/**/_drafts/
+scripts/sheet-config.json
