@@ -1,0 +1,60 @@
+---
+layout: base.njk
+pagination:
+  data: news
+  size: 1
+  alias: n
+permalink: "/news/{{ n.id }}/"
+eleventyComputed:
+  title: "{{ n.title }}"
+  description: "{{ n.summary }}"
+---
+{# お知らせの詳細ページ（src/_data/news.json の1件ごとに /news/<id>/ を生成。中身はシートから取り込む） #}
+{% set applyUrl = n.apply | firstUrl if n.apply else "" %}
+
+<section class="section page-sky">
+  <div class="container">
+    <p class="news-detail__back"><a href="{{ '/news/' | url }}">← お知らせ一覧</a></p>
+    <div class="news-detail">
+      <div class="news-detail__main">
+        <p class="news-card__meta"><time>{{ n.date }}</time></p>
+        <h1 class="news-detail__title">{{ n.title }}</h1>
+        {% if n.tags and n.tags.length %}
+        <ul class="news-tags" aria-label="タグ">
+          {% for t in n.tags %}<li><a class="news-tag" href="{{ '/news/' | url }}?tag={{ t | urlencode }}">#{{ t }}</a></li>{% endfor %}
+        </ul>
+        {% endif %}
+        {% if n.summary %}<p class="lead">{{ n.summary }}</p>{% endif %}
+
+        {% if n.when or n.place or n.fee or n.capacity or n.apply %}
+        <dl class="news-info">
+          {% if n.when %}<dt>日時</dt><dd>{{ n.when }}</dd>{% endif %}
+          {% if n.place %}<dt>場所</dt><dd>{{ n.place }}</dd>{% endif %}
+          {% if n.fee %}<dt>参加費</dt><dd>{{ n.fee }}</dd>{% endif %}
+          {% if n.capacity %}<dt>定員</dt><dd>{{ n.capacity }}</dd>{% endif %}
+          {% if n.apply %}<dt>申込方法</dt><dd>{{ n.apply }}</dd>{% endif %}
+        </dl>
+        {% endif %}
+
+        {% if n.body %}
+        <div class="news-detail__body">
+          {% for para in n.body | paragraphs %}<p>{% for line in para %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}</p>{% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="btn-row">
+          {% if applyUrl %}<a class="btn btn--primary" href="{{ applyUrl }}" target="_blank" rel="noopener">申し込む</a>{% endif %}
+          {% if n.url %}<a class="btn {{ 'btn--outline' if applyUrl else 'btn--primary' }}" href="{{ n.url }}" target="_blank" rel="noopener">{{ 'ラジオを聴く' if 'ラジオ' in (n.tags or []) else 'くわしく見る' }}</a>{% endif %}
+          <a class="btn btn--outline" href="{{ '/contact/' | url }}">お問い合わせ</a>
+        </div>
+      </div>
+      {% if n.photo %}
+      <div class="news-detail__media">
+        {% for ph in (n.photos or [n.photo]) %}
+        <img src="{{ ('/images/activities/' + ph) | url }}" alt="{{ n.title }}{% if n.photos %}（写真{{ loop.index }}）{% endif %}" loading="{{ 'eager' if loop.first else 'lazy' }}" decoding="async">
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>

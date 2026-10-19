@@ -78,6 +78,28 @@ eleventyComputed:
   </div>
 </section>
 
+{% if service.visit %}
+<section class="section">
+  <div class="container">
+    <p class="eyebrow">専門家による訪問相談</p>
+    <h2>{{ service.visit.title }}</h2>
+    <p class="lead">{{ service.visit.lead }}</p>
+    <div class="grid grid--2">
+      {% for v in service.visit.items %}
+      <article class="card">
+        <div class="card__body">
+          <h3 class="card__title">{{ v.name }}</h3>
+          <p class="card__text">{{ v.text }}</p>
+          <p class="visit-meta">{{ v.meta }}</p>
+          <a class="btn btn--outline" href="{{ v.url }}" target="_blank" rel="noopener">くわしく見る（外部サイト）</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
 <section class="section section--alt">
   <div class="container">
     <p class="eyebrow">ご利用の流れ</p>

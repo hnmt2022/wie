@@ -13,6 +13,15 @@ description: "お金や書類、片づけ、スマートフォンなど、暮ら
     </div>
     <p class="text-muted">サービスに継続的に関わる人を、暮らしの「かかりつけパートナー」と呼びます。</p>
     <p><a class="card__link" href="{{ '/services/kurashi-money/' | url }}">← 「暮らしとお金の相談」に戻る</a></p>
+    {% if links.KAKARITSUKE_LP_URL %}
+    <div class="notice-box">
+      <p style="margin:0 0 12px;"><strong>シニアの方とご家族のための専用サイト「Wie 暮らしのかかりつけ」</strong>があります。月1回の訪問の内容や、お申し込みの方法はこちらをご覧ください。</p>
+      <div class="btn-row" style="margin-top:0;">
+        <a class="btn btn--primary" href="{{ links.KAKARITSUKE_LP_URL }}" target="_blank" rel="noopener">ご本人の方へ</a>
+        <a class="btn btn--outline" href="{{ links.KAKARITSUKE_LP_URL }}for-family.html" target="_blank" rel="noopener">離れて暮らすご家族の方へ</a>
+      </div>
+    </div>
+    {% endif %}
   </div>
 </section>
 
@@ -49,7 +58,7 @@ description: "お金や書類、片づけ、スマートフォンなど、暮ら
     <h2>できること</h2>
     <ul class="contact-topics">
       <li>毎月など定期的に会い、近況や困りごとを話す</li>
-      <li>税金、年金、家計、財産、届いた書類などを相談する</li>
+      <li>税金、年金、家計、財産、届いた書類など、気になっていることを話す（専門的な判断が必要なことは、提携する専門家におつなぎします）</li>
       <li>家の片づけや書類整理を一緒に行う</li>
       <li>スマートフォンやオンライン手続きなどを手伝う</li>
       <li>必要に応じて、それぞれの分野が得意な人につなぐ</li>

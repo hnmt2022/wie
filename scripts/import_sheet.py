@@ -12,7 +12,7 @@ URL が null のタブは読み込まない（今のデータをそのまま残�
 写真は「写真」欄にファイル名を書けば、photoFolder（共有した写真フォルダの URL）から探す。ドライブのリンクでも可。
 
 取り込み先:
-  お知らせ       → src/_data/news.json（シートの「公開 = ○」の行で丸ごと置き換え）
+  お知らせ       → src/_data/news.json（シートの「公開 = ○」の行で丸ごと置き換え。1件ごとに /news/<id>/ の詳細ページができる）
   写真           → src/_data/pillars.json / services.json の "photo"（掲載許可 = 未 の行は除く）
   サービス料金   → src/_data/services.json の "prices"（シートにあるサービスだけ置き換え）
   リンク         → src/_data/links.json / site.json の "sns"
@@ -187,19 +187,36 @@ def import_news(rows, apply):
             continue
         tags = [t.strip() for t in re.split(r"[、,，]", col(r, "タグ")) if t.strip()]
         item = {"date": date, "tags": tags, "title": title, "summary": col(r, "説明")}
+        # 詳細ページ用（空欄の項目はページに出さない）
+        for key, name in [("when", "開催日時"), ("place", "場所"), ("fee", "参加費"), ("capacity", "定員"), ("apply", "申込方法"), ("body", "本文")]:
+            v = col(r, name)
+            if v:
+                item[key] = v
         url = col(r, "リンク")
         if url:
             if url.startswith(("https://", "http://")):
                 item["url"] = url
             else:
                 warn(f"お知らせ {line}行目: リンク「{url}」は https:// で始まらないので外しました")
-        photo = col(r, "写真")
-        if photo:
-            fn = download_photo(photo, f"news-{date.replace('.', '')}-{line}.webp", f"お知らせ {line}行目", apply)
+        # 写真は「、」区切りで複数書ける。1枚目が一覧のカード、全部が詳細ページに出る
+        photos = []
+        for k, ph in enumerate(t.strip() for t in re.split(r"[、,，\n]", col(r, "写真")) if t.strip()):
+            suffix = "" if k == 0 else f"-{k + 1}"
+            fn = download_photo(ph, f"news-{date.replace('.', '')}-{line}{suffix}.webp", f"お知らせ {line}行目", apply)
             if fn:
-                item["photo"] = fn
+                photos.append(fn)
+        if photos:
+            item["photo"] = photos[0]
+        if len(photos) > 1:
+            item["photos"] = photos
         items.append(item)
     items.sort(key=lambda x: x["date"])
+    # 詳細ページの URL（/news/20261203/）。同じ日付が複数あれば -2, -3 …
+    seen = {}
+    for it in items:
+        base = it["date"].replace(".", "")
+        seen[base] = seen.get(base, 0) + 1
+        it["id"] = base if seen[base] == 1 else f"{base}-{seen[base]}"
     if not items:
         print("■ お知らせ: シートに「公開 = ○」の行がないので、今のお知らせをそのまま残します")
         return

@@ -36,7 +36,7 @@
   {
     "id": "kurashi-money",
     "title": "暮らしとお金の相談",
-    "summary": "年金や税金、住まい、書類など、暮らしやお金に関する個別相談と、困りごとを最初に相談できる「暮らしのかかりつけ」に取り組んでいます。",
+    "summary": "年金や税金、住まい、書類など、暮らしやお金のことで気になることを最初に相談できる「暮らしのかかりつけ」に取り組んでいます。専門的な判断が必要なことは、提携する専門家におつなぎします。",
     "image": "project-living-money.webp",
     "recommendedImage": "project-living-money.webp",
     "group": "life",
@@ -70,7 +70,7 @@
   },
   {
     "id": "tax-accounting",
-    "title": "税務会計サポート",
+    "title": "経理サポート",
     "summary": "記帳や領収書の整理、会計ソフトへの入力など、個人事業主や小さな団体の会計まわりの事務をサポートします。税務申告や個別の税務相談が必要な場合は、税理士と連携して対応します。",
     "image": "future-co-work.webp",
     "recommendedImage": "future-co-work.webp",
