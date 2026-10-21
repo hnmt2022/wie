@@ -46,7 +46,7 @@ GitHub の鍵（トークン）はどこにも使いません。
 
 - 実行: `python scripts/import_sheet.py`（確認のみ）→ 代表の OK 後に `python scripts/import_sheet.py --apply` → `npm run build` → コミット・push
 - お知らせ: 「公開」が ○ の行だけ。news.json を **丸ごと置き換える**（シートが正）。日付は `2026.10.15` に揃える。リンクは https:// のみ
-  - 1件ごとに `/news/<日付>/`（同じ日付が複数なら `-2`…）の詳細ページができる。開催日時・場所・参加費・定員・申込方法・本文は書いた項目だけ表示。申込方法に https:// の URL があれば「申し込む」ボタンになる
+  - 1件ごとに `/news/<日付>/`（同じ日付が複数なら `-2`…）の詳細ページができる。開催日時・場所・参加費・定員・申込方法・本文は書いた項目だけ表示。申込方法に https:// の URL があれば「申し込む」ボタンになる。Googleフォーム（docs.google.com/forms・forms.gle）なら、つながる会と同じく画面に重ねて開く（src/_includes/partials/form-dialog.njk）
 - 写真: 写真欄に書いたものは掲載許可を取ったものとして扱う（「掲載許可」列に「未」とある行だけ除く）。「写真」欄のファイル名を写真フォルダから探して（リンクでも可）取得し、長辺 1600px の WebP にして `public/images/activities/` に保存
   - 活動: `activity-<活動のid>.webp`（同じ名前のサービスページにも使う）
   - お知らせ: `news-<日付>-<行番号>.webp`
