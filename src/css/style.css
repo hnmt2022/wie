@@ -495,3 +495,25 @@ p { margin: 0 0 1em; }
 @media (max-width: 760px) { .news-detail { grid-template-columns: 1fr; gap: 24px; } }
 .news-detail__media { display: grid; gap: 16px; }
 .visit-meta { font-weight: 700; color: var(--color-navy); margin: 0 0 16px; }
+/* つながり通信 */
+.tsushin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+.tsushin-card { display: flex; flex-direction: column; background: var(--color-white); border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 16px rgba(20, 60, 110, 0.1); text-decoration: none; color: inherit; transition: transform .15s ease, box-shadow .15s ease; }
+.tsushin-card:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(20, 60, 110, 0.16); }
+.tsushin-card img { width: 100%; aspect-ratio: 1 / 1.414; object-fit: cover; object-position: top; border-bottom: 1px solid var(--color-border); }
+.tsushin-card__meta { display: flex; flex-direction: column; gap: 4px; padding: 14px 16px 16px; }
+.tsushin-card__new { align-self: flex-start; font-size: 0.75rem; font-weight: 700; color: #fff; background: var(--color-navy); border-radius: 999px; padding: 2px 10px; }
+.tsushin-card__title { font-weight: 700; color: var(--color-navy); }
+.tsushin-card__link { font-size: 0.9rem; color: var(--color-navy-soft); }
+.tsushin-card__link::after { content: " →"; }
+@media (prefers-reduced-motion: reduce) { .tsushin-card { transition: none; } .tsushin-card:hover { transform: none; } }
+/* つながり通信の拡大表示 */
+.tsushin-viewer { width: min(960px, 100vw - 24px); max-width: none; max-height: calc(100vh - 24px); padding: 0; border: 0; border-radius: var(--radius-md); background: var(--color-bg); overflow: hidden; }
+.tsushin-viewer[open] { display: flex; flex-direction: column; }
+.tsushin-viewer::backdrop { background: rgba(10, 30, 60, 0.75); }
+.tsushin-viewer__bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px 10px 18px; background: var(--color-white); border-bottom: 1px solid var(--color-border); }
+.tsushin-viewer__title { margin: 0; font-weight: 700; color: var(--color-navy); font-size: 0.95rem; }
+.tsushin-viewer__close { flex-shrink: 0; font: inherit; font-weight: 700; color: #fff; background: var(--color-navy); border: 0; border-radius: 999px; padding: 8px 18px; cursor: pointer; }
+.tsushin-viewer__pages { overflow: auto; padding: 12px; display: grid; gap: 12px; justify-items: center; }
+.tsushin-viewer__pages img { width: 100%; height: auto; cursor: zoom-in; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12); background: #fff; }
+.tsushin-viewer__pages img.is-zoomed { width: 200%; max-width: none; cursor: zoom-out; justify-self: start; }
+.tsushin-viewer__hint { margin: 0; padding: 6px 12px 10px; text-align: center; font-size: 0.8rem; color: var(--color-text-muted); }

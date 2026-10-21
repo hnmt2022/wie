@@ -1,0 +1,49 @@
+---
+layout: base.njk
+title: "Wieつながり通信"
+description: "Wieの活動の様子や、これからのお知らせを、季節ごとにお届けしている「Wieつながり通信」のバックナンバーです。"
+---
+{# つながり通信の一覧。中身は scripts/import_sheet.py がドライブのフォルダから取り込む（src/_data/tsushin.json、ページ画像は public/images/tsushin/<id>/） #}
+{% from "partials/media.njk" import wiechan %}
+
+<section class="section page-sky">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">発信</p>
+      <h1>Wieつながり通信</h1>
+      <p class="lead">Wieの活動の様子や、これからのお知らせを、季節ごとにお届けしています。表紙を押すと、大きく表示されます。</p>
+    </div>
+
+    {% if tsushin.length %}
+    <div class="tsushin-grid">
+      {% for t in tsushin %}
+      {% set dir = '/images/tsushin/' + t.id + '/' %}
+      <a class="tsushin-card" href="{{ (dir + 'p1.webp') | url }}" data-title="Wieつながり通信 No.{{ t.no }} {{ t.title }}"
+         data-pages="{% for i in range(1, t.pages + 1) %}{{ (dir + 'p' + i + '.webp') | url }}{% if not loop.last %}|{% endif %}{% endfor %}">
+        <img src="{{ (dir + 'thumb.webp') | url }}" alt="Wieつながり通信 No.{{ t.no }} {{ t.title }}の表紙" loading="{{ 'eager' if loop.first else 'lazy' }}" decoding="async">
+        <span class="tsushin-card__meta">
+          {% if loop.first %}<span class="tsushin-card__new">最新号</span>{% endif %}
+          <span class="tsushin-card__title">No.{{ t.no }}　{{ t.title }}</span>
+          <span class="tsushin-card__link">読む</span>
+        </span>
+      </a>
+      {% endfor %}
+    </div>
+
+    <dialog class="tsushin-viewer" id="tsushin-viewer" aria-labelledby="tsushin-viewer-title">
+      <div class="tsushin-viewer__bar">
+        <p class="tsushin-viewer__title" id="tsushin-viewer-title"></p>
+        <button type="button" class="tsushin-viewer__close" data-close>閉じる</button>
+      </div>
+      <div class="tsushin-viewer__pages" id="tsushin-viewer-pages"></div>
+      <p class="tsushin-viewer__hint">画像を押すと、さらに拡大できます</p>
+    </dialog>
+    <script src="{{ '/js/tsushin-viewer.js' | url }}" defer></script>
+    {% else %}
+    <div class="news-empty">
+      {{ wiechan("wiechan-default.png", "Wieちゃん") }}
+      <p style="margin:0;">通信は準備中です。</p>
+    </div>
+    {% endif %}
+  </div>
+</section>

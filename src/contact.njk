@@ -52,6 +52,7 @@ description: "Wieへのお問い合わせはメールでお受けしています
       {% if links.RADIO_URL %}
       <li><a href="{{ links.RADIO_URL }}" target="_blank" rel="noopener noreferrer">ラジオ<span class="visually-hidden">（外部サイトへ移動します）</span></a></li>
       {% endif %}
+      {% if tsushin.length %}<li><a href="{{ '/tsushin/' | url }}">つながり通信</a></li>{% endif %}
     </ul>
   </div>
 </section>

@@ -106,24 +106,27 @@ def drive_id(link):
 _folder_files = None
 
 
+def list_folder(url, label):
+    """「リンクを知っている全員」で共有したドライブのフォルダの、ファイル名 → ファイルID"""
+    fid = (re.search(r"folders/([A-Za-z0-9_-]{20,})", url or "") or [None, None])[1] or drive_id(url or "")
+    if not fid:
+        warn(f"{label}の URL が未設定です")
+        return {}
+    body, _ = fetch(f"https://drive.google.com/embeddedfolderview?id={fid}")
+    html = body.decode("utf-8", "replace")
+    files = {}
+    for m in re.finditer(r'id="entry-([A-Za-z0-9_-]{20,})".*?class="flip-entry-title">([^<]+)<', html, re.S):
+        files[m.group(2).strip().replace("&amp;", "&")] = m.group(1)
+    if not files:
+        warn(f"{label}の中身を読めませんでした。フォルダの共有が「リンクを知っている全員」になっているか確認してください")
+    return files
+
+
 def folder_files():
-    """写真フォルダ（sheet-config.json の photoFolder）のファイル名 → ファイルID。
-    「リンクを知っている全員」で共有したフォルダの一覧ページから読む"""
+    """写真フォルダ（sheet-config.json の photoFolder）のファイル名 → ファイルID"""
     global _folder_files
     if _folder_files is None:
-        _folder_files = {}
-        url = json.loads(CONFIG.read_text(encoding="utf-8")).get("photoFolder")
-        fid = drive_id(url or "") or (re.search(r"folders/([A-Za-z0-9_-]{20,})", url or "") or [None, None])[1]
-        if not fid:
-            warn("写真フォルダの URL（scripts/sheet-config.json の photoFolder）が未設定です")
-            return _folder_files
-        body, _ = fetch(f"https://drive.google.com/embeddedfolderview?id={fid}")
-        html = body.decode("utf-8", "replace")
-        for m in re.finditer(r'id="entry-([A-Za-z0-9_-]{20,})".*?class="flip-entry-title">([^<]+)<', html, re.S):
-            name = m.group(2).strip().replace("&amp;", "&")
-            _folder_files[name] = m.group(1)
-        if not _folder_files:
-            warn("写真フォルダの中身を読めませんでした。フォルダの共有が「リンクを知っている全員」になっているか確認してください")
+        _folder_files = list_folder(json.loads(CONFIG.read_text(encoding="utf-8")).get("photoFolder"), "写真フォルダ")
     return _folder_files
 
 
@@ -308,6 +311,58 @@ def import_links(rows, apply):
         save_json("site.json", site)
 
 
+TSUSHIN_DIR = ROOT / "public" / "images" / "tsushin"
+
+
+def render_tsushin(fid, name):
+    """ドライブの PDF を取得し、ページごとの画像（public/images/tsushin/<id>/p1.webp …）にする。ページ数を返す"""
+    import pymupdf
+    from PIL import Image
+    body, ctype = fetch(f"https://drive.google.com/uc?export=download&id={fid}")
+    if not body.startswith(b"%PDF"):
+        warn(f"つながる通信「{name}」: PDF を取得できませんでした。フォルダの共有を確認してください")
+        return 0
+    out = TSUSHIN_DIR / fid
+    out.mkdir(parents=True, exist_ok=True)
+    doc = pymupdf.open(stream=body, filetype="pdf")
+    for i, page in enumerate(doc, start=1):
+        pix = page.get_pixmap(matrix=pymupdf.Matrix(1600 / page.rect.width, 1600 / page.rect.width))
+        img = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
+        img.save(out / f"p{i}.webp", "WEBP", quality=85)
+        if i == 1:
+            img.thumbnail((600, 900))
+            img.save(out / "thumb.webp", "WEBP", quality=82)
+    return len(doc)
+
+
+def import_tsushin(url, apply):
+    """「つながり通信」フォルダの PDF を src/_data/tsushin.json に。各ページを画像にして、サイト内の拡大表示で読めるようにする。
+    ファイル名は「No.3_2026秋号.pdf」の形（先頭の【NEW】などは無視。最新号はサイト側で表示）。
+    同じファイルは2回目から画像を作り直さない（内容を差し替えるときは、新しいファイルとして入れ直す）"""
+    files = {n: i for n, i in list_folder(url, "つながり通信のフォルダ").items() if n.lower().endswith(".pdf")}
+    old = {t["id"]: t for t in (load_json("tsushin.json") if (DATA / "tsushin.json").exists() else [])}
+    items = []
+    for name, fid in files.items():
+        base = re.sub(r"^[【\[]?NEW[】\]]?\s*", "", name[:-4], flags=re.I).strip()
+        m = re.match(r"No\.?\s*(\d+)[_\s　]*(.*)", base, re.I)
+        if not m:
+            warn(f"つながり通信「{name}」: ファイル名が「No.3_2026秋号.pdf」の形でないので飛ばしました")
+            continue
+        item = {"no": int(m.group(1)), "title": m.group(2).strip() or base, "id": fid}
+        pages = old.get(fid, {}).get("pages") if (TSUSHIN_DIR / fid / "p1.webp").exists() else None
+        if apply and not pages:
+            pages = render_tsushin(fid, name)
+        if pages or not apply:
+            item["pages"] = pages or 0
+            items.append(item)
+    items.sort(key=lambda x: x["no"], reverse=True)
+    print(f"■ つながり通信: {len(items)}号")
+    for it in items:
+        print(f"   No.{it['no']}  {it['title']}")
+    if apply:
+        save_json("tsushin.json", items)
+
+
 def main():
     apply = "--apply" in sys.argv
     config = json.loads(CONFIG.read_text(encoding="utf-8"))
@@ -319,6 +374,8 @@ def main():
             fn(read_tab(config[key]), apply)
         else:
             print(f"■ {key}: URL 未設定のため読み込みませんでした")
+    if config.get("tsushinFolder"):
+        import_tsushin(config["tsushinFolder"], apply)
     if warnings:
         print("\n▲ 確認が必要なこと")
         for w in warnings:

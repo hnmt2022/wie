@@ -21,6 +21,7 @@ description: "Wieは、子育て中や子育てを終えた女性たちの、見
       {% for s in site.sns %}{% if s.url %}
       <li><a href="{{ s.url }}" target="_blank" rel="noopener noreferrer">{{ icon("instagram" if s.label == "Instagram" else "line") }}{{ s.label }}<span class="visually-hidden">（外部サイトへ移動します）</span></a></li>
       {% endif %}{% endfor %}
+      {% if tsushin.length %}<li><a href="{{ '/tsushin/' | url }}">{{ icon("book") }}つながり通信</a></li>{% endif %}
     </ul>
   </div>
 </section>
@@ -75,12 +76,13 @@ description: "Wieは、子育て中や子育てを終えた女性たちの、見
     <div class="card card--external media-outlets" id="media">
       <div class="card__body">
         <h3 class="card__title">発信</h3>
-        <p class="card__text">活動の背景や開催報告、メンバーの声を、note・Instagram・ラジオで発信しています。イベントのご案内は公式LINEで、メンバーどうしの気軽なやりとりは「つながる会」のオープンチャット（メンバーへの招待制）で行っています。</p>
+        <p class="card__text">活動の背景や開催報告、メンバーの声を、note・Instagram・ラジオ・「つながり通信」で発信しています。イベントのご案内は公式LINEで、メンバーどうしの気軽なやりとりは「つながる会」のオープンチャット（メンバーへの招待制）で行っています。</p>
         <div class="btn-row">
           {% if links.NOTE_URL %}<a class="btn btn--outline" href="{{ links.NOTE_URL }}" target="_blank" rel="noopener noreferrer">noteで読む<span class="visually-hidden">（外部サイトへ移動します）</span></a>{% else %}<span class="btn btn--outline btn--disabled" aria-disabled="true">note（準備中）</span>{% endif %}
           {% for s in site.sns %}{% if s.label == "Instagram" and s.url %}<a class="btn btn--outline" href="{{ s.url }}" target="_blank" rel="noopener noreferrer">Instagramを見る<span class="visually-hidden">（外部サイトへ移動します）</span></a>{% endif %}{% endfor %}
           {% if links.RADIO_URL %}<a class="btn btn--outline" href="{{ links.RADIO_URL }}" target="_blank" rel="noopener noreferrer">ラジオを聴く<span class="visually-hidden">（外部サイトへ移動します）</span></a>{% else %}<span class="btn btn--outline btn--disabled" aria-disabled="true">ラジオ（準備中）</span>{% endif %}
           {% for s in site.sns %}{% if s.label == "公式LINE" and s.url %}<a class="btn btn--outline" href="{{ s.url }}" target="_blank" rel="noopener noreferrer">公式LINEを見る<span class="visually-hidden">（外部サイトへ移動します）</span></a>{% endif %}{% endfor %}
+          {% if tsushin.length %}<a class="btn btn--outline" href="{{ '/tsushin/' | url }}">つながり通信を読む</a>{% endif %}
         </div>
       </div>
     </div>
