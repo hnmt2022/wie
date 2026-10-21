@@ -10,7 +10,10 @@ eleventyComputed:
   description: "{{ n.summary }}"
 ---
 {# お知らせの詳細ページ（src/_data/news.json の1件ごとに /news/<id>/ を生成。中身はシートから取り込む） #}
+{% from "partials/form-dialog.njk" import formButton, formSection %}
 {% set applyUrl = n.apply | firstUrl if n.apply else "" %}
+{# 申込方法が Googleフォームなら、つながる会と同じく重ねて開く。つながる会のお知らせは、つながる会のフォーム #}
+{% set formUrl = applyUrl if ('docs.google.com/forms' in applyUrl or 'forms.gle' in applyUrl) else (links.TSUNAGARU_FORM_URL if ('つながる会' in (n.tags or []) and not applyUrl) else "") %}
 
 <section class="section page-sky">
   <div class="container">
@@ -43,10 +46,9 @@ eleventyComputed:
         {% endif %}
 
         <div class="btn-row">
-          {% if applyUrl %}<a class="btn btn--primary" href="{{ applyUrl }}" target="_blank" rel="noopener">申し込む</a>{% elif 'つながる会' in (n.tags or []) and links.TSUNAGARU_FORM_URL %}<a class="btn btn--primary" href="{{ links.TSUNAGARU_FORM_URL }}" target="_blank" rel="noopener noreferrer" data-form-open="tsunagaru-form">申し込む</a>{% endif %}
+          {% if formUrl %}{{ formButton(formUrl) }}{% elif applyUrl %}<a class="btn btn--primary" href="{{ applyUrl }}" target="_blank" rel="noopener">申し込む</a>{% endif %}
           {% if n.url and n.url.startsWith('/') %}<a class="btn btn--primary" href="{{ n.url | url }}">{{ 'つながり通信を読む' if n.url == '/tsushin/' else 'くわしく見る' }}</a>
           {% elif n.url %}<a class="btn {{ 'btn--outline' if applyUrl else 'btn--primary' }}" href="{{ n.url }}" target="_blank" rel="noopener">{{ 'ラジオを聴く' if 'ラジオ' in (n.tags or []) else 'くわしく見る' }}</a>{% endif %}
-          <a class="btn btn--outline" href="{{ '/contact/' | url }}">お問い合わせ</a>
         </div>
       </div>
       {% if n.photo %}
@@ -60,5 +62,4 @@ eleventyComputed:
   </div>
 </section>
 
-{# つながる会のお知らせには、申し込みフォームを出す #}
-{% if 'つながる会' in (n.tags or []) %}{% include "partials/tsunagaru-form.njk" %}{% endif %}
+{% if formUrl %}{{ formSection(formUrl, n.title + " お申込フォーム", "お申し込み", "下のボタンから、申し込みフォームを開けます。") }}{% endif %}

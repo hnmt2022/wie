@@ -1,0 +1,29 @@
+{# 申し込みフォーム（Googleフォーム）を、ボタンで画面の上に重ねて開く（src/js/form-dialog.js）。
+   JavaScript が動かないときは、ボタンのリンク先（Googleフォーム）が別タブで開く。
+   formButton … 申し込みボタン（ページのどこに置いてもよい）
+   formSection … ページ下の案内とボタン＋フォームの dialog 本体（1ページに1回） #}
+
+{% macro embedSrc(url) %}{{ url.split('?')[0] + '?embedded=true' if 'docs.google.com/forms' in url else url }}{% endmacro %}
+
+{% macro formButton(url, label="申し込む", id="apply-form") %}
+<a class="btn btn--primary" href="{{ url }}" target="_blank" rel="noopener noreferrer" data-form-open="{{ id }}">{{ label }}</a>
+{% endmacro %}
+
+{% macro formSection(url, title, heading, lead, id="apply-form") %}
+<section class="section section--alt" id="form">
+  <div class="container form-cta">
+    <h2>{{ heading }}</h2>
+    {% if lead %}<p>{{ lead }}</p>{% endif %}
+    {{ formButton(url, "申し込みフォームを開く", id) }}
+  </div>
+</section>
+
+<dialog class="tsushin-viewer form-dialog" id="{{ id }}" aria-labelledby="{{ id }}-title" data-src="{{ embedSrc(url) | trim }}">
+  <div class="tsushin-viewer__bar">
+    <p class="tsushin-viewer__title" id="{{ id }}-title">{{ title }}</p>
+    <button type="button" class="tsushin-viewer__close" data-close>閉じる</button>
+  </div>
+  <iframe title="{{ title }}"></iframe>
+</dialog>
+<script src="{{ '/js/form-dialog.js' | url }}" defer></script>
+{% endmacro %}
