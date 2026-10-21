@@ -10,10 +10,15 @@ eleventyComputed:
   description: "{{ n.summary }}"
 ---
 {# お知らせの詳細ページ（src/_data/news.json の1件ごとに /news/<id>/ を生成。中身はシートから取り込む） #}
-{% from "partials/form-dialog.njk" import formButton, formSection %}
+{% from "partials/form-dialog.njk" import formButton, formDialog %}
 {% set applyUrl = n.apply | firstUrl if n.apply else "" %}
 {# 申込方法が Googleフォームなら、つながる会と同じく重ねて開く。つながる会のお知らせは、つながる会のフォーム #}
-{% set formUrl = applyUrl if ('docs.google.com/forms' in applyUrl or 'forms.gle' in applyUrl) else (links.TSUNAGARU_FORM_URL if ('つながる会' in (n.tags or []) and not applyUrl) else "") %}
+{% set linkUrl = n.url or "" %}
+{% set linkIsForm = 'docs.google.com/forms' in linkUrl or 'forms.gle' in linkUrl %}
+{% if 'docs.google.com/forms' in applyUrl or 'forms.gle' in applyUrl %}{% set formUrl = applyUrl %}
+{% elif linkIsForm %}{% set formUrl = linkUrl %}{# リンク欄にフォームを入れた場合も「申し込む」にする #}
+{% elif 'つながる会' in (n.tags or []) and not applyUrl %}{% set formUrl = links.TSUNAGARU_FORM_URL %}
+{% else %}{% set formUrl = "" %}{% endif %}
 
 <section class="section page-sky">
   <div class="container">
@@ -48,7 +53,7 @@ eleventyComputed:
         <div class="btn-row">
           {% if formUrl %}{{ formButton(formUrl) }}{% elif applyUrl %}<a class="btn btn--primary" href="{{ applyUrl }}" target="_blank" rel="noopener">申し込む</a>{% endif %}
           {% if n.url and n.url.startsWith('/') %}<a class="btn btn--primary" href="{{ n.url | url }}">{{ 'つながり通信を読む' if n.url == '/tsushin/' else 'くわしく見る' }}</a>
-          {% elif n.url %}<a class="btn {{ 'btn--outline' if applyUrl else 'btn--primary' }}" href="{{ n.url }}" target="_blank" rel="noopener">{{ 'ラジオを聴く' if 'ラジオ' in (n.tags or []) else 'くわしく見る' }}</a>{% endif %}
+          {% elif n.url and not linkIsForm %}<a class="btn {{ 'btn--outline' if applyUrl else 'btn--primary' }}" href="{{ n.url }}" target="_blank" rel="noopener">{{ 'ラジオを聴く' if 'ラジオ' in (n.tags or []) else 'くわしく見る' }}</a>{% endif %}
         </div>
       </div>
       {% if n.photo %}
@@ -62,4 +67,4 @@ eleventyComputed:
   </div>
 </section>
 
-{% if formUrl %}{{ formSection(formUrl, n.title + " お申込フォーム", "お申し込み", "下のボタンから、申し込みフォームを開けます。") }}{% endif %}
+{% if formUrl %}{{ formDialog(formUrl, n.title + " お申込フォーム") }}{% endif %}

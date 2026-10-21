@@ -1,7 +1,8 @@
 {# 申し込みフォーム（Googleフォーム）を、ボタンで画面の上に重ねて開く（src/js/form-dialog.js）。
    JavaScript が動かないときは、ボタンのリンク先（Googleフォーム）が別タブで開く。
    formButton … 申し込みボタン（ページのどこに置いてもよい）
-   formSection … ページ下の案内とボタン＋フォームの dialog 本体（1ページに1回） #}
+   formSection … ページ下の案内とボタン＋フォームの dialog 本体（1ページに1回）
+   formDialog … フォームの dialog 本体だけ（ボタンは formButton で別に置く） #}
 
 {% macro embedSrc(url) %}{{ url.split('?')[0] + '?embedded=true' if 'docs.google.com/forms' in url else url }}{% endmacro %}
 
@@ -17,7 +18,10 @@
     {{ formButton(url, "申し込みフォームを開く", id) }}
   </div>
 </section>
+{{ formDialog(url, title, id) }}
+{% endmacro %}
 
+{% macro formDialog(url, title, id="apply-form") %}
 <dialog class="tsushin-viewer form-dialog" id="{{ id }}" aria-labelledby="{{ id }}-title" data-src="{{ embedSrc(url) | trim }}">
   <div class="tsushin-viewer__bar">
     <p class="tsushin-viewer__title" id="{{ id }}-title">{{ title }}</p>
