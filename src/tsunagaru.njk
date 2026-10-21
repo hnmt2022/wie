@@ -1,0 +1,63 @@
+---
+layout: base.njk
+title: "Wie つながる会"
+description: "つながる会は、ゆるやかな交流と、ちいさなチャレンジを大切にする、主体的な学びの場です。情報交換会・勉強会・座談会・作業会などを随時開催しています。"
+---
+{# つながる会の紹介と申し込みフォーム（フォームは partials/tsunagaru-form.njk、URL は links.json の TSUNAGARU_FORM_URL） #}
+{% from "partials/media.njk" import itemMedia %}
+{% set pl = pillars | findById("discovery") %}
+
+<section class="section page-sky">
+  <div class="container">
+    <div class="service-hero">
+      <div>
+        <div class="section__head" style="margin-bottom:0;">
+          <p class="eyebrow">活動内容</p>
+          <h1>Wie つながる会</h1>
+          <p class="service-catch">ゆるやかな交流と、ちいさなチャレンジを大切にする、主体的な学びの場です。</p>
+          <p class="lead">講師や先生が「教える」ような、講座やセミナーではありません。参加者さん同士で知恵を出し合ったり、気になっていることを話しあったり、それぞれの挑戦を応援し合える場にしていきたいと思っています。</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="{{ links.TSUNAGARU_FORM_URL }}" target="_blank" rel="noopener noreferrer" data-form-open="tsunagaru-form">申し込む・問い合わせる</a>
+        </div>
+      </div>
+      <div class="service-hero__media">{{ itemMedia(pl, pl.title) }}</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="eyebrow">大切にしていること</p>
+    <h2>「教わる」「教える」だけじゃなく</h2>
+    <ul class="tsunagaru-values">
+      <li>一緒にやってみる</li>
+      <li>情報を共有する</li>
+      <li>みんなで調べる</li>
+      <li>わいわい試してみる</li>
+      <li>自然につながる</li>
+    </ul>
+    <p>情報交換会、勉強会、座談会、作業会などを随時開催しています。開催の予定は、<a href="{{ '/news/' | url }}?tag={{ 'つながる会' | urlencode }}">お知らせ</a>でご案内しています。</p>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <p class="eyebrow">参加できる方</p>
+    <h2>どなたでもご参加いただけます</h2>
+    <p>サポーターさんはもちろん、Wieの活動に関心があり、<strong>地域や社会に役立つ取り組みを行いたい</strong>と思っている方なら、どなたでもご参加いただけます。</p>
+    <ul class="check-list">
+      <li>初めての方も大歓迎です。「まずは見学してみたい」「雰囲気を知りたい」など、見学や体験もお待ちしています</li>
+      <li>ご自身の活動紹介や、チャレンジしたいことの共有もお気軽にどうぞ</li>
+    </ul>
+    <p class="notice-box notice-box--caution" style="margin-top:20px;">宗教勧誘・MLM等を目的とした参加はご遠慮ください。</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="lead" style="margin:0;">学びたいことがある人も、何か始めてみたい人も。一人で頑張るのではなく、ゆるやかにつながりながら挑戦できる場を、みんなで育てていけたらと思っています。皆さんとお会いできるのを楽しみにしています。</p>
+  </div>
+</section>
+
+{% include "partials/tsunagaru-form.njk" %}

@@ -1,0 +1,21 @@
+{# つながる会の申し込み。ボタンを押すと、Googleフォームが画面の上に重なって開く（src/js/form-dialog.js）。
+   JavaScript が動かないときは、ボタンのリンク先（Googleフォーム）が別タブで開く。
+   つながる会のページと、タグ「つながる会」のお知らせで使う。URL は links.json の TSUNAGARU_FORM_URL #}
+{% if links.TSUNAGARU_FORM_URL %}
+<section class="section section--alt" id="form">
+  <div class="container form-cta">
+    <h2>つながる会のお申し込み・お問い合わせ</h2>
+    <p>見学や体験だけでも歓迎しています。お気軽にどうぞ。</p>
+    <a class="btn btn--primary" href="{{ links.TSUNAGARU_FORM_URL }}" target="_blank" rel="noopener noreferrer" data-form-open="tsunagaru-form">申し込みフォームを開く</a>
+  </div>
+</section>
+
+<dialog class="tsushin-viewer form-dialog" id="tsunagaru-form" aria-labelledby="tsunagaru-form-title" data-src="{{ links.TSUNAGARU_FORM_URL }}?embedded=true">
+  <div class="tsushin-viewer__bar">
+    <p class="tsushin-viewer__title" id="tsunagaru-form-title">Wieつながる会 お申込フォーム</p>
+    <button type="button" class="tsushin-viewer__close" data-close>閉じる</button>
+  </div>
+  <iframe title="Wieつながる会 お申込フォーム"></iframe>
+</dialog>
+<script src="{{ '/js/form-dialog.js' | url }}" defer></script>
+{% endif %}

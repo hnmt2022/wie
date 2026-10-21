@@ -517,3 +517,11 @@ p { margin: 0 0 1em; }
 .tsushin-viewer__pages img { width: 100%; height: auto; cursor: zoom-in; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12); background: #fff; }
 .tsushin-viewer__pages img.is-zoomed { width: 200%; max-width: none; cursor: zoom-out; justify-self: start; }
 .tsushin-viewer__hint { margin: 0; padding: 6px 12px 10px; text-align: center; font-size: 0.8rem; color: var(--color-text-muted); }
+/* つながる会 */
+.tsunagaru-values { list-style: none; padding: 0; margin: 20px 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.tsunagaru-values li { background: var(--color-white); color: var(--color-navy); font-weight: 700; border-radius: 999px; padding: 8px 18px; box-shadow: 0 2px 8px rgba(20, 60, 110, 0.08); }
+/* 申し込みフォーム（重ねて開く） */
+.form-cta { text-align: center; }
+.form-cta h2 { margin-bottom: 8px; }
+.form-dialog { height: calc(100vh - 24px); }
+.form-dialog iframe { flex: 1; width: 100%; border: 0; background: #fff; }
