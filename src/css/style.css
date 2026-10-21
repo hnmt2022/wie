@@ -523,5 +523,5 @@ p { margin: 0 0 1em; }
 /* 申し込みフォーム（重ねて開く） */
 .form-cta { text-align: center; }
 .form-cta h2 { margin-bottom: 8px; }
-.form-dialog { height: calc(100vh - 24px); }
-.form-dialog iframe { flex: 1; width: 100%; border: 0; background: #fff; }
+.form-dialog { height: calc(100vh - 24px); height: calc(100dvh - 24px); max-height: none; }
+.form-dialog iframe { display: block; flex: 1 1 auto; min-height: 0; width: 100%; height: calc(100vh - 90px); height: calc(100dvh - 90px); border: 0; background: #fff; }

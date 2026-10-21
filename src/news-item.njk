@@ -44,7 +44,8 @@ eleventyComputed:
 
         <div class="btn-row">
           {% if applyUrl %}<a class="btn btn--primary" href="{{ applyUrl }}" target="_blank" rel="noopener">申し込む</a>{% elif 'つながる会' in (n.tags or []) and links.TSUNAGARU_FORM_URL %}<a class="btn btn--primary" href="{{ links.TSUNAGARU_FORM_URL }}" target="_blank" rel="noopener noreferrer" data-form-open="tsunagaru-form">申し込む</a>{% endif %}
-          {% if n.url %}<a class="btn {{ 'btn--outline' if applyUrl else 'btn--primary' }}" href="{{ n.url }}" target="_blank" rel="noopener">{{ 'ラジオを聴く' if 'ラジオ' in (n.tags or []) else 'くわしく見る' }}</a>{% endif %}
+          {% if n.url and n.url.startsWith('/') %}<a class="btn btn--primary" href="{{ n.url | url }}">{{ 'つながり通信を読む' if n.url == '/tsushin/' else 'くわしく見る' }}</a>
+          {% elif n.url %}<a class="btn {{ 'btn--outline' if applyUrl else 'btn--primary' }}" href="{{ n.url }}" target="_blank" rel="noopener">{{ 'ラジオを聴く' if 'ラジオ' in (n.tags or []) else 'くわしく見る' }}</a>{% endif %}
           <a class="btn btn--outline" href="{{ '/contact/' | url }}">お問い合わせ</a>
         </div>
       </div>

@@ -22,6 +22,7 @@ import csv
 import io
 import json
 import re
+import shutil
 import sys
 import urllib.request
 from pathlib import Path
@@ -174,8 +175,22 @@ def download_photo(link, filename, label, apply):
     return filename
 
 
+def tsushin_cover(value):
+    """写真欄の「2026秋号」「No.3」などが、つながり通信の号を指していれば、その号の1ページ目の画像のパス"""
+    if not (DATA / "tsushin.json").exists():
+        return None
+    v = value.replace(" ", "").replace("　", "")
+    for t in load_json("tsushin.json"):
+        if v in (t["title"], f"No.{t['no']}", f"No.{t['no']}_{t['title']}") and (TSUSHIN_DIR / t["id"] / "p1.webp").exists():
+            return TSUSHIN_DIR / t["id"] / "p1.webp"
+    return None
+
+
 def import_news(rows, apply):
     old = load_json("news.json")
+    config = json.loads(CONFIG.read_text(encoding="utf-8"))
+    form_base = (load_json("links.json").get("TSUNAGARU_FORM_URL") or "").split("?")[0]
+    tsushin_folder = (re.search(r"folders/([A-Za-z0-9_-]{20,})", config.get("tsushinFolder") or "") or [None, None])[1]
     items = []
     for r in rows:
         if not is_yes(col(r, "公開")):
@@ -196,7 +211,11 @@ def import_news(rows, apply):
             if v:
                 item[key] = v
         url = col(r, "リンク")
-        if url:
+        if url and form_base and url.startswith(form_base):
+            pass  # つながる会のフォームは、タグ「つながる会」で詳細ページに自動で出るのでリンクにしない
+        elif url and tsushin_folder and tsushin_folder in url:
+            item["url"] = "/tsushin/"  # つながり通信のフォルダは、サイトの通信のページへ
+        elif url:
             if url.startswith(("https://", "http://")):
                 item["url"] = url
             else:
@@ -205,7 +224,14 @@ def import_news(rows, apply):
         photos = []
         for k, ph in enumerate(t.strip() for t in re.split(r"[、,，\n]", col(r, "写真")) if t.strip()):
             suffix = "" if k == 0 else f"-{k + 1}"
-            fn = download_photo(ph, f"news-{date.replace('.', '')}-{line}{suffix}.webp", f"お知らせ {line}行目", apply)
+            fn = f"news-{date.replace('.', '')}-{line}{suffix}.webp"
+            cover = tsushin_cover(ph)
+            if cover:  # 写真欄に「2026秋号」など通信の号名 → その号の1ページ目を使う
+                if apply:
+                    PHOTO_DIR.mkdir(parents=True, exist_ok=True)
+                    shutil.copy(cover, PHOTO_DIR / fn)
+            else:
+                fn = download_photo(ph, fn, f"お知らせ {line}行目", apply)
             if fn:
                 photos.append(fn)
         if photos:
@@ -295,6 +321,8 @@ def import_links(rows, apply):
         if url and not url.startswith("https://"):
             warn(f"リンク {line}行目: 「{url}」は https:// で始まらないので飛ばしました")
             continue
+        if name in ("つながり通信", "つながる通信"):
+            continue  # 通信はサイト内のページ（/tsushin/）で出すので、ここでは使わない
         if name in keys:
             if links.get(keys[name]) != (url or None):
                 print(f"   {name}: {links.get(keys[name])} → {url or '（空・準備中表示）'}")
@@ -343,8 +371,8 @@ def import_tsushin(url, apply):
     old = {t["id"]: t for t in (load_json("tsushin.json") if (DATA / "tsushin.json").exists() else [])}
     items = []
     for name, fid in files.items():
-        base = re.sub(r"^[【\[]?NEW[】\]]?\s*", "", name[:-4], flags=re.I).strip()
-        m = re.match(r"No\.?\s*(\d+)[_\s　]*(.*)", base, re.I)
+        base = name[:-4].strip()
+        m = re.search(r"No\.?\s*(\d+)[_\s　]*(.*)", base, re.I)  # 先頭の【NEW】「NEW!!」などは無視
         if not m:
             warn(f"つながり通信「{name}」: ファイル名が「No.3_2026秋号.pdf」の形でないので飛ばしました")
             continue
@@ -369,13 +397,16 @@ def main():
     steps = [("news", import_news), ("photos", import_photos), ("prices", import_prices), ("links", import_links)]
     if not any(config.get(k) for k, _ in steps):
         raise SystemExit("scripts/sheet-config.json に CSV の URL がまだありません")
+    if config.get("tsushinFolder"):  # お知らせで通信の表紙を使えるように、先に取り込む
+        import_tsushin(config["tsushinFolder"], apply)
+    only = next((a.split("=", 1)[1].split(",") for a in sys.argv if a.startswith("--only=")), None)
     for key, fn in steps:
+        if only and key not in only:
+            continue
         if config.get(key):
             fn(read_tab(config[key]), apply)
         else:
             print(f"■ {key}: URL 未設定のため読み込みませんでした")
-    if config.get("tsushinFolder"):
-        import_tsushin(config["tsushinFolder"], apply)
     if warnings:
         print("\n▲ 確認が必要なこと")
         for w in warnings:
