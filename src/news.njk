@@ -20,10 +20,20 @@ description: "Wieのイベントや活動に関する最新のお知らせです
       <button type="button" class="news-filter__btn" data-tag="{{ t }}" aria-pressed="false">#{{ t }}</button>
       {% endfor %}
     </div>
-    <div class="grid grid--3" id="news-cards">
-      {% for n in news | reverse %}{{ newsCard(n) }}{% endfor %}
+    {% set current = news | currentNews %}
+    {% set ended = news | endedNews %}
+    <div class="grid grid--3" id="news-cards" data-news-list>
+      {% for n in current %}{{ newsCard(n) }}{% endfor %}
     </div>
     <p class="text-muted" id="news-filter-empty" hidden>このタグのお知らせはまだありません。</p>
+    {% if ended.length %}
+    <div class="news-ended" id="ended" data-news-ended>
+      <h2 class="news-ended__title">開催終了したイベント</h2>
+      <div class="grid grid--3" data-news-list>
+        {% for n in ended %}{{ newsCard(n) }}{% endfor %}
+      </div>
+    </div>
+    {% endif %}
     <script src="{{ '/js/news-filter.js' | url }}" defer></script>
     {% else %}
     <div class="news-empty">

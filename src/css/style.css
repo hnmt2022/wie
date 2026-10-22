@@ -525,3 +525,8 @@ p { margin: 0 0 1em; }
 .form-cta h2 { margin-bottom: 8px; }
 .form-dialog { height: calc(100vh - 24px); height: calc(100dvh - 24px); max-height: none; }
 .form-dialog iframe { display: block; flex: 1 1 auto; min-height: 0; width: 100%; height: calc(100vh - 90px); height: calc(100dvh - 90px); border: 0; background: #fff; }
+/* 開催終了 */
+.status-badge--ended { background: var(--color-bg-alt-2); color: var(--color-text-muted); }
+.news-ended { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--color-border); }
+.news-ended__title { font-size: 1.2rem; color: var(--color-text-muted); margin: 0 0 20px; }
+.news-ended .card { opacity: 0.85; }

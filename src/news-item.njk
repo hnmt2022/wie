@@ -19,13 +19,15 @@ eleventyComputed:
 {% elif linkIsForm %}{% set formUrl = linkUrl %}{# リンク欄にフォームを入れた場合も「申し込む」にする #}
 {% elif 'つながる会' in (n.tags or []) and not applyUrl %}{% set formUrl = links.TSUNAGARU_FORM_URL %}
 {% else %}{% set formUrl = "" %}{% endif %}
+{% set ended = n | isEnded %}
+{% if ended %}{% set formUrl = "" %}{% set applyUrl = "" %}{% endif %}
 
 <section class="section page-sky">
   <div class="container">
     <p class="news-detail__back"><a href="{{ '/news/' | url }}">← お知らせ一覧</a></p>
     <div class="news-detail">
       <div class="news-detail__main">
-        <p class="news-card__meta"><time>{{ n.date }}</time></p>
+        <p class="news-card__meta"><time>{{ n.date }}</time>{% if ended %} <span class="status-badge status-badge--ended">開催終了</span>{% endif %}</p>
         <h1 class="news-detail__title">{{ n.title }}</h1>
         {% if n.tags and n.tags.length %}
         <ul class="news-tags" aria-label="タグ">
@@ -50,6 +52,7 @@ eleventyComputed:
         </div>
         {% endif %}
 
+        {% if ended %}<p class="notice-box">このイベントは終了しました。ご参加いただいた皆さま、ありがとうございました。次回のご案内は<a href="{{ '/news/' | url }}">お知らせ</a>をご覧ください。</p>{% endif %}
         <div class="btn-row">
           {% if formUrl %}{{ formButton(formUrl) }}{% elif applyUrl %}<a class="btn btn--primary" href="{{ applyUrl }}" target="_blank" rel="noopener">申し込む</a>{% endif %}
           {% if n.url and n.url.startsWith('/') %}<a class="btn btn--primary" href="{{ n.url | url }}">{{ 'つながり通信を読む' if n.url == '/tsushin/' else 'くわしく見る' }}</a>

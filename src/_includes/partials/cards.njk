@@ -58,6 +58,7 @@
     <p class="news-card__meta">
       <time>{{ n.date }}</time>
       {% if n.sample %}<span class="status-badge status-badge--planning">サンプル</span>{% endif %}
+      {% if n | isEnded %}<span class="status-badge status-badge--ended">開催終了</span>{% endif %}
     </p>
     <h3 class="card__title card__title--sm">{% if n.id %}<a href="{{ ('/news/' + n.id + '/') | url }}">{{ n.title }}</a>{% elif n.url %}<a href="{{ n.url }}">{{ n.title }}</a>{% else %}{{ n.title }}{% endif %}</h3>
     {% if n.summary %}<p class="card__text">{{ n.summary }}</p>{% endif %}

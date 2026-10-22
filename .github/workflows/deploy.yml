@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: ["main"]
+  # 毎日 0:10（日本時間）にビルドし直す。開催日を過ぎたイベントを「開催終了」に移すため
+  schedule:
+    - cron: "10 15 * * *"
   workflow_dispatch:
 
 permissions:
