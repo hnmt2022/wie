@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap">
-<link rel="stylesheet" href="{{ '/css/style.css' | url }}">
+<link rel="stylesheet" href="{{ '/css/style.css' | url }}?v={{ 'src/css/style.css' | fileHash }}">
 </head>
 <body>
 <a class="skip-link" href="#main">本文へスキップ</a>
@@ -30,6 +30,6 @@
 {{ content | safe }}
 </main>
 {% include "footer.njk" %}
-<script src="{{ '/js/nav.js' | url }}" defer></script>
+<script src="{{ '/js/nav.js' | url }}?v={{ 'src/js/nav.js' | fileHash }}" defer></script>
 </body>
 </html>

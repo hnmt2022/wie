@@ -9,6 +9,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("year", () => new Date().getFullYear());
   // ファイルがあるか（相談員の写真など、届く前は「準備中」を出すため）
   eleventyConfig.addFilter("fileExists", (p) => require("fs").existsSync(p));
+  // CSS などの中身から短い番号をつくる。URL に ?v= で付けて、更新後に古いファイルがキャッシュで使われないようにする
+  eleventyConfig.addFilter("fileHash", (p) =>
+    require("crypto").createHash("md5").update(require("fs").readFileSync(p)).digest("hex").slice(0, 8)
+  );
 
   // お知らせのタグ一覧（登場順・重複なし）
   eleventyConfig.addFilter("newsTags", (items) => [...new Set((items || []).flatMap((n) => n.tags || []))]);
