@@ -12,7 +12,7 @@
       "まだ考えがまとまっていなくても大丈夫。話をしながら、自分に合った働き方や、これからできることを見つけていきましょう。"
     ],
     "image": "about-possibilities.webp",
-    "photo": "activity-career-consultation.webp",
+    "photo": "activity-career-consultation-1YaLToAn.webp",
     "forWhom": [
       "ブランクがあり、また働くことに不安がある方",
       "子育てと両立できる働き方を考えたい方",
@@ -36,7 +36,11 @@
       {
         "name": "さこん　ゆうこ",
         "photo": "sakon-yuko.webp",
-        "qualifications": ["キャリアコンサルタント", "心理相談員", "保育士"],
+        "qualifications": [
+          "キャリアコンサルタント",
+          "心理相談員",
+          "保育士"
+        ],
         "profile": [
           "大学で臨床心理を専攻。小売店の店長や広告営業を経て、大学職員として10年以上のキャリアを積む。",
           "結婚を機に独立し、現在は主に若手や女性の方を中心に、仕事や転職に関する悩み相談に対応している。"
@@ -45,7 +49,10 @@
       {
         "name": "よこお　あきこ",
         "photo": "yokoo-akiko.webp",
-        "qualifications": ["キャリアコンサルタント", "両立支援コーディネーター"],
+        "qualifications": [
+          "キャリアコンサルタント",
+          "両立支援コーディネーター"
+        ],
         "profile": [
           "公務員として10年半勤務し、人事を経験。不育症治療を機に退職、出産後は民間企業や大学、社労士法人での勤務とキャリアコンサルタントの活動を並行する。",
           "自身の経験を活かし、仕事と子育ての両立や働き方の相談に寄り添う。"
@@ -55,8 +62,8 @@
     "sample": false,
     "prices": [
       {
-        "item": "初回相談（30分）",
-        "price": "3300円",
+        "item": "初回相談（60分）",
+        "price": "3800円",
         "note": "オンライン・対面"
       },
       {
@@ -72,7 +79,8 @@
       "相談",
       "必要に応じて継続相談"
     ],
-    "cta": "働き方相談室への申し込み・ご質問"
+    "cta": "働き方相談室への申し込み・ご質問",
+    "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSeyE-qJR-99Hc9dEEbjfZqGSn--BCZKic2buzlNZWAjfiGlAw/viewform"
   },
   {
     "id": "kurashi-money",
@@ -137,7 +145,7 @@
     "catch": "伝えたいことを、伝わるデザインに",
     "lead": "チラシやパンフレット、SNSのデザインを制作しています。もやもやとした「伝えたいこと」を対話の中で引き出し、言葉に整理したうえで、伝わるデザインに落とし込みます。",
     "image": "project-design.webp",
-    "photo": "activity-design.webp",
+    "photo": "activity-design-1u0lyH8w.webp",
     "forWhom": [
       "伝えたいことはあるのに、どう見せれば伝わるのか迷っている方",
       "チラシやSNSの発信を自分たちでつくることの多い個人事業主・小さな団体の方",
@@ -235,7 +243,7 @@
       },
       {
         "item": "書類の整理",
-        "price": "5,500円〜／1回",
+        "price": "11000円〜／1回",
         "note": "量によってお見積り"
       },
       {

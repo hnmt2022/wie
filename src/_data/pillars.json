@@ -18,7 +18,7 @@
     "recommendedImage": "activity-dialogue.webp",
     "group": "life",
     "short": "対話を通して、当たり前だと思っていた経験や得意を見つけます。",
-    "photo": "activity-discovery.webp",
+    "photo": "activity-discovery-1y6QGO-T.webp",
     "icon": "chat"
   },
   {
@@ -40,7 +40,7 @@
     "group": "life",
     "short": "それぞれの状況に応じて、キャリアコンサルタントが相談に応じます。",
     "serviceUrl": "/services/career/",
-    "photo": "activity-career-consultation.webp",
+    "photo": "activity-career-consultation-1YaLToAn.webp",
     "icon": "briefcase"
   },
   {
@@ -75,7 +75,7 @@
     "group": "business",
     "short": "「伝えたいこと」を対話で引き出し、チラシやSNSのデザインにします。",
     "serviceUrl": "/services/design/",
-    "photo": "activity-design.webp",
+    "photo": "activity-design-1u0lyH8w.webp",
     "icon": "pen"
   },
   {

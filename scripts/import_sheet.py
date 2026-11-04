@@ -225,6 +225,9 @@ def import_news(rows, apply):
         for k, ph in enumerate(t.strip() for t in re.split(r"[、,，\n]", col(r, "写真")) if t.strip()):
             suffix = "" if k == 0 else f"-{k + 1}"
             fn = f"news-{date.replace('.', '')}-{line}{suffix}.webp"
+            fid = None if tsushin_cover(ph) else resolve_photo(ph)
+            if fid:  # 写真を差し替えたとき、古い画像がキャッシュで出続けないように
+                fn = f"news-{date.replace('.', '')}-{line}{suffix}-{fid[:8]}.webp"
             cover = tsushin_cover(ph)
             if cover:  # 写真欄に「2026秋号」など通信の号名 → その号の1ページ目を使う
                 if apply:
@@ -275,7 +278,9 @@ def import_photos(rows, apply):
             warn(f"写真 {line}行目（{place}）: 掲載許可が「未」なので使いませんでした")
             continue
         p = by_title[place]
-        fn = download_photo(link, f"activity-{p['id']}.webp", f"写真 {line}行目（{place}）", apply)
+        # ファイル名にドライブのファイルIDの一部を入れる。写真を差し替えたとき、古い画像がキャッシュで出続けないように
+        tag = (resolve_photo(link) or "")[:8]
+        fn = download_photo(link, f"activity-{p['id']}-{tag}.webp" if tag else f"activity-{p['id']}.webp", f"写真 {line}行目（{place}）", apply)
         if not fn:
             continue
         p["photo"] = fn
