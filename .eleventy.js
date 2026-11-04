@@ -7,6 +7,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "public/CNAME": "CNAME" });
 
   eleventyConfig.addFilter("year", () => new Date().getFullYear());
+  // ファイルがあるか（相談員の写真など、届く前は「準備中」を出すため）
+  eleventyConfig.addFilter("fileExists", (p) => require("fs").existsSync(p));
 
   // お知らせのタグ一覧（登場順・重複なし）
   eleventyConfig.addFilter("newsTags", (items) => [...new Set((items || []).flatMap((n) => n.tags || []))]);

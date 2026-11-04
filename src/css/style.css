@@ -262,6 +262,23 @@ p { margin: 0 0 1em; }
   border-radius: 999px; padding: 6px 14px;
 }
 
+/* サービスページ：相談員の紹介カード */
+.consultant__head { display: flex; align-items: center; gap: 16px; margin-bottom: 4px; }
+.consultant__photo {
+  width: 96px; height: 96px; flex: none; border-radius: 50%;
+  object-fit: cover; border: 3px solid var(--color-white); box-shadow: var(--shadow-soft);
+  background: var(--color-bg-alt-2);
+}
+.consultant__photo--placeholder {
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  font-size: 0.72rem; line-height: 1.4; color: var(--color-text-muted);
+}
+.consultant__label { font-size: 0.82rem; color: var(--color-navy-soft); font-weight: 700; margin: 8px 0 0; }
+.consultant__tags { margin-top: 0; gap: 8px; }
+.consultant__tags li { font-size: 0.85rem; padding: 4px 12px; }
+.card__body .consultant__label + .card__text,
+.card__body .card__text + .card__text { flex: none; margin: 0; }
+
 /* お問い合わせページ：受け付けている相談の一覧 */
 .contact-topics { margin: 10px 0 0; padding-left: 1.3em; }
 .contact-topics li { margin: 5px 0; }

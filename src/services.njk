@@ -57,6 +57,35 @@ eleventyComputed:
   </div>
 </section>
 
+{% if service.consultants %}
+<section class="section">
+  <div class="container">
+    <p class="eyebrow">相談員</p>
+    <h2>キャリアコンサルタントの紹介</h2>
+    <div class="grid grid--2">
+      {% for c in service.consultants %}
+      <div class="card"><div class="card__body">
+        <div class="consultant__head">
+          {% if c.photo and (("public/images/people/" + c.photo) | fileExists) %}
+          <img class="consultant__photo" src="{{ ('/images/people/' + c.photo) | url }}" alt="{{ c.name }}" loading="lazy" decoding="async">
+          {% else %}
+          <div class="consultant__photo consultant__photo--placeholder" role="img" aria-label="{{ c.name }}（写真準備中）">写真<br>準備中</div>
+          {% endif %}
+          <h3 class="card__title">{{ c.name }}</h3>
+        </div>
+        <p class="consultant__label">保有資格</p>
+        <ul class="tag-row consultant__tags">
+          {% for q in c.qualifications %}<li>{{ q }}</li>{% endfor %}
+        </ul>
+        <p class="consultant__label">プロフィール</p>
+        {% for p in c.profile %}<p class="card__text">{{ p }}</p>{% endfor %}
+      </div></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
 <section class="section">
   <div class="container">
     <p class="eyebrow">料金</p>
