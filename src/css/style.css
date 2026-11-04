@@ -550,3 +550,9 @@ p { margin: 0 0 1em; }
 .news-ended .card { opacity: 0.85; }
 /* お知らせの一覧は、件数が少なくてもカードが横に広がらないように（auto-fill） */
 [data-news-list].grid--3 { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+/* Wieについて: 名前の由来（文章の下に、キーワードの図を横幅いっぱいに） */
+.wie-name { margin-bottom: 32px; }
+.wie-name__text { max-width: 760px; }
+.wie-name__text h3 { font-size: 1.3rem; color: var(--color-navy); margin: 0 0 12px; }
+.wie-name__figure { margin: 24px 0 0; }
+.wie-name__figure img { display: block; width: 100%; max-width: 1000px; height: auto; margin: 0 auto; border-radius: var(--radius-md); background: #fff; }

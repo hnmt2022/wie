@@ -29,8 +29,7 @@
     "group": "life",
     "short": "笑って、繋がって、毎日に彩りを。ものづくりや趣味を楽しむサークルです。",
     "photo": "activity-iroha-intro.webp",
-    "icon": "pen",
-    "serviceUrl": "/news/?tag=%E3%81%84%E3%82%8D%E3%81%AF%E6%97%A5%E5%92%8C"
+    "icon": "pen"
   },
   {
     "id": "career-consultation",
