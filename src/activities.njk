@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: "活動内容"
-description: "Wieの活動を、自分と暮らしのための「For Life」（学習会・セミナー、つながる会、働き方相談室、暮らしとお金の相談）と、持ち寄った力をビジネスにした「For Business」（力を持ち寄るプロジェクト、デザイン制作、経理サポート）に分けてご紹介します。"
+description: "Wieの活動を、自分と暮らしのための「For Life」（学習会・セミナー、つながる会、カルチャーサークル「いろは日和」、働き方相談室、暮らしとお金の相談）と、持ち寄った力をビジネスにした「For Business」（力を持ち寄るプロジェクト、デザイン制作、経理サポート）に分けてご紹介します。"
 ---
 {% from "partials/media.njk" import itemMedia %}
 {% from "partials/icons.njk" import icon %}
@@ -55,6 +55,17 @@ description: "Wieの活動を、自分と暮らしのための「For Life」（�
       <p>資格や職歴として表せるものだけでなく、家庭、地域、趣味、ボランティアなどで培った力も、その人が持つ大切な経験です。人と話すことで、自分だけでは気づかなかった力や、これからやってみたいことが見えてくることがあります。</p>
       <p>つながる会では、こうした対話を通して、互いの経験や考えを知る機会をつくっています。</p>
       <p><a class="card__link" href="{{ '/tsunagaru/' | url }}">つながる会について詳しく見る・申し込む</a></p>
+    </article>
+
+    <article class="activity-detail" id="iroha">
+      {% set pl = pillars | findById("iroha") %}
+      <div class="activity-detail__media">{{ itemMedia(pl, pl.title) }}</div>
+      <p class="activity-badge"><span class="activity-badge__icon">{{ icon(pl.icon) }}</span><span>{{ pl.title }}</span></p>
+      <h3>笑って、繋がって、毎日に彩りを。</h3>
+      <p>ものづくりや趣味を楽しんだり、暮らしに役立つことを学んだりするサークルです。シニア世代を中心に、年齢を問わずご参加いただけます。</p>
+      <p>趣味に親しみ元気に暮らしたい方、日々の暮らしに楽しみを増やしたい方、仲間との新しい出会いを楽しみましょう。</p>
+      {# 回数が積み上がるまでは、専用ページではなく「#いろは日和」のお知らせへ #}
+      <p><a class="card__link" href="{{ '/news/' | url }}?tag={{ 'いろは日和' | urlencode }}">いろは日和について詳しく見る・申し込む</a></p>
     </article>
 
     <article class="activity-detail" id="career-consultation">
