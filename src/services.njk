@@ -20,7 +20,14 @@ eleventyComputed:
           <p class="eyebrow">{{ service.group }}</p>
           <h1>{{ service.name }}</h1>
           <p class="service-catch">{{ service.catch }}</p>
+          {# intro（段落の配列、\n で改行）があればそれを、なければ lead を表示。lead はページの説明文（description）にも使う #}
+          {% if service.intro %}
+            {% for para in service.intro %}
+            <p class="lead">{% for line in para.split("\n") %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}</p>
+            {% endfor %}
+          {% else %}
           <p class="lead">{{ service.lead }}</p>
+          {% endif %}
         </div>
         <div class="btn-row">
           <a class="btn btn--primary" href="{{ '/contact/' | url }}">{{ service.cta }}</a>
