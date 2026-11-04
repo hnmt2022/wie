@@ -262,7 +262,8 @@ p { margin: 0 0 1em; }
   border-radius: 999px; padding: 6px 14px;
 }
 
-/* サービスページ：相談員の紹介カード */
+/* サービスページ：相談員の紹介カード。広い画面では常に2列（1人でもカードが横いっぱいに広がらない）、狭い画面では1列 */
+.consultant-grid { grid-template-columns: repeat(auto-fill, minmax(max(min(100%, 320px), calc((100% - 24px) / 2)), 1fr)); }
 .consultant__head { display: flex; align-items: center; gap: 16px; margin-bottom: 4px; }
 .consultant__photo {
   width: 96px; height: 96px; flex: none; border-radius: 50%;
