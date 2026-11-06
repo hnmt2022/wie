@@ -51,10 +51,19 @@ def save_json(name, data):
     (DATA / name).write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def fetch(url):
+def fetch(url, tries=4):
+    """URL を取得する。Google 側の接続が途中で切れることがあるので、数回やり直す"""
+    import http.client
+    import time
     req = urllib.request.Request(url, headers={"User-Agent": "wie-sheet-import"})
-    with urllib.request.urlopen(req, timeout=60) as res:
-        return res.read(), res.headers.get("Content-Type", "")
+    for i in range(tries):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as res:
+                return res.read(), res.headers.get("Content-Type", "")
+        except (http.client.IncompleteRead, http.client.RemoteDisconnected, ConnectionError, TimeoutError, urllib.error.URLError) as e:
+            if isinstance(e, urllib.error.HTTPError) or i == tries - 1:
+                raise
+            time.sleep(3 * (i + 1))
 
 
 def read_tab(url):
