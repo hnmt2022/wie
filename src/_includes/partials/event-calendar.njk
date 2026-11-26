@@ -1,0 +1,51 @@
+{# イベントカレンダー（小さめ）。お知らせ（news.json）の開催日時の欄・タイトルの日付から自動で作る（.eleventy.js の eventCalendar）。
+   イベントのある日は色の丸＋詳細ページへのリンク、下にその月のイベント一覧。
+   JSが動かない環境では全部の月が縦に並ぶ。JSが動けば1か月ずつ「前の月／次の月」で切り替え（js/event-calendar.js） #}
+{% macro eventCalendar(items, extraClass="") %}
+{% set months = items | eventCalendar %}
+{% if months.length %}
+<div class="event-cal {{ extraClass }}" data-event-cal>
+  <div class="event-cal__nav" hidden>
+    <button type="button" class="event-cal__btn" data-cal-prev aria-label="前の月">‹</button>
+    <p class="event-cal__label" data-cal-label aria-live="polite"></p>
+    <button type="button" class="event-cal__btn" data-cal-next aria-label="次の月">›</button>
+  </div>
+  {% for m in months %}
+  <section class="event-cal__month" data-cal-month="{{ m.key }}"{% if m.isCurrent %} data-cal-current{% endif %} aria-label="{{ m.label }}">
+    <p class="event-cal__title">{{ m.label }}</p>
+    <table class="event-cal__grid">
+      <thead><tr>{% for w in ["日","月","火","水","木","金","土"] %}<th scope="col"{% if loop.first %} class="is-sun"{% elif loop.last %} class="is-sat"{% endif %}>{{ w }}</th>{% endfor %}</tr></thead>
+      <tbody>
+        {% for week in m.weeks %}
+        <tr>
+          {% for c in week %}
+          {% if c %}
+          <td class="{% if c.wd == 0 %}is-sun{% elif c.wd == 6 %}is-sat{% endif %}{% if c.isToday %} is-today{% endif %}{% if c.isPast %} is-past{% endif %}">
+            {% if c.events.length %}
+            <a class="event-cal__day has-event{% if c.isPast %} is-ended{% endif %}" href="{{ c.events[0].href | url }}" title="{% for e in c.events %}{{ e.title }}{% if not loop.last %} / {% endif %}{% endfor %}">{{ c.day }}</a>
+            {% else %}<span class="event-cal__day">{{ c.day }}</span>{% endif %}
+          </td>
+          {% else %}<td></td>{% endif %}
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% if m.events.length %}
+    <ul class="event-cal__list">
+      {% for e in m.events %}
+      <li{% if e.ended %} class="is-ended"{% endif %}>
+        <span class="event-cal__date">{{ e.day }}日（{{ e.wd }}）</span>
+        <a href="{{ e.href | url }}">{{ e.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="event-cal__none">この月のイベントは、まだありません。</p>
+    {% endif %}
+  </section>
+  {% endfor %}
+</div>
+<script src="{{ '/js/event-calendar.js' | url }}" defer></script>
+{% endif %}
+{% endmacro %}

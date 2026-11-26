@@ -556,3 +556,40 @@ p { margin: 0 0 1em; }
 .wie-name__text h3 { font-size: 1.3rem; color: var(--color-navy); margin: 0 0 12px; }
 .wie-name__figure { margin: 24px 0 0; }
 .wie-name__figure img { display: block; width: 100%; max-width: 1000px; height: auto; margin: 0 auto; border-radius: var(--radius-md); background: #fff; }
+/* イベントカレンダー（partials/event-calendar.njk）。トップのヒーロー右側と、お知らせページの横に置く小さめの型 */
+.event-cal { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 14px 14px 16px; }
+.event-cal__nav { display: flex; align-items: center; justify-content: space-between; margin: 0 0 6px; }
+.event-cal__label { margin: 0; font-weight: 700; font-size: 1rem; color: var(--color-navy); }
+.event-cal__btn {
+  font: inherit; font-size: 1.2rem; line-height: 1; width: 32px; height: 32px; cursor: pointer;
+  color: var(--color-navy); background: var(--color-white); border: 1px solid var(--color-border); border-radius: 999px;
+}
+.event-cal__btn:hover:not(:disabled) { background: var(--color-bg-alt); }
+.event-cal__btn:disabled { opacity: 0.3; cursor: default; }
+.event-cal__title { font-weight: 700; color: var(--color-navy); margin: 0 0 4px; }
+.event-cal__month + .event-cal__month { margin-top: 20px; }
+.event-cal.is-js .event-cal__month + .event-cal__month { margin-top: 0; }
+.event-cal.is-js .event-cal__title { display: none; }
+.event-cal__grid { width: 100%; border-collapse: collapse; table-layout: fixed; text-align: center; }
+.event-cal__grid th { font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted); padding: 4px 0; }
+.event-cal__grid td { padding: 2px 0; font-size: 0.85rem; }
+.event-cal__grid .is-sun { color: #c0504d; }
+.event-cal__grid .is-sat { color: #3a74b8; }
+.event-cal__grid td.is-past .event-cal__day { opacity: 0.45; }
+.event-cal__day {
+  display: inline-flex; align-items: center; justify-content: center; width: 2em; height: 2em; border-radius: 999px;
+}
+a.event-cal__day.has-event { background: var(--sky-top); color: #fff; font-weight: 700; text-decoration: none; }
+a.event-cal__day.has-event:hover { background: var(--color-navy-soft); }
+a.event-cal__day.has-event.is-ended { background: var(--color-bg-alt-2); color: var(--color-text-muted); }
+.event-cal__grid td.is-today .event-cal__day { box-shadow: 0 0 0 2px var(--color-navy); opacity: 1; }
+.event-cal__list { list-style: none; margin: 10px 0 0; padding: 0; font-size: 0.85rem; line-height: 1.5; }
+.event-cal__list li { padding: 6px 0; border-top: 1px dashed var(--color-border); }
+.event-cal__list li.is-ended, .event-cal__list li.is-ended a { color: var(--color-text-muted); }
+.event-cal__date { display: block; font-weight: 700; font-size: 0.8rem; color: var(--color-navy); }
+.event-cal__list li.is-ended .event-cal__date { color: var(--color-text-muted); }
+.event-cal__none { margin: 10px 0 0; font-size: 0.82rem; color: var(--color-text-muted); }
+
+/* トップ「最新のお知らせ」・お知らせページの、カード並びの1枠をカレンダーに（カードの中なので枠線なし） */
+.news-cal-card .event-cal { border: 0; padding: 0; background: transparent; }
+.news-cal-card .card__title { margin-bottom: 6px; }

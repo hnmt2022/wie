@@ -5,6 +5,7 @@ description: "Wieのイベントや活動に関する最新のお知らせです
 ---
 {% from "partials/media.njk" import wiechan %}
 {% from "partials/cards.njk" import newsCard %}
+{% from "partials/event-calendar.njk" import eventCalendar %}
 
 <section class="section page-sky">
   <div class="container">
@@ -22,7 +23,17 @@ description: "Wieのイベントや活動に関する最新のお知らせです
     </div>
     {% set current = news | currentNews %}
     {% set ended = news | endedNews %}
+    {% set calMonths = news | eventCalendar %}
     <div class="grid grid--3" id="news-cards" data-news-list>
+      {# イベントがあるときは、並びの最初の1枠をイベントカレンダーに（タグの絞り込みでは隠れない） #}
+      {% if calMonths.length %}
+      <article class="card card--compact news-cal-card" id="calendar" aria-labelledby="calendar-title">
+        <div class="card__body">
+          <h2 class="card__title card__title--sm" id="calendar-title">イベントカレンダー</h2>
+          {{ eventCalendar(news) }}
+        </div>
+      </article>
+      {% endif %}
       {% for n in current %}{{ newsCard(n) }}{% endfor %}
     </div>
     <p class="text-muted" id="news-filter-empty" hidden>このタグのお知らせはまだありません。</p>
