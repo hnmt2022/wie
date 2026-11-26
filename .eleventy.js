@@ -71,7 +71,12 @@ module.exports = function (eleventyConfig) {
       dates.forEach((d, i) => {
         const key = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
         // タイトル先頭の「12月3日（木）」「2027年1月26日（火）」は日付と重なるので外す
-        let title = String(n.title || "").replace(/^\s*(\d{4}年)?\d{1,2}月\d{1,2}日\s*[（(][^）)]*[）)]\s*/, "");
+        // カレンダーでは短く: 「12月から全4回！」や、末尾の「を開催します」「が始まります」なども外す
+        let title = String(n.title || "")
+          .replace(/^\s*(\d{4}年)?\d{1,2}月\d{1,2}日\s*[（(][^）)]*[）)]\s*/, "")
+          .replace(/^\s*\d{1,2}月から全\d+回\s*[！!]?\s*/, "")
+          .replace(/\s*[をが]?\s*(開催します|実施します|行います|始まります|スタートします)\s*[！!。]?\s*$/, "")
+          .trim() || String(n.title || "");
         if (dates.length > 1) title += `（${i + 1}/${dates.length}回）`;
         const ev = { title, href: n.id ? `/news/${n.id}/` : n.url || "", ended: d < today, tags: n.tags || [] };
         byDay.set(key, [...(byDay.get(key) || []), ev]);
